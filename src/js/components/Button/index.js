@@ -8,7 +8,7 @@ const style = {
 export default class Button extends Component {
   render () {
     return (
-      <RaisedButton label={this.props.buttonName} primary={true} style={style} />
+      <RaisedButton className="login-btn" label={this.props.buttonName} style={style} />
     )
   }
 }
