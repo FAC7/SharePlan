@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: './frontend/src/js/index.js',
+  entry: './src/js/index.js',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public')
@@ -17,6 +17,11 @@ module.exports = {
         test: /\.scss$/,
         exclude: path.resolve(__dirname, 'node_modules'),
         loader: 'style-loader!css-loader!sass-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css?modules',
+        include: /flexboxgrid/,
       }
     ]
   },
