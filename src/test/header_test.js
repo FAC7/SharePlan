@@ -1,9 +1,7 @@
-const React = require('react/addons')
-require('react-test-utils')
-
+var Header = require('../js/components/Header.js')
 const test = require('tape')
-const ReactTestUtils = React.addons.ReactTestUtils
-const Header = require('../js/components/Header.js')
+var ReactTestUtils = require('react-addons-test-utils')
+import React from 'react'
 
 test('Header component', (t) => {
   const header = <Header test='testing' />
