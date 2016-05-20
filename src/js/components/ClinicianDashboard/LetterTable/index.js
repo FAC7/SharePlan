@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, thead, th, td, tr, tbody, DropdownButton, MenuItem} from 'react-bootstrap'
+import {Table, thead, th, td, tr, tbody, DropdownButton, MenuItem, Button, ProgressBar} from 'react-bootstrap'
 
 export default class LetterTable extends React.Component {
     render () {
@@ -18,13 +18,17 @@ export default class LetterTable extends React.Component {
                 <tbody>
                 {this.props.letters? this.props.letters.map((letter, i) => {
                     return (
-                        <tr>
+                        <tr key={i}>
                             <td>{i}</td>
-                            <td>{letter.topic}</td>
+                            <td>
+                                <Button bsStyle="link">
+                                    {letter.topic}
+                                </Button>
+                            </td>
                             <td>{letter.recipients}</td>
                             <td>{letter.correspondence}</td>
                             <td>
-                                <DropdownButton bsStyle='info' title={status} key={i} id={`dropdown-basic-${i}`}>
+                                <DropdownButton bsStyle='info' title={status} id={`dropdown-basic-${i}`}>
                                   <MenuItem eventKey="1">On the list</MenuItem>
                                   <MenuItem eventKey="2">'In preperation'</MenuItem>
                                   <MenuItem eventKey="3" active>'Waiting review'</MenuItem>
