@@ -1,30 +1,22 @@
 import React from 'react'
-import { Modal, Button, Col } from 'react-bootstrap'
+import { Modal, Button, Col, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 
 export default class AddClient extends React.Component {
 
-  getInitialState() {
-    return { show: false };
-  },
-
   render() {
-    let close = () => this.setState({ show: false});
-
     return (
       <div className="modal-container" style={{height: 200}}>
         <Button
           bsStyle="primary"
           bsSize="large"
-          onClick={() => this.setState({ show: true})}
+          onClick={this.props.toggleModal}
         >
           Add a Patient
         </Button>
 
         <Modal
-          show={this.state.show}
-          onHide={close}
-          container={this}
-          aria-labelledby="contained-modal-title"
+          show={this.props.showModal}
+          onHide={this.props.toggleModal}
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title">Client Form</Modal.Title>
@@ -73,10 +65,16 @@ export default class AddClient extends React.Component {
             </Form>
           </Modal.Body>
           <Modal.Footer>
-          <Button onClick={close}>Close</Button>
+          <Button onClick={this.props.toggleModal}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>
-    );
+    )
   }
-});
+}
+
+
+AddClient.propTypes = {
+  showModal: React.PropTypes.bool,
+  toggleModal: React.PropTypes.func
+}
