@@ -15,14 +15,14 @@ const Scripts = require('./routes/Scripts.js')
 const Routes = [ Images, ReactUrls, Scripts]
 
 
-// Export the Server 
+// Export the Server
 module.exports = () => {
 
   const server = new Hapi.Server()
 
   server.connection({
-    port: process.env.PORT || 8080,
-    // cors is the Cross-Origin Resource Sharing protocol. 
+    port: process.env.PORT || 4000,
+    // cors is the Cross-Origin Resource Sharing protocol.
     // It allows browsers to make cross-origin API calls.
     routes: {
       cors: true
@@ -30,10 +30,10 @@ module.exports = () => {
   })
 
   server.register(Plugins, (err) => {
-      if (err) {
-          console.log('plugins err: ', err)
-          throw err
-      }
+    if (err) {
+        console.log('plugins err: ', err)
+        throw err
+    }
   })
   server.route(Routes)
 
