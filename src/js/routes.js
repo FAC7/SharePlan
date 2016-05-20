@@ -7,5 +7,5 @@ import Home from './views/Home'
 export default (
   <Route path='/' component={App} >
     <IndexRoute component={Home} />
-  </ Route>
+  </Route>
 )
