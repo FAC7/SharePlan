@@ -1,18 +1,15 @@
 import React, { Component } from 'react'
-import RaisedButton from 'material-ui/RaisedButton'
+import { Button } from 'react-bootstrap'
 
-const style = {
-  margin: 12
-}
-
-export default class Button extends Component {
+export default class DefaultButton extends Component {
   render () {
     return (
-      <RaisedButton className="login-btn" label={this.props.buttonName} style={style} />
+      <Button bsStyle='primary' bsSize='large' onClick={this.props.handleClick}>{this.props.buttonName}</Button>
     )
   }
 }
 
-Button.propTypes = {
-  buttonName: React.PropTypes.string.isRequired
+DefaultButton.propTypes = {
+  buttonName: React.PropTypes.string.isRequired,
+  handleClick: React.PropTypes.func
 }
