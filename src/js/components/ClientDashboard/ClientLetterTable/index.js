@@ -4,35 +4,65 @@ import {Table, thead, th, td, tr, tbody, Button, ProgressBar} from 'react-bootst
 export default class ClientLetterTable extends React.Component {
     render () {
         return (
+            <div>
+                <Table responsive>
+                    <thead>
+                        <tr>
+                        <th>Topic</th>
+                        <th>Recipients</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {this.props.activeLetters? this.props.activeLetters.map((letter, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>
+                                    <Button bsStyle="link">
+                                        {letter.topic}
+                                    </Button>
+                                </td>
+                                <td>{letter.recipients}</td>
+                                <td>
+                                    {letter.status} <ProgressBar active bsStyle='info' now={this.props.progressBar[letter.status]}/>
+                                </td>
+                            </tr>
+                        )
+                    }) : ''}
+                    </tbody>
+                </Table>
             <Table responsive>
                 <thead>
                     <tr>
-                    <th>Letter id</th>
                     <th>Topic</th>
                     <th>Recipients</th>
-                    <th>Correspondence</th>
-                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                {this.props.letters? this.props.letters.map((letter, i) => {
+                {this.props.sentLetters? this.props.sentLetters.map((letter, i) => {
                     return (
                         <tr key={i}>
-                            <td>{i}</td>
                             <td>
                                 <Button bsStyle="link">
                                     {letter.topic}
                                 </Button>
                             </td>
                             <td>{letter.recipients}</td>
-                            <td>{letter.correspondence}</td>
-                            <td>{letter.status}</td>
-                            <td>{letter.due}</td>
                         </tr>
                     )
                 }) : ''}
                 </tbody>
               </Table>
+            </div>
         )
+    }
+}
+
+ClientLetterTable.defaultProps = {
+    progressBar: {
+        'On the list': 25,
+        'In preparation': 50,
+        'Waiting review': 75,
+        'Sent': 100
     }
 }
