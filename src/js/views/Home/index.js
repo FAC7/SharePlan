@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid'
 import { Link } from 'react-router'
+import { Grid, Row, Col } from 'react-bootstrap'
 
-import Button from '../../components/Button/'
+import DefaultButton from '../../components/Button/'
 
 export default class Home extends Component {
   render () {
@@ -12,22 +12,22 @@ export default class Home extends Component {
           <Row>
             <Col lg={6} md={6} xs={12}>
               <Row>
-                <Col lgOffset={8} lg={4} mdOffset={8} md={4} xsOffset={2} xs={8} >
-                  <Button buttonName='Patient Login'/>
+                <Col lgOffset={8} lg={4} mdOffset={8} md={4} xsOffset={4} xs={4} >
+                  <DefaultButton buttonName='I am a Patient'/>
                 </Col>
               </Row>
             </Col>
             <Col lg={6} md={6} xs={12}>
-              <Col lg={4} md={4} xsOffset={2} xs={8}>
+              <Col lg={4} md={4} xsOffset={4} xs={4}>
                 <Link to={'/cliniciandashboard'}>
-                  <Button buttonName='Clinician Login' />
+                  <DefaultButton buttonName='I am a Clinician' />
                 </Link>
               </Col>
             </Col>
           </Row>
           <Row>
             <Col xs={12}>
-              <img className='big-logo' src='/img/logo.png' />
+              <img className='logo' src='/img/logo.png' />
             </Col>
           </Row>
         </Grid>
