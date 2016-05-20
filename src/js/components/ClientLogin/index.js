@@ -7,16 +7,16 @@ import LoginPanel from './loginPanel.js'
 export default class Login extends Component {
   render () {
     return (
-      <Modal show={this.props.showModal} onHide={this.close}>
+      <Modal show={this.props.showModal} onHide={this.props.toggleModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Letter</Modal.Title>
+          <Modal.Title>Sign Up or Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <SignupPanel />
           <LoginPanel />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.close}>Close</Button>
+          <Button onClick={this.props.toggleModal}>Close</Button>
         </Modal.Footer>
       </Modal>
     )
@@ -24,5 +24,6 @@ export default class Login extends Component {
 }
 
 Login.propTypes = {
-  showModal = React.PropTypes.func
+  showModal: React.PropTypes.bool,
+  toggleModal: React.PropTypes.func
 }
