@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Link } from 'react-router'
 
 import Button from '../../components/Button/'
 
@@ -18,7 +19,9 @@ export default class Home extends Component {
             </Col>
             <Col lg={6} md={6} xs={12}>
               <Col lg={4} md={4} xsOffset={2} xs={8}>
-                <Button buttonName='Clinician Login' />
+                <Link to={'/cliniciandashboard'}>
+                  <Button buttonName='Clinician Login' />
+                </Link>
               </Col>
             </Col>
           </Row>
