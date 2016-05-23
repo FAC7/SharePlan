@@ -1,3 +1,10 @@
+@import 'variables';
+// general styling
+body {
+	// background-color: #3FA9F5;
+	// color: white;
+}
+
 .login-btn {
   display: block !important;
   margin: 0 auto !important;
@@ -13,3 +20,20 @@
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 }
+
+
+// Client Dashboard
+
+// Client letter Table 
+
+.active-state {
+	color: $bright-green;
+}
+.arrow-status {
+	padding: 0 inherit;
+}
+.arrow-right {
+	padding-left: 1px;
+}
+
+
