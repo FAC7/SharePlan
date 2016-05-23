@@ -48,7 +48,7 @@ ClinicianDashboard.defaultProps = {
   currentUser: 'katbow',
   clients:[
         {
-            id: 0,
+            id: 54634563456,
             letters: [
                     {
                         topic: 'Assessment results',
@@ -58,7 +58,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'Sent',
                         due: '10/11/16' 
                     }, {
                         topic: 'Assessment results',
@@ -68,7 +68,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     },
                     {
@@ -79,13 +79,13 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     }
                 ]
         },
         {
-            id: 1,
+            id: 1324523452345,
             letters: [
                     {
                         topic: 'Assessment results',
@@ -95,7 +95,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     }, {
                         topic: 'Assessment results',
@@ -105,7 +105,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'Sent',
                         due: '10/11/16' 
                     },
                     {
@@ -116,13 +116,13 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     }
                 ]    
         },
         {
-            id: 2,
+            id: 24356345766,
             letters: [
                     {
                         topic: 'Assessment results',
@@ -132,7 +132,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     }, {
                         topic: 'Assessment results',
@@ -142,7 +142,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        stage: 'pending',
+                        status: 'pending',
                         due: '10/11/16' 
                     },
                     {
