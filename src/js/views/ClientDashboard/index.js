@@ -1,5 +1,6 @@
 import React from 'react'
 import ClientLetterTable from '../../components/ClientDashboard/ClientLetterTable/index.js'
+import {Row, Col, Grid} from 'react-bootstrap'
 
 
 export default class ClientDashboard extends React.Component {
@@ -25,7 +26,13 @@ export default class ClientDashboard extends React.Component {
         
     render () {
         return (
-            <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()} />
+        	<Grid>
+        		<Row>
+        			<Col xs={10} xsOffset={1}>
+            		<ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()} />
+           		</Col>
+           	</Row>
+          </Grid>
             )
     }
 }
@@ -74,6 +81,16 @@ ClientDashboard.defaultProps = {
                     'patient', 'patient\'s mum', 'school'
                 ] , 
                 status: 'Sent',
+                due: '10/11/16' 
+            }, {
+                topic: 'Assessment results',
+                recipients: [
+                    'School'
+                ] ,
+                 correspondence: [
+                    'patient', 'patient\'s mum', 'school'
+                ] , 
+                status: 'In preparation',
                 due: '10/11/16' 
             }
             

@@ -1,70 +1,91 @@
 import React from 'react'
-import {Table, thead, th, td, tr, tbody, Button, ProgressBar, Row, Col, Grid} from 'react-bootstrap'
+import {Table, thead, th, td, tr, tbody, Button, Glyphicon, Row, Col} from 'react-bootstrap'
+
 
 export default class ClientLetterTable extends React.Component {
+		constructor () {
+			super()
+			this.colorText = this.colorText.bind(this)
+		}
+		
+		colorText(letterStatus, status) {
+			return status == letterStatus ? 'active-state' : ''
+		}
+
     render () {
         return (
-            <Grid>
-                <Row>
-                    <Col xs={10} xsOffset={1}>
-                        <h2> Pending Letters </h2>
-                        <Table responsive>
-                            <thead>
-                                <tr>
-                                    <th>Topic</th>
-                                    <th>Recipients</th>
-                                    <th>Status</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                {this.props.activeLetters? this.props.activeLetters.map((letter, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td>
-                                                <Button bsStyle="link">
-                                                    {letter.topic}
-                                                </Button>
-                                            </td>
-                                            <td>{letter.recipients}</td>
-                                            <td>
-                                                {letter.status} <ProgressBar active bsStyle='info' now={this.props.progressBar[letter.status]}/>
-                                            </td>
-                                        </tr>
-                                    )
-                                }) : ''}
-                            </tbody>
-                        </Table>
-                        
-                    </Col>
-                </Row>
-                <Row> 
-                    <Col xs={10} xsOffset={1}>
-                        <h2> Sent Letters </h2>
-                        <Table responsive>
-                            <thead>
-                                <tr>
-                                    <th>Topic</th>
-                                    <th>Recipients</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.props.sentLetters? this.props.sentLetters.map((letter, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td>
-                                                <Button bsStyle="link">
-                                                    {letter.topic}
-                                                </Button>
-                                            </td>
-                                            <td>{letter.recipients}</td>
-                                        </tr>
-                                    )
-                                }) : ''}
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
-            </Grid>
+            <div>
+                <Table responsive>
+                    <thead>
+                        <tr>
+                        <th>Topic</th>
+                        <th>Recipients</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {this.props.activeLetters? this.props.activeLetters.map((letter, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>
+                                    <Button bsStyle="link">
+                                        {letter.topic}
+                                    </Button>
+                                </td>
+                                <td>{letter.recipients}</td>
+                                <td>
+                                  <Row>
+																		<Col className='arrow-status' xs={2}>
+																			<p className={this.colorText(letter.status, 'On the list')} > On the list </p> 
+																		</Col>
+																		<Col xs={1}>
+																			<Glyphicon className="arrow-right" glyph="chevron-right" />
+																		</Col>
+																		<Col xs={3}>
+																			<p className={this.colorText(letter.status, 'In preparation')} > In preparation </p> 
+																		</Col>
+																		<Col xs={1}>
+																			<Glyphicon glyph="chevron-right" />
+																		</Col>
+																		<Col xs={2}>
+																			<p className={this.colorText(letter.status, 'Waiting review')} > Waiting review </p> 
+																		</Col>
+																		<Col xs={1}>
+																			<Glyphicon glyph="chevron-right" />
+																		</Col>
+																		<Col xs={2}>
+																			<p> Sent </p> 
+																		</Col>
+																	</Row>
+                                </td>
+                            </tr>
+                        )
+                    }) : ''}
+                    </tbody>
+                </Table>
+            <Table responsive>
+                <thead>
+                    <tr>
+                    <th>Topic</th>
+                    <th>Recipients</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {this.props.sentLetters? this.props.sentLetters.map((letter, i) => {
+                    return (
+                        <tr key={i}>
+                            <td>
+                                <Button bsStyle="link">
+                                    {letter.topic}
+                                </Button>
+                            </td>
+                            <td>{letter.recipients}</td>
+                        </tr>
+                    )
+                }) : ''}
+                </tbody>
+              </Table>
+            </div>
         )
     }
 }
