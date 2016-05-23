@@ -11,8 +11,10 @@ const Plugins = [ Inert ]
 const Images = require('./routes/Images.js')
 const ReactUrls = require('./routes/ReactUrls.js')
 const Scripts = require('./routes/Scripts.js')
+const PatientData = require('./routes/PatientData.js')
+const ClientLogin = require('./routes/ClientLogin.js')
 
-const Routes = [ Images, ReactUrls, Scripts]
+const Routes = [ Images, ReactUrls, Scripts, PatientData, ClientLogin ]
 
 
 // Export the Server

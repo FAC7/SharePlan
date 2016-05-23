@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Grid, Row, Col } from 'react-bootstrap'
 
 import SignupPanel from './signupPanel.js'
 import LoginPanel from './loginPanel.js'
@@ -7,13 +7,15 @@ import LoginPanel from './loginPanel.js'
 export default class Login extends Component {
   render () {
     return (
-      <Modal show={this.props.showModal} onHide={this.props.toggleModal}>
+      <Modal bsSize={'lg'} show={this.props.showModal} onHide={this.props.toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up or Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <SignupPanel />
-          <LoginPanel />
+          <Row>
+            <Col sm={6}><SignupPanel /></Col>
+            <Col sm={6}><LoginPanel /></Col>
+          </Row>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.toggleModal}>Close</Button>
