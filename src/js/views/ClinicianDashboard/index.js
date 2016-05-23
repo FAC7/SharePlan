@@ -1,4 +1,5 @@
 import React from 'react'
+import {Grid, Row, Col} from 'react-bootstrap'
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClientForm from '../../components/AddClient/index.js'
 
@@ -30,10 +31,16 @@ export default class ClinicianDashboard extends React.Component {
 
   render () {
     return (
-      <div>
-        <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
-        <ClientList {...this.props} clients={this.state.clients}/>
-      </div>
+      <Grid>
+      	<Row>
+		        <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+		    </Row>
+		    <Row>
+		    	<Col xs={10} xsOffset={1}>
+		        <ClientList {...this.props} clients={this.state.clients}/>
+		      </Col>
+		     </Row>
+      </Grid>
     )
   }
 }

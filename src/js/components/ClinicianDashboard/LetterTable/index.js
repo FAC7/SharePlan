@@ -7,7 +7,7 @@ export default class LetterTable extends React.Component {
             <Table responsive>
                 <thead>
                     <tr>
-                    <th>Letter id</th>
+                    <th>ID</th>
                     <th>Topic</th>
                     <th>Recipients</th>
                     <th>Correspondence</th>
@@ -44,5 +44,3 @@ export default class LetterTable extends React.Component {
     }
     
 }
-
-const statuses = ['On the list', 'In preparation', 'Waiting review', 'Sent']
