@@ -10,11 +10,14 @@ export default class CommentBox extends React.Component {
             comments: []
         }
     }
+    
     componentWillMount () {
         this.setState ({
             comments: this.props.comments
         })
     }
+    
+    // submit comment stores the comment in state and sends an axios post request to the database
     submitComment(e) {
         e.preventDefault()
         const comment = {
@@ -22,21 +25,22 @@ export default class CommentBox extends React.Component {
             author: 'currentUser',
             date: new Date()
         }
-        console.log('this is comment', comment.body)
-        console.log('author', comment.author)
-        console.log('date', comment.date)
         const commentList = this.state.comments
-        console.log(commentList)
         commentList.unshift(comment)
         this.setState({
             comments: commentList
         })
+        // post request goes here
     }
+    
+    // handleChange stores all the changes in the textarea in state so that when you submit 
+    // you just have to grab the changes that are stored in state 
     handleChange (e) {
         this.setState({
             commentBody: e.target.value
         })
     }
+    
     render () {
         return (
             <div>
@@ -56,27 +60,4 @@ export default class CommentBox extends React.Component {
             </div>
         )
     }
-}
-
-CommentBox.defaultProps = {
-    comments: [
-            {
-                body: 'asdfashdfgkjashdfjkahsgdfjk',
-                date: 'wed 13th march',
-                author: 'brian'
-            },{
-                body: 'asdfashdfgkjashdfjkahsgdfjk',
-                date: 'wed 13th march',
-                author: 'fred'
-            },{
-                body: 'asdfashdfgkjashdfjkahsgdfjk',
-                date: 'wed 13th march',
-                author: 'fred'
-            },{
-                body: 'asdfashdfgkjashdfjkahsgdfjk',
-                date: 'thur 14th march',
-                author: 'sarah'
-            }
-        
-        ]
 }
