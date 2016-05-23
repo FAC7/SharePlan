@@ -68,7 +68,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'Waiting review',
                         due: '10/11/16' 
                     },
                     {
@@ -79,7 +79,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'On the list',
                         due: '10/11/16' 
                     }
                 ]
@@ -95,7 +95,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'On the list',
                         due: '10/11/16' 
                     }, {
                         topic: 'Assessment results',
@@ -116,7 +116,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'Waiting review',
                         due: '10/11/16' 
                     }
                 ]    
@@ -132,7 +132,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'Sent',
                         due: '10/11/16' 
                     }, {
                         topic: 'Assessment results',
@@ -142,7 +142,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'On the list',
                         due: '10/11/16' 
                     },
                     {
@@ -153,7 +153,7 @@ ClinicianDashboard.defaultProps = {
                          correspondence: [
                             'patient', 'patient\'s mum', 'school'
                         ] , 
-                        status: 'pending',
+                        status: 'Waiting review',
                         due: '10/11/16' 
                     }
                 ]

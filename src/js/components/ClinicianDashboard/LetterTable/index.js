@@ -28,11 +28,11 @@ export default class LetterTable extends React.Component {
                             <td>{letter.recipients}</td>
                             <td>{letter.correspondence}</td>
                             <td>
-                                <DropdownButton bsStyle='info' title={status} id={`dropdown-basic-${i}`}>
+                                <DropdownButton bsStyle='info' title={letter.status} id={`dropdown-basic-${i}`}>
                                   <MenuItem eventKey="1">On the list</MenuItem>
-                                  <MenuItem eventKey="2">'In preperation'</MenuItem>
-                                  <MenuItem eventKey="3" active>'Waiting review'</MenuItem>
-                                  <MenuItem eventKey="4">'Sent'</MenuItem>
+                                  <MenuItem eventKey="2">In preperation</MenuItem>
+                                  <MenuItem eventKey="3" active>Waiting review</MenuItem>
+                                  <MenuItem eventKey="4">Sent</MenuItem>
                                 </DropdownButton></td>
                             <td>{letter.due}</td>
                         </tr>
