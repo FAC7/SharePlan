@@ -1,11 +1,13 @@
 import React from 'react'
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
+import AddClientForm from '../../components/AddClient/index.js'
 
 export default class ClinicianDashboard extends React.Component {
   constructor () {
       super()
     this.state = {
-      clients: []
+      clients: [],
+      showModal: false
     }
   }
   
@@ -13,16 +15,23 @@ export default class ClinicianDashboard extends React.Component {
     this.setState({
       clients: this.getClients()
     })
+    this.toggleModal = this.toggleModal.bind(this)
   }
   
   // getClients() will be an axios request to access all previous clients this clinician has dealth with?
   getClients () {
     return this.props.clients
   }
-  
+
+  toggleModal () {
+    this.setState({ showModal: !this.state.showModal })
+  }
+
+
   render () {
     return (
       <div>
+        <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
         <ClientList {...this.props} clients={this.state.clients}/>
       </div>
     )

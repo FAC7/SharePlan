@@ -1,6 +1,6 @@
 import React from 'react'
 import CommentBox from '../../components/LetterView/CommentBox/index.js'
-import {Grid, Row, Col} from 'react-flexbox-grid'
+import { Row, Col } from 'react-flexbox-grid'
 
 export default class LetterView extends React.Component {
     constructor () {
