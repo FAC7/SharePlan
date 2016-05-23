@@ -9,5 +9,5 @@ export default (
   <Route path='/' component={App} >
     <IndexRoute component={Home} />
     <Route path='/cliniciandashboard' component={ClinicianDashboard} />
-  </ Route>
+  </Route>
 )

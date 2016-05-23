@@ -7,3 +7,9 @@
 .R2zU9JsZW1r2id-qp7H3S {
   width: 100% !important;
 }
+.modal-container {
+  position: relative;
+}
+.modal-container .modal, .modal-container .modal-backdrop {
+  position: absolute;
+}
