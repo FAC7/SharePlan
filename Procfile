@@ -1,1 +1,1 @@
-web: node backend/lib/index.js
+web: nodemon backend/lib/index.js
