@@ -1,5 +1,5 @@
 const pg = require('pg')
-const conString = 'postgres://postgres:postgrespassword@localhost/shareplan'
+const conString = process.env.DATABASE_URL || 'postgres://postgres:postgrespassword@localhost/shareplan'
 const sinon  = require('sinon')
 const tape = require('tape')
 const postgresFunctions = require('../../data/postgresFunctions')
