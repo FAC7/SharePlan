@@ -1,17 +1,16 @@
-const postgresFunctions = require('../../data/postgresFunctions')
+const pgFunctions = require('../../data/pgPatient')
 const pg = require('pg')
 const conString = 'postgres://postgres:postgrespassword@localhost/shareplan'
 
 module.exports = {
-  path: '/checkclient',
-  method: 'POST',
+  path: '/get-patient-letters',
+  method: 'GET',
   handler: (request, reply) => {
     pg.connect(conString, (err, client, done) => {
       if (err) {
         return console.error('error fetching client from pool', err)
       }
-      postgresFunctions.checkLogin(client, done, request.payload, reply)
-      console.log('PAYLOAD', request.payload)
+      pgFunctions.getPatientLetters(client, done, request.query.patient_id, reply)
     })
   }
 }
