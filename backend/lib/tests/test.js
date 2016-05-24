@@ -1,22 +1,7 @@
-const pg = require('pg')
-const conString = process.env.DATABASE_URL || 'postgres://postgres:postgrespassword@localhost/shareplan'
 const sinon  = require('sinon')
 const tape = require('tape')
 const postgresFunctions = require('../../data/postgresFunctions')
 
-// pg.connect(conString, (err, client, done) => {
-//   if (err) {
-//     return console.error('error fetching client from pool', err)
-//   }
-//   client.query('Insert into "Patients" values (\'123ssds45\', \'Kat\', \'Bow\', \'me@me.com\', \'23456789\', \'tyfgf78weiuyfgh\')', (error, result) => {
-//     done()
-
-//     if (error) {
-//       return console.error('error running query', error)
-//     }
-//     console.log(result)
-//   })
-// })
 let client, query, done
 
 const setupStubbedPostgres = () => {
@@ -40,7 +25,7 @@ tape('it should call the client.query function', (t) => {
     password_confirm: 'password_confirm'
   })
 
-  t.ok(query.called)
+  t.ok(query.called, 'addPatient calls query')
   t.end()
 })
 
@@ -67,6 +52,6 @@ tape('checkLogin should make a query to the database for the password_hash', (t)
     patient_id: 'patient_id',
     password: 'password'
   })
-  t.ok(query.calledWith('SELECT password_hash FROM patients WHERE patient_id = $1', ['patient_id']))
+  t.ok(query.calledWith('SELECT password_hash FROM patients WHERE patient_id = $1', [ 'patient_id' ]))
   t.end()
 })

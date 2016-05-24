@@ -9,10 +9,24 @@ const Plugins = [ Inert ]
 const Images = require('./routes/Images.js')
 const ReactUrls = require('./routes/ReactUrls.js')
 const Scripts = require('./routes/Scripts.js')
-const PatientData = require('./routes/PatientData.js')
-const ClientLogin = require('./routes/ClientLogin.js')
+const SignUpPatient = require('./routes/SignUpPatient.js')
+const PatientLogin = require('./routes/PatientLogin.js')
+const GetPatientLetters = require('./routes/GetPatientLetters.js')
+const GetAllPatientsLetters = require('./routes/GetAllPatientsLetters.js')
+const ClinicianLogin = require('./routes/ClinicianLogin.js')
+const SignUpClinician = require('./routes/SignUpClinician.js')
 
-const Routes = [ Images, ReactUrls, Scripts, PatientData, ClientLogin ]
+const Routes = [
+  Images,
+  ReactUrls,
+  Scripts,
+  SignUpPatient,
+  PatientLogin,
+  GetPatientLetters,
+  GetAllPatientsLetters,
+  ClinicianLogin,
+  SignUpClinician
+]
 
 // Export the Server
 module.exports = () => {
