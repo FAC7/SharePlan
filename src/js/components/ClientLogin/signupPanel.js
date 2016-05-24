@@ -10,10 +10,29 @@ const styles = {
 }
 
 export default class SignupPanel extends Component {
+	constructor () {
+		super() 
+		this.state = {
+			action: ''
+		}
+	}
+	
   render () {
+  	let action
+  	let userType 
+  	let client_id
+  	if (this.props.userType === 'client') {
+  		action = '/addpatient'
+  		userType = 'Patient'
+  		client_id = 'patient_id'
+  	}else {
+  		action = '/addclinician'
+  		userType = 'Clinician'
+  		client_id = 'clinician_id'
+  	}
     return (
       <div className='signup-split-panel'>
-        <form action='/addpatient' method='POST' >
+        <form action={action} method='POST' >
           <Row style={styles.rows}>
             <Col sm={4}>
               <label className='signup-form-label'>First Name</label>
@@ -38,22 +57,26 @@ export default class SignupPanel extends Component {
               <input name='patient_id' className='signup-input' type='text' required/>
             </Col>
           </Row>
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Email</label>
-            </Col>
-            <Col sm={8}>
-              <input name='email' className='signup-input' type='text' required/>
-            </Col>
-          </Row>
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Mobile Number</label>
-            </Col>
-            <Col sm={8}>
-              <input name='mobile_number' className='signup-input' type='text' required/>
-            </Col>
-          </Row>
+          {this.props.userType === 'client' ? 
+	          <Row style={styles.rows}>
+	            <Col sm={4}>
+	              <label className='signup-form-label'>Email</label>
+	            </Col>
+	            <Col sm={8}>
+	              <input name='email' className='signup-input' type='text' required/>
+	            </Col>
+	          </Row>: ''
+          }
+          { this.props.userType === 'client' ? 
+	          <Row style={styles.rows}>
+	            <Col sm={4}>
+	              <label className='signup-form-label'>Mobile Number</label>
+	            </Col>
+	            <Col sm={8}>
+	              <input name='mobile_number' className='signup-input' type='text' required/>
+	            </Col>
+	          </Row> : ''
+          }
           <Row style={styles.rows}>
             <Col sm={4}>
               <label className='signup-form-label'>Password</label>
