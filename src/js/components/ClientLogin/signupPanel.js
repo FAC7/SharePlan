@@ -10,13 +10,6 @@ const styles = {
 }
 
 export default class SignupPanel extends Component {
-	constructor () {
-		super() 
-		this.state = {
-			action: ''
-		}
-	}
-	
   render () {
   	let action
   	let userType 

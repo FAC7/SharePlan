@@ -44,7 +44,11 @@ export default class Home extends Component {
             </Col>
           </Row>
         </Grid>
-        <Login userType={this.state.userType} toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+        <Login 
+        	userType={this.state.userType} 
+        	toggleModal={this.toggleModal} 
+        	showModal={this.state.showModal}
+        />
       </div>
     )
   }
