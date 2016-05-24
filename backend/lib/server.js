@@ -1,5 +1,3 @@
-require('env2')('./config.env')
-
 const Hapi = require('hapi')
 
 // Server Plugins
@@ -15,7 +13,6 @@ const PatientData = require('./routes/PatientData.js')
 const ClientLogin = require('./routes/ClientLogin.js')
 
 const Routes = [ Images, ReactUrls, Scripts, PatientData, ClientLogin ]
-
 
 // Export the Server
 module.exports = () => {
@@ -33,8 +30,8 @@ module.exports = () => {
 
   server.register(Plugins, (err) => {
     if (err) {
-        console.log('plugins err: ', err)
-        throw err
+      console.log('plugins err: ', err)
+      throw err
     }
   })
   server.route(Routes)
