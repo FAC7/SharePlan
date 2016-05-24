@@ -1,6 +1,6 @@
 const pgFunctions = require('../../data/pgPatient.js')
 const pg = require('pg')
-const conString = 'postgres://postgres:postgrespassword@localhost/shareplan'
+const conString = process.env.DATABASE_URL || 'postgres://postgres:postgrespassword@localhost/shareplan'
 
 module.exports = {
   path: '/signup-patient',

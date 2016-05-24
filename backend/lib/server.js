@@ -1,5 +1,3 @@
-require('env2')('./config.env')
-
 const Hapi = require('hapi')
 
 // Server Plugins
@@ -29,7 +27,6 @@ const Routes = [
   ClinicianLogin,
   SignUpClinician
 ]
-
 
 // Export the Server
 module.exports = () => {

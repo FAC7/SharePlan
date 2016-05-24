@@ -1,4 +1,4 @@
-const sinon = require('sinon')
+const sinon  = require('sinon')
 const tape = require('tape')
 const postgresFunctions = require('../../data/postgresFunctions')
 
