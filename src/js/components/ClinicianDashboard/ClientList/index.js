@@ -26,7 +26,7 @@ export default class ClientList extends React.Component {
                       <p>{client.id}</p>
                     </Col>
                     <Col xs={6}>
-                      <ProgressBar active bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
+                      <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
                     </Col>
                     <Col xs={3}>
                       <p> {this.trackProgress(client.letters)[0]} </p>
