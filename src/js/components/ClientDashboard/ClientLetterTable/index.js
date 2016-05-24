@@ -1,13 +1,12 @@
 import React from 'react'
 import {Table, thead, th, td, tr, tbody, Button, Glyphicon, Row, Col} from 'react-bootstrap'
 
-
 export default class ClientLetterTable extends React.Component {
 		constructor () {
 			super()
 			this.colorText = this.colorText.bind(this)
 		}
-		
+
 		colorText(letterStatus, status) {
 			return status == letterStatus ? 'active-state' : ''
 		}
@@ -36,25 +35,25 @@ export default class ClientLetterTable extends React.Component {
                                 <td>
                                   <Row>
 																		<Col className='arrow-status' xs={2}>
-																			<p className={this.colorText(letter.status, 'On the list')} > On the list </p> 
+																			<p className={this.colorText(letter.status, 'On the list')} > On the list </p>
 																		</Col>
 																		<Col xs={1}>
 																			<Glyphicon className="arrow-right" glyph="chevron-right" />
 																		</Col>
 																		<Col xs={3}>
-																			<p className={this.colorText(letter.status, 'In preparation')} > In preparation </p> 
+																			<p className={this.colorText(letter.status, 'In preparation')} > In preparation </p>
 																		</Col>
 																		<Col xs={1}>
 																			<Glyphicon glyph="chevron-right" />
 																		</Col>
 																		<Col xs={2}>
-																			<p className={this.colorText(letter.status, 'Waiting review')} > Waiting review </p> 
+																			<p className={this.colorText(letter.status, 'Waiting review')} > Waiting review </p>
 																		</Col>
 																		<Col xs={1}>
 																			<Glyphicon glyph="chevron-right" />
 																		</Col>
 																		<Col xs={2}>
-																			<p> Sent </p> 
+																			<p> Sent </p>
 																		</Col>
 																	</Row>
                                 </td>
