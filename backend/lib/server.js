@@ -33,8 +33,8 @@ module.exports = () => {
 
   server.register(Plugins, (err) => {
     if (err) {
-        console.log('plugins err: ', err)
-        throw err
+      console.log('plugins err: ', err)
+      throw err
     }
   })
   server.route(Routes)
