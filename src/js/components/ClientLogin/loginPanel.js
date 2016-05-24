@@ -16,16 +16,21 @@ export default class LoginPanel extends Component {
     super()
     this.state = {
       patient_id: '',
+      clinician_id: '',
       password_hash: '',
       incorrectPassword: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
-
   handleClick () {
-    axios.post('/checkclient', {
-      patient_id: this.state.patient_id,
+  	const url = this.props.userType === 'client' ? '/check-client' : 'check-clinician'
+  	const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
+  	console.log(url) 
+  	console.log(client_id) 
+  	console.log(this.state[client_id])
+    axios.post(url, {
+      [client_id]: this.state[client_id],
       password_hash: this.state.password_hash
     })
     .then((response) => {
@@ -46,15 +51,21 @@ export default class LoginPanel extends Component {
   }
 
   render () {
-    console.log(this.state)
+  	const clientType = this.props.userType === 'client' ? 'Patient' : 'Clinician'
+  	const id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
     return (
       <div className='login-split-panel'>
         <Row style={styles.rows}>
           <Col sm={3}>
-            <label className='signup-form-label'>Patient ID</label>
+            <label className='signup-form-label'>{clientType} ID</label>
           </Col>
           <Col sm={9}>
-            <input className='signup-input' type='text' name='patient_id' onChange={(e) => this.handleChange('patient_id', e.target.value)} required/>
+            <input className='signup-input' type='text' name={id} 
+            onChange={(e) => {
+            		return this.handleChange(id, e.target.value)
+            	}
+            } 
+            required/>
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -67,7 +78,7 @@ export default class LoginPanel extends Component {
         </Row>
         <Row style={styles.rows}>
           <Col sm={9}>
-            {this.state.incorrectPassword ? <p>Incorrect Patient ID or Password</p> : ''}
+            {this.state.incorrectPassword ? <p>Incorrect {clientType} ID or Password</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
