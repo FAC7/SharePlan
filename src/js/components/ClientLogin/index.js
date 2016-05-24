@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Button, Grid, Row, Col } from 'react-bootstrap'
+import { Modal, Button, Row, Col } from 'react-bootstrap'
 
 import SignupPanel from './signupPanel.js'
 import LoginPanel from './loginPanel.js'
