@@ -40,7 +40,6 @@ export default class ClinicianDashboard extends React.Component {
     this.setState({ showModal: !this.state.showModal })
   }
 
-
   render () {
     return (
       <Grid>
@@ -57,125 +56,124 @@ export default class ClinicianDashboard extends React.Component {
   }
 }
 
-
 ClinicianDashboard.propTypes = {
-  currentUser: React.PropTypes.string
+  currentUser: React.PropTypes.string,
+  clients: React.PropTypes.array
 }
-
 
 ClinicianDashboard.defaultProps = {
   currentUser: 'katbow',
-  clients:[
+  clients: [
+    {
+      id: 54634563456,
+      letters: [
         {
-            id: 54634563456,
-            letters: [
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Sent',
-                        due: '10/11/16' 
-                    }, {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Waiting review',
-                        due: '10/11/16' 
-                    },
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'On the list',
-                        due: '10/11/16' 
-                    }
-                ]
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Sent',
+          due: '10/11/16'
+        }, {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Waiting review',
+          due: '10/11/16'
         },
         {
-            id: 1324523452345,
-            letters: [
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'On the list',
-                        due: '10/11/16' 
-                    }, {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Sent',
-                        due: '10/11/16' 
-                    },
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Waiting review',
-                        due: '10/11/16' 
-                    }
-                ]    
-        },
-        {
-            id: 24356345766,
-            letters: [
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Sent',
-                        due: '10/11/16' 
-                    }, {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'On the list',
-                        due: '10/11/16' 
-                    },
-                    {
-                        topic: 'Assessment results',
-                        recipients: [
-                            'School'
-                        ] ,
-                         correspondence: [
-                            'patient', 'patient\'s mum', 'school'
-                        ] , 
-                        status: 'Waiting review',
-                        due: '10/11/16' 
-                    }
-                ]
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'On the list',
+          due: '10/11/16'
         }
-    ]
+      ]
+    },
+    {
+      id: 1324523452345,
+      letters: [
+        {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'On the list',
+          due: '10/11/16'
+        }, {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Sent',
+          due: '10/11/16'
+        },
+        {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Waiting review',
+          due: '10/11/16'
+        }
+      ]
+    },
+    {
+      id: 24356345766,
+      letters: [
+        {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Sent',
+          due: '10/11/16'
+        }, {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'On the list',
+          due: '10/11/16'
+        },
+        {
+          topic: 'Assessment results',
+          recipients: [
+            'School'
+          ],
+          correspondence: [
+            'patient', "patient's mum", 'school'
+          ],
+          status: 'Waiting review',
+          due: '10/11/16'
+        }
+      ]
+    }
+  ]
 }

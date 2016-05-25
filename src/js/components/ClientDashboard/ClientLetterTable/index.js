@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, thead, th, td, tr, tbody, Button, Glyphicon, Row, Col} from 'react-bootstrap'
+import { Table, thead, th, td, tr, tbody, Button, Glyphicon, Row, Col } from 'react-bootstrap'
 
 export default class ClientLetterTable extends React.Component {
   constructor () {
@@ -8,7 +8,7 @@ export default class ClientLetterTable extends React.Component {
   }
 
   colorText (letterStatus, status) {
-    return status == letterStatus ? 'active-state' : ''
+    return status === letterStatus ? 'active-state' : ''
   }
 
   render () {
@@ -30,10 +30,10 @@ export default class ClientLetterTable extends React.Component {
         </thead>
         <tbody>
           {this.props.activeLetters ? this.props.activeLetters.map((letter, i) => {
-             return (
+            return (
              <tr key={i}>
                <td>
-                 <Button bsStyle="link">
+                 <Button bsStyle='link'>
                    {letter.topic}
                  </Button>
                </td>
@@ -48,7 +48,7 @@ export default class ClientLetterTable extends React.Component {
                    </p>
                    </Col>
                    <Col xs={1}>
-                   <Glyphicon className="arrow-right" glyph="chevron-right" />
+                   <Glyphicon className='arrow-right' glyph='chevron-right' />
                    </Col>
                    <Col xs={3}>
                    <p className={this.colorText(letter.status, 'In preparation')}>
@@ -56,7 +56,7 @@ export default class ClientLetterTable extends React.Component {
                    </p>
                    </Col>
                    <Col xs={1}>
-                   <Glyphicon glyph="chevron-right" />
+                   <Glyphicon glyph='chevron-right' />
                    </Col>
                    <Col xs={2}>
                    <p className={this.colorText(letter.status, 'Waiting review')}>
@@ -64,7 +64,7 @@ export default class ClientLetterTable extends React.Component {
                    </p>
                    </Col>
                    <Col xs={1}>
-                   <Glyphicon glyph="chevron-right" />
+                   <Glyphicon glyph='chevron-right' />
                    </Col>
                    <Col xs={2}>
                    <p>
@@ -75,7 +75,7 @@ export default class ClientLetterTable extends React.Component {
                </td>
              </tr>
              )
-           }) : ''}
+          }) : ''}
         </tbody>
       </Table>
       <Table responsive>
@@ -91,10 +91,10 @@ export default class ClientLetterTable extends React.Component {
         </thead>
         <tbody>
           {this.props.sentLetters ? this.props.sentLetters.map((letter, i) => {
-             return (
+            return (
              <tr key={i}>
                <td>
-                 <Button bsStyle="link">
+                 <Button bsStyle='link'>
                    {letter.topic}
                  </Button>
                </td>
@@ -103,12 +103,17 @@ export default class ClientLetterTable extends React.Component {
                </td>
              </tr>
              )
-           }) : ''}
+          }) : ''}
         </tbody>
       </Table>
     </div>
     )
   }
+}
+
+ClientLetterTable.propTypes = {
+  activeLetters: React.PropTypes.array,
+  sentLetters: React.PropTypes.array
 }
 
 ClientLetterTable.defaultProps = {
