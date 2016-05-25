@@ -14,7 +14,7 @@ export default class ClinicianDashboard extends React.Component {
     this.state = {
       clients: [],
       showModal: false,
-      clinician_id: cookie.load('clinician_id')
+      clinician_id: ''
     }
   }
 
@@ -28,9 +28,7 @@ export default class ClinicianDashboard extends React.Component {
   }
 
   componentDidMount () {
-    this.setState({
-      clients: this.getClients()
-    })
+    this.getClients()
     this.toggleModal = this.toggleModal.bind(this)
   }
 
@@ -43,11 +41,46 @@ export default class ClinicianDashboard extends React.Component {
     })
     .then((response) => {
       console.log(response)
+      const realDataFormat = [{
+        patient_id: 'jfewah8493',
+        first_name: 'Kat',
+        last_name: 'Bow',
+        topic: 'some topic',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }, {
+        patient_id: 'jfewah8493',
+        first_name: 'Kat',
+        last_name: 'Bow',
+        topic: 'some topicssss',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }, {
+        patient_id: 'jfewah9093',
+        first_name: 'Kit',
+        last_name: 'Bew',
+        topic: 'some topic',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }]
+
+      const clientArray = {}
+
+      realDataFormat.forEach((letter) => {
+        if (clientArray[letter.patient_id]) {
+          clientArray[letter.patient_id].letters.push(letter)
+        } else {
+          clientArray[letter.patient_id] = {letters: [letter]}
+        }
+      })
+      this.setState({ clinician_id: clientArray })
     })
     .catch((response) => {
       console.log(response)
     })
-    return this.props.clients
   }
 
   toggleModal () {
@@ -75,19 +108,10 @@ ClinicianDashboard.propTypes = {
   clients: React.PropTypes.array
 }
 
-const realDataFormat = [{
-  topic: 'some topic',
-  recipient: 'Katherine',
-  patient_id: 'jfewah8493',
-  status: 'sent',
-  date_created: '2016-01-28'
-}]
-
 ClinicianDashboard.defaultProps = {
   currentUser: 'katbow',
-  clients: [
-    {
-      patient_id: 54634563456,
+  clients: {
+    54634563456: {
       letters: [
         {
           topic: 'Assessment results',
@@ -96,101 +120,59 @@ ClinicianDashboard.defaultProps = {
           date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     },
-    {
-      id: 1324523452345,
+    1324523452345: {
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     },
-    {
-      id: 24356345766,
+    24356345766: {
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     }
-  ]
+  }
 }
