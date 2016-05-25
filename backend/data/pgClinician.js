@@ -17,7 +17,7 @@ const checkClinicianLogin = (client, done, data, reply) => {
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
 
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        reply.redirect('/cliniciandashboard')
+        reply.redirect('/clinician-dashboard')
       } else {
         reply('incorrect password')
       }
@@ -27,11 +27,11 @@ const checkClinicianLogin = (client, done, data, reply) => {
 
 const getAllPatientsLetters = (client, done, clinician_id, reply) => {
   client.query(
-    'SELECT patients.patient_id, first_name, last_name, topic, recipient, status, date_created '
-    + 'FROM clinicians_patients, letters, patients '
-    + 'WHERE clinicians_patients.clinician_id = $1 '
-    + 'AND clinicians_patients.patient_id = letters.patient_id '
-    + 'AND patients.patient_id = letters.patient_id',
+    'SELECT patients.patient_id, first_name, last_name, topic, recipient, status, date_created ' +
+    'FROM clinicians_patients, letters, patients ' +
+    'WHERE clinicians_patients.clinician_id = $1 ' +
+    'AND clinicians_patients.patient_id = letters.patient_id ' +
+    'AND patients.patient_id = letters.patient_id',
     [ clinician_id ], (err, result) => {
       if (err) {
         return console.error('error running query', err)
@@ -44,5 +44,5 @@ const getAllPatientsLetters = (client, done, clinician_id, reply) => {
 module.exports = {
   signUpClinician,
   checkClinicianLogin,
-  getAllPatientsLetters,
+  getAllPatientsLetters
 }
