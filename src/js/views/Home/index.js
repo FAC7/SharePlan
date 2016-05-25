@@ -14,9 +14,9 @@ export default class Home extends Component {
   }
 
   toggleModal (userType) {
-    this.setState({ 
-    	showModal: !this.state.showModal,
-    	userType: userType
+    this.setState({
+      showModal: !this.state.showModal,
+      userType: userType
     })
   }
 
@@ -44,10 +44,10 @@ export default class Home extends Component {
             </Col>
           </Row>
         </Grid>
-        <Login 
-        	userType={this.state.userType} 
-        	toggleModal={this.toggleModal} 
-        	showModal={this.state.showModal}
+        <Login
+          userType={this.state.userType}
+          toggleModal={this.toggleModal}
+          showModal={this.state.showModal}
         />
       </div>
     )

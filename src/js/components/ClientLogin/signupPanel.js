@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
-import DefaultButton from '../Button/'
-
 const styles = {
   rows: {
     padding: '5px'
@@ -11,18 +9,19 @@ const styles = {
 
 export default class SignupPanel extends Component {
   render () {
-  	let action
-  	let userType 
-  	let client_id
-  	if (this.props.userType === 'client') {
-  		action = '/addpatient'
-  		userType = 'Patient'
-  		client_id = 'patient_id'
-  	}else {
-  		action = '/addclinician'
-  		userType = 'Clinician'
-  		client_id = 'clinician_id'
-  	}
+    let action
+    let userType
+    let client_id
+    if (this.props.userType === 'client') {
+      action = '/addpatient'
+      userType = 'Patient'
+      client_id = 'patient_id'
+    } else {
+      action = '/addclinician'
+      userType = 'Clinician'
+      client_id = 'clinician_id'
+    }
+
     return (
       <div className='signup-split-panel'>
         <form action={action} method='POST' >
@@ -44,31 +43,31 @@ export default class SignupPanel extends Component {
           </Row>
           <Row style={styles.rows}>
             <Col sm={4}>
-              <label className='signup-form-label'>Patient ID</label>
+              <label className='signup-form-label'>{userType} ID</label>
             </Col>
             <Col sm={8}>
-              <input name='patient_id' className='signup-input' type='text' required/>
+              <input name={client_id} className='signup-input' type='text' required/>
             </Col>
           </Row>
-          {this.props.userType === 'client' ? 
-	          <Row style={styles.rows}>
-	            <Col sm={4}>
-	              <label className='signup-form-label'>Email</label>
-	            </Col>
-	            <Col sm={8}>
-	              <input name='email' className='signup-input' type='text' required/>
-	            </Col>
-	          </Row>: ''
+          {this.props.userType === 'client'
+          ? <Row style={styles.rows}>
+            <Col sm={4}>
+              <label className='signup-form-label'>Email</label>
+            </Col>
+            <Col sm={8}>
+              <input name='email' className='signup-input' type='text' required/>
+            </Col>
+          </Row> : ''
           }
-          { this.props.userType === 'client' ? 
-	          <Row style={styles.rows}>
-	            <Col sm={4}>
-	              <label className='signup-form-label'>Mobile Number</label>
-	            </Col>
-	            <Col sm={8}>
-	              <input name='mobile_number' className='signup-input' type='text' required/>
-	            </Col>
-	          </Row> : ''
+          { this.props.userType === 'client'
+          ? <Row style={styles.rows}>
+            <Col sm={4}>
+              <label className='signup-form-label'>Mobile Number</label>
+            </Col>
+            <Col sm={8}>
+              <input name='mobile_number' className='signup-input' type='text' required/>
+            </Col>
+          </Row> : ''
           }
           <Row style={styles.rows}>
             <Col sm={4}>
@@ -95,4 +94,8 @@ export default class SignupPanel extends Component {
       </div>
     )
   }
+}
+
+SignupPanel.propTypes = {
+  userType: React.PropTypes.string
 }
