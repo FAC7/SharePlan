@@ -1,18 +1,29 @@
 import React from 'react'
-import {Grid, Row, Col} from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import axios from 'axios'
 import cookie from 'react-cookie'
+import { browserHistory } from 'react-router'
 
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClientForm from '../../components/AddClient/index.js'
 
 export default class ClinicianDashboard extends React.Component {
+
   constructor () {
     super()
     this.state = {
       clients: [],
       showModal: false,
       clinician_id: cookie.load('clinician_id')
+    }
+  }
+
+  componentWillMount () {
+    if (cookie.load('clinician_id')) {
+      this.setState({ clinician_id: cookie.load('clinician_id') })
+      // get all patient letters request here
+    } else {
+      browserHistory.push('/')
     }
   }
 
