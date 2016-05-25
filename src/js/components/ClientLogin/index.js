@@ -13,8 +13,12 @@ export default class Login extends Component {
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col sm={6}><SignupPanel /></Col>
-            <Col sm={6}><LoginPanel /></Col>
+            <Col sm={6}>
+              <SignupPanel userType={this.props.userType} />
+            </Col>
+            <Col sm={6}>
+              <LoginPanel userType={this.props.userType}/>
+            </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>
