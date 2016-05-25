@@ -45847,6 +45847,8 @@
 	        client_id = 'clinician_id';
 	      }
 
+	      console.log(action, ' <<< action');
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'signup-split-panel' },

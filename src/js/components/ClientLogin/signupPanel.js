@@ -22,6 +22,8 @@ export default class SignupPanel extends Component {
       client_id = 'clinician_id'
     }
 
+    console.log(action, ' <<< action')
+
     return (
       <div className='signup-split-panel'>
         <form action={action} method='POST' >
