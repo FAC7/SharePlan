@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
+import cookie from 'react-cookie'
 
 import DefaultButton from '../Button/'
 
@@ -24,7 +25,7 @@ export default class LoginPanel extends Component {
   }
 
   handleClick () {
-    axios.post('/checkclient', {
+    axios.post('/login-patient', {
       patient_id: this.state.patient_id,
       password_hash: this.state.password_hash
     })
@@ -33,7 +34,8 @@ export default class LoginPanel extends Component {
       if (response.data === 'incorrect password') {
         this.setState({ incorrectPassword: true })
       } else {
-        browserHistory.push('/cliniciandashboard')
+        cookie.save('patient_id', this.state.patient_id, { path: '/' })
+        browserHistory.push('/clinician-dashboard')
       }
     })
     .catch((response) => {

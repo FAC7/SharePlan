@@ -1,24 +1,36 @@
 import React from 'react'
-import {Grid, Row, Col} from 'react-bootstrap'
+import { Grid, Row, Col } from 'react-bootstrap'
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClientForm from '../../components/AddClient/index.js'
+import cookie from 'react-cookie'
+import { browserHistory } from 'react-router'
 
 export default class ClinicianDashboard extends React.Component {
+
   constructor () {
-      super()
+    super()
     this.state = {
       clients: [],
       showModal: false
     }
   }
-  
+
+  componentWillMount () {
+    if (cookie.load('clinician_id')) {
+      this.setState({ clinician_id: cookie.load('clinician_id') })
+      // get all patient letters request here
+    } else {
+      browserHistory.push('/')
+    }
+  }
+
   componentDidMount () {
     this.setState({
       clients: this.getClients()
     })
     this.toggleModal = this.toggleModal.bind(this)
   }
-  
+
   // getClients() will be an axios request to access all previous clients this clinician has dealth with?
   getClients () {
     return this.props.clients
@@ -32,14 +44,14 @@ export default class ClinicianDashboard extends React.Component {
   render () {
     return (
       <Grid>
-      	<Row>
-		        <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
-		    </Row>
-		    <Row>
-		    	<Col xs={10} xsOffset={1}>
-		        <ClientList {...this.props} clients={this.state.clients}/>
-		      </Col>
-		     </Row>
+        <Row>
+          <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+        </Row>
+        <Row>
+          <Col xs={10} xsOffset={1}>
+            <ClientList {...this.props} clients={this.state.clients}/>
+          </Col>
+        </Row>
       </Grid>
     )
   }

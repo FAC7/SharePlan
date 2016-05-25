@@ -1,14 +1,26 @@
 import React from 'react'
 import ClientLetterTable from '../../components/ClientDashboard/ClientLetterTable/index.js'
 import {Row, Col, Grid} from 'react-bootstrap'
-
+import { browserHistory } from 'react-router'
+import axios from 'axios'
+import cookie from 'react-cookie'
 
 export default class ClientDashboard extends React.Component {
+
     constructor () {
         super()
         this.state = {
             filterActiveLetters: this.filterActiveLetters.bind(this),
             filterSentLetters: this.filterSentLetters.bind(this),
+        }
+    }
+
+    componentWillMount () {
+        if(cookie.load('patient_id')) {
+            this.setState({patient_id: cookie.load('patient_id')})
+            // get patient letters request here
+        } else {
+            browserHistory.push('/')
         }
     }
     

@@ -5,7 +5,7 @@ export default class CommentItem extends React.Component {
     return (
       <div className='commentItem'>
         <h5> {this.props.author}</h5>
-        <p> {(this.props.date).toString().substring(0, 21)} </p>
+        <p> {this.props.date.toString().substring(0, 21)} </p>
         <p> {this.props.body} </p>
       </div>
     )

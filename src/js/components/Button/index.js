@@ -4,7 +4,11 @@ import { Button } from 'react-bootstrap'
 export default class DefaultButton extends Component {
   render () {
     return (
-      <Button bsStyle='primary' bsSize='large' onClick={this.props.handleClick}>{this.props.buttonName}</Button>
+      <Button
+        bsStyle='primary'
+        bsSize='large'
+        onClick={this.props.handleClick}
+      >{this.props.buttonName}</Button>
     )
   }
 }
