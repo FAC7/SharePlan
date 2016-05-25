@@ -9,8 +9,8 @@ export default class ClientList extends React.Component {
     const complete = letters.filter((letter) => {
       return letter.status === 'Sent'
     }).length
-    const progressString = complete.toString() + '/'+ total.toString() + ' letters sent'
-    const progressNumber = complete/total * 100
+    const progressString = complete.toString() + '/' + total.toString() + ' letters sent'
+    const progressNumber = complete / total * 100
     return [ progressString, progressNumber ]
   }
 
@@ -43,4 +43,8 @@ export default class ClientList extends React.Component {
       </Accordion>
     )
   }
+}
+
+ClientList.propTypes = {
+  clients: React.PropTypes.array
 }

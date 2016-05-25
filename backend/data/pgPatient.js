@@ -17,7 +17,7 @@ const checkPatientLogin = (client, done, data, reply) => {
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
 
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        reply.redirect('/cliniciandashboard')
+        reply.redirect('/client-dashboard')
       } else {
         reply('incorrect password')
       }
@@ -38,5 +38,5 @@ const getPatientLetters = (client, done, patientID, reply) => {
 module.exports = {
   SignUpPatient,
   checkPatientLogin,
-  getPatientLetters,
+  getPatientLetters
 }
