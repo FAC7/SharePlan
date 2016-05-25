@@ -12,7 +12,7 @@ module.exports = {
       }
       pgFunctions.signUpPatient(client, done, request.payload)
       console.log(request.payload)
-      reply.redirect('/cliniciandashboard')
+      reply.redirect('/client-dashboard')
     })
   }
 }
