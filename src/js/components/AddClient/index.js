@@ -70,9 +70,7 @@ export default class AddClient extends React.Component {
                   Add New Recipient
                 </Button>
               </Col>
-              {this.state.inputList.map((input, index) => {
-                return input
-              })}
+              {this.state.inputList}
               <FormGroup>
                 <Col smOffset={2} sm={10}>
                   <Button bsStyle='primary' type='submit'>
