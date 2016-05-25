@@ -1,5 +1,8 @@
 import React from 'react'
 import {Grid, Row, Col} from 'react-bootstrap'
+import axios from 'axios'
+import cookie from 'react-cookie'
+
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClientForm from '../../components/AddClient/index.js'
 
@@ -8,7 +11,8 @@ export default class ClinicianDashboard extends React.Component {
     super()
     this.state = {
       clients: [],
-      showModal: false
+      showModal: false,
+      clinician_id: cookie.load('clinician_id')
     }
   }
 
@@ -21,6 +25,17 @@ export default class ClinicianDashboard extends React.Component {
 
   // getClients() will be an axios request to access all previous clients this clinician has dealth with?
   getClients () {
+    axios.get('/get-all-patients-letters', {
+      params: {
+        clinician_id: this.state.clinician_id
+      }
+    })
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((response) => {
+      console.log(response)
+    })
     return this.props.clients
   }
 
@@ -49,22 +64,25 @@ ClinicianDashboard.propTypes = {
   clients: React.PropTypes.array
 }
 
+const realDataFormat = [{
+  topic: 'some topic',
+  recipient: 'Katherine',
+  patient_id: 'jfewah8493',
+  status: 'sent',
+  date_created: '2016-01-28'
+}]
+
 ClinicianDashboard.defaultProps = {
   currentUser: 'katbow',
   clients: [
     {
-      id: 54634563456,
+      patient_id: 54634563456,
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
           recipients: [
