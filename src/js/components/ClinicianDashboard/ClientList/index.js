@@ -9,8 +9,8 @@ export default class ClientList extends React.Component {
     const complete = letters.filter((letter) => {
       return letter.status === 'Sent'
     }).length
-    const progressString = complete.toString() + '/'+ total.toString() + ' letters sent'
-    const progressNumber = complete/total * 100
+    const progressString = complete.toString() + '/' + total.toString() + ' letters sent'
+    const progressNumber = complete / total * 100
     return [ progressString, progressNumber ]
   }
 
@@ -26,7 +26,7 @@ export default class ClientList extends React.Component {
                       <p>{client.id}</p>
                     </Col>
                     <Col xs={6}>
-                      <ProgressBar active bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
+                      <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
                     </Col>
                     <Col xs={3}>
                       <p> {this.trackProgress(client.letters)[0]} </p>
@@ -43,4 +43,8 @@ export default class ClientList extends React.Component {
       </Accordion>
     )
   }
+}
+
+ClientList.propTypes = {
+  clients: React.PropTypes.array
 }

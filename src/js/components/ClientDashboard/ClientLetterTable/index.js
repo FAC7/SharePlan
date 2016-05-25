@@ -112,8 +112,8 @@ export default class ClientLetterTable extends React.Component {
 }
 
 ClientLetterTable.propTypes = {
-	activeLetters: React.PropTypes.array,
-	sentLetters: React.PropTypes.array
+  activeLetters: React.PropTypes.array,
+  sentLetters: React.PropTypes.array
 }
 
 ClientLetterTable.defaultProps = {
