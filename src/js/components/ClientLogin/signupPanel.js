@@ -13,11 +13,11 @@ export default class SignupPanel extends Component {
     let userType
     let client_id
     if (this.props.userType === 'client') {
-      action = '/addpatient'
+      action = '/signup-patient'
       userType = 'Patient'
       client_id = 'patient_id'
     } else {
-      action = '/addclinician'
+      action = '/signup-clinician'
       userType = 'Clinician'
       client_id = 'clinician_id'
     }
