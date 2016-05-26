@@ -61,7 +61,7 @@ export default class SignupPanel extends Component {
             </Col>
           </Row> : ''
           }
-          { this.props.userType === 'client'
+          {this.props.userType === 'client'
           ? <Row style={styles.rows}>
             <Col sm={4}>
               <label className='signup-form-label'>Mobile Number</label>

@@ -1,4 +1,4 @@
-const pgFunctions = require('../../data/pgClinician')
+const pgFunctions = require('../../data/pgClinician.js')
 const pg = require('pg')
 const conString = process.env.DATABASE_URL || 'postgres://postgres:postgrespassword@localhost/shareplan'
 
