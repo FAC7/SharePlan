@@ -18,6 +18,7 @@ const LoginPatient = require('./routes/LoginPatient.js')
 const LoginClinician = require('./routes/LoginClinician.js')
 const GetPatientLetters = require('./routes/GetPatientLetters.js')
 const GetAllPatientsLetters = require('./routes/GetAllPatientsLetters.js')
+const AddNewLetter = require('./routes/AddNewLetter.js')
 
 const Routes = [
   Images,
@@ -28,7 +29,8 @@ const Routes = [
   GetPatientLetters,
   GetAllPatientsLetters,
   LoginClinician,
-  SignUpClinician
+  SignUpClinician,
+  AddNewLetter,
 ]
 
 // Export the Server

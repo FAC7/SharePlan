@@ -4,8 +4,12 @@ const signUpPatient = (client, done, data) => {
   const salt = bcrypt.genSaltSync(10)
   const hash = bcrypt.hashSync(data.password_hash, salt)
   client.query('INSERT INTO patients VALUES ($1, $2, $3, $4, $5, $6)',
-    [ data.patient_id, data.first_name, data.last_name, data.email, data.mobile_number, hash ])
-  done()
+    [ data.patient_id, data.first_name, data.last_name, data.email, data.mobile_number, hash ], (err) => {
+      if (err) {
+        return console.error('error running query', err)
+      }
+      done()
+    })
 }
 
 const checkPatientLogin = (client, done, data, reply) => {
@@ -35,14 +39,8 @@ const getPatientLetters = (client, done, patientID, reply) => {
   })
 }
 
-const addPatient = (client, done, patient_id, clinician_id) => {
-  client.query('INSERT INTO clinicians_patients values ($1, $2)', [ clinician_id, patient_id ])
-  done()
-}
-
 module.exports = {
   signUpPatient,
   checkPatientLogin,
   getPatientLetters,
-  addPatient,
 }
