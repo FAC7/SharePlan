@@ -19,6 +19,7 @@ const LoginClinician = require('./routes/LoginClinician.js')
 const GetPatientLetters = require('./routes/GetPatientLetters.js')
 const GetAllPatientsLetters = require('./routes/GetAllPatientsLetters.js')
 const RemoveLetter = require('./routes/RemoveLetter.js')
+const ChangeLetterStatus = require('./routes/ChangeLetterStatus.js')
 
 const Routes = [
   Images,
@@ -30,7 +31,8 @@ const Routes = [
   GetAllPatientsLetters,
   LoginClinician,
   SignUpClinician,
-  RemoveLetter
+  RemoveLetter,
+  ChangeLetterStatus
 ]
 
 // Export the Server
