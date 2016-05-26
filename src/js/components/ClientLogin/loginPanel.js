@@ -24,6 +24,7 @@ export default class LoginPanel extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+
   handleClick () {
     const url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician'
     const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
@@ -35,9 +36,12 @@ export default class LoginPanel extends Component {
       console.log(response.data)
       if (response.data === 'incorrect password') {
         this.setState({ incorrectPassword: true })
-      } else {
+      } else if (this.props.userType === 'client') {
         cookie.save('patient_id', this.state.patient_id, { path: '/' })
         browserHistory.push('/client-dashboard')
+      } else {
+        cookie.save('clinician_id', this.state.clinician_id, { path: '/' })
+        browserHistory.push('/clinician-dashboard')
       }
     })
     .catch((response) => {
@@ -87,4 +91,8 @@ export default class LoginPanel extends Component {
       </div>
     )
   }
+}
+
+LoginPanel.propTypes = {
+  userType: React.PropTypes.string
 }

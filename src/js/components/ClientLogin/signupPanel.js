@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
+import cookie from 'react-cookie'
 
 const styles = {
   rows: {
@@ -8,6 +9,19 @@ const styles = {
 }
 
 export default class SignupPanel extends Component {
+  constructor () {
+    super()
+    this.setCookie = this.setCookie.bind(this)
+  }
+
+  setCookie () {
+    if (this.props.userType === 'client') {
+      cookie.save('patient_id', this.state.patient_id, { path: '/' })
+    } else {
+      cookie.save('clinician_id', this.state.clinician_id, { path: '/' })
+    }
+  }
+
   render () {
     let action
     let userType
@@ -87,7 +101,7 @@ export default class SignupPanel extends Component {
           </Row>
           <Row style={styles.rows}>
             <Col smOffset={5} sm={4}>
-              <input className='btn-primary btn-lg btn' type='submit'/>
+              <input className='btn-primary btn-lg btn' type='submit' onClick={this.setCookie}/>
             </Col>
           </Row>
         </form>
