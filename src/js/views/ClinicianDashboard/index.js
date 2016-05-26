@@ -5,7 +5,7 @@ import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
 
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
-import AddClientForm from '../../components/AddClient/index.js'
+import AddClient from '../../components/AddClient/index.js'
 
 export default class ClinicianDashboard extends React.Component {
 
@@ -16,6 +16,7 @@ export default class ClinicianDashboard extends React.Component {
       showModal: false,
       clinician_id: ''
     }
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   componentWillMount () {
@@ -91,7 +92,7 @@ export default class ClinicianDashboard extends React.Component {
     return (
       <Grid>
         <Row>
-          <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal}/>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>

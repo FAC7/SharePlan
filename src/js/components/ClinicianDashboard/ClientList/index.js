@@ -17,8 +17,7 @@ export default class ClientList extends React.Component {
   render () {
     return (
       <Accordion>
-        {Object.keys(this.props.clients).forEach((patientID, i) => {
-          this.props.clients[patientID]
+        {Object.keys(this.props.clients).map((patientID, i) => {
           return (
             <Panel
               header={
