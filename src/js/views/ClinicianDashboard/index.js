@@ -1,18 +1,22 @@
 import React from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
-import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
-import AddClientForm from '../../components/AddClient/index.js'
+import axios from 'axios'
 import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
+
+import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
+import AddClient from '../../components/AddClient/index.js'
 
 export default class ClinicianDashboard extends React.Component {
 
   constructor () {
     super()
     this.state = {
-      clients: [],
-      showModal: false
+      clients: {},
+      showModal: false,
+      clinician_id: ''
     }
+    this.toggleModal = this.toggleModal.bind(this)
   }
 
   componentWillMount () {
@@ -25,15 +29,56 @@ export default class ClinicianDashboard extends React.Component {
   }
 
   componentDidMount () {
-    this.setState({
-      clients: this.getClients()
-    })
+    this.getClients()
     this.toggleModal = this.toggleModal.bind(this)
   }
 
   // getClients() will be an axios request to access all previous clients this clinician has dealth with?
   getClients () {
-    return this.props.clients
+    axios.get('/get-all-patients-letters', {
+      params: {
+        clinician_id: this.state.clinician_id
+      }
+    })
+    .then((response) => {
+      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 44', response)
+      const realDataFormat = [{
+        patient_id: 'jfewah8493',
+        first_name: 'Kat',
+        last_name: 'Bow',
+        topic: 'some topic',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }, {
+        patient_id: 'jfewah8493',
+        first_name: 'Kat',
+        last_name: 'Bow',
+        topic: 'some topicssss',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }, {
+        patient_id: 'jfewah9093',
+        first_name: 'Kit',
+        last_name: 'Bew',
+        topic: 'some topic',
+        recipient: 'Mum',
+        status: 'sent',
+        date_created: '2016-01-28'
+      }]
+
+      const clientsObj = realDataFormat.reduce((clientObj, letter) => {
+        const id = letter.patient_id
+        clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
+        return clientObj
+      }, {})
+
+      this.setState({ clients: clientsObj })
+    })
+    .catch((response) => {
+      console.log(response)
+    })
   }
 
   toggleModal () {
@@ -44,7 +89,7 @@ export default class ClinicianDashboard extends React.Component {
     return (
       <Grid>
         <Row>
-          <AddClientForm toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal}/>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
@@ -58,122 +103,74 @@ export default class ClinicianDashboard extends React.Component {
 
 ClinicianDashboard.propTypes = {
   currentUser: React.PropTypes.string,
-  clients: React.PropTypes.array
+  clients: React.PropTypes.object
 }
 
 ClinicianDashboard.defaultProps = {
   currentUser: 'katbow',
-  clients: [
-    {
-      id: 54634563456,
+  clients: {
+    54634563456: {
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     },
-    {
-      id: 1324523452345,
+    1324523452345: {
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     },
-    {
-      id: 24356345766,
+    24356345766: {
       letters: [
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Sent',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }, {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'On the list',
-          due: '10/11/16'
+          date_created: '10/11/16'
         },
         {
           topic: 'Assessment results',
-          recipients: [
-            'School'
-          ],
-          correspondence: [
-            'patient', "patient's mum", 'school'
-          ],
+          recipient: 'School',
           status: 'Waiting review',
-          due: '10/11/16'
+          date_created: '10/11/16'
         }
       ]
     }
-  ]
+  }
 }
