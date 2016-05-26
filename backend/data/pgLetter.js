@@ -15,7 +15,14 @@ const changeLetterStatus = (client, done, letter_id, newStatus) => {
   done()
 }
 
+const removeLetter = (client, done, letter_id) => {
+  client.query('DELETE FROM letters WHERE id = $1',
+    [ letter_id ])
+  done()
+}
+
 module.exports = {
   addNewLetter,
   changeLetterStatus,
+  removeLetter
 }
