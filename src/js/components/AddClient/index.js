@@ -2,26 +2,35 @@ import React from 'react'
 import { Modal, Button, Col, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 
 import RecipientInput from './recipientInput.js'
+import StatusInput from './statusInput.js'
 
 export default class AddClient extends React.Component {
   constructor () {
     super()
     this.state = {
-      inputList: []
+      inputList: [],
+      statusList: ['status'],
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.addRecipient = this.addRecipient.bind(this)
+    this.addStatus = this.addStatus.bind(this)
   }
 
-  handleClick () {
+  addRecipient () {
     const inputList = this.state.inputList
     this.setState({
       inputList: inputList.concat(<RecipientInput />)
     })
   }
 
+  addStatus () {
+    this.setState({
+      statusList: this.state.statusList.concat('status')
+    })
+  }
+
   render () {
     return (
-      <div className='modal-container' style={{height: 200}}>
+      <div className='modal-container' style={{ height: 200 }}>
         <Button
           bsStyle='primary'
           bsSize='large'
@@ -48,33 +57,18 @@ export default class AddClient extends React.Component {
                   <FormControl type='email' placeholder='Patient ID' />
                 </Col>
               </FormGroup>
-              <FormGroup controlId='formHorizontalEmail'>
-                <Col componentClass={ControlLabel} sm={2}>
-                  Email
-                </Col>
-                <Col sm={10}>
-                  <FormControl type='email' placeholder='Email' />
-                </Col>
-              </FormGroup>
-              <FormGroup controlId='formHorizontalEmail'>
-                <Col componentClass={ControlLabel} sm={2}>
-                  Mobile Number
-                </Col>
-                <Col sm={10}>
-                  <FormControl type='email' placeholder='Mobile Number' />
-                </Col>
-              </FormGroup>
-              <RecipientInput />
               <Col smOffset={9} sm={3}>
-                <Button bsStyle='primary' onClick={this.handleClick}>
-                  Add New Recipient
+                <Button bsStyle='primary' onClick={this.addStatus}>
+                  Add Another Status
                 </Button>
               </Col>
-              {this.state.inputList}
+              {this.state.statusList.map((status, i) => {
+                return <StatusInput num={i} />
+              })}
               <FormGroup>
                 <Col smOffset={2} sm={10}>
                   <Button bsStyle='primary' type='submit'>
-                    Add Patient Details
+                    Submit
                   </Button>
                 </Col>
               </FormGroup>

@@ -19,21 +19,15 @@ export default class ClinicianDashboard extends React.Component {
     this.toggleModal = this.toggleModal.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     if (cookie.load('clinician_id')) {
       this.setState({ clinician_id: cookie.load('clinician_id') })
-      // get all patient letters request here
+      this.getClients()
     } else {
       browserHistory.push('/')
     }
   }
 
-  componentDidMount () {
-    this.getClients()
-    this.toggleModal = this.toggleModal.bind(this)
-  }
-
-  // getClients() will be an axios request to access all previous clients this clinician has dealth with?
   getClients () {
     axios.get('/get-all-patients-letters', {
       params: {
@@ -41,34 +35,41 @@ export default class ClinicianDashboard extends React.Component {
       }
     })
     .then((response) => {
-      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 44', response)
-      const realDataFormat = [{
-        patient_id: 'jfewah8493',
-        first_name: 'Kat',
-        last_name: 'Bow',
-        topic: 'some topic',
-        recipient: 'Mum',
-        status: 'sent',
-        date_created: '2016-01-28'
-      }, {
-        patient_id: 'jfewah8493',
-        first_name: 'Kat',
-        last_name: 'Bow',
-        topic: 'some topicssss',
-        recipient: 'Mum',
-        status: 'sent',
-        date_created: '2016-01-28'
-      }, {
-        patient_id: 'jfewah9093',
-        first_name: 'Kit',
-        last_name: 'Bew',
-        topic: 'some topic',
-        recipient: 'Mum',
-        status: 'sent',
-        date_created: '2016-01-28'
-      }]
+      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39', response)
+      console.log('clinician_id, ClinicianDashboard line 40', this.state.clinician_id)
+      // const realDataFormat = [ {
+      //   patient_id: 'jfewah8493',
+      //   first_name: 'Kat',
+      //   last_name: 'Bow',
+      //   topic: 'some topic',
+      //   recipient: 'Mum',
+      //   status: 'sent',
+      //   date_created: '2016-01-28'
+      // }, {
+      //   patient_id: 'jfewah8493',
+      //   first_name: 'Kat',
+      //   last_name: 'Bow',
+      //   topic: 'some topicssss',
+      //   recipient: 'Mum',
+      //   status: 'sent',
+      //   date_created: '2016-01-28'
+      // }, {
+      //   patient_id: 'jfewah9093',
+      //   first_name: 'Kit',
+      //   last_name: 'Bew',
+      //   topic: 'some topic',
+      //   recipient: 'Mum',
+      //   status: 'sent',
+      //   date_created: '2016-01-28'
+      // } ]
 
-      const clientsObj = realDataFormat.reduce((clientObj, letter) => {
+      // const clientsObj = realDataFormat.reduce((clientObj, letter) => {
+      //   const id = letter.patient_id
+      //   clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
+      //   return clientObj
+      // }, {})
+
+      const clientsObj = response.data.reduce((clientObj, letter) => {
         const id = letter.patient_id
         clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
         return clientObj
