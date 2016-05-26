@@ -5,11 +5,11 @@ export default class StatusInput extends Component {
   render () {
     return (
       <FormGroup controlId='formHorizontalEmail'>
-        <Col componentClass={ControlLabel} sm={1}>
+        <Col componentClass={ControlLabel} sm={2}>
           Status {this.props.num + 1}
         </Col>
-        <Col sm={5}>
-          <FormControl type='text' placeholder='Status' />
+        <Col sm={9}>
+          <FormControl type='text' placeholder='e.g. In progress' onChange={this.props.handleChange}/>
         </Col>
       </FormGroup>
     )

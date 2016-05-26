@@ -60,10 +60,9 @@ export default class LoginPanel extends Component {
           </Col>
           <Col sm={9}>
             <input className='signup-input' type='text' name={id}
-              onChange={(e) => {
-                return this.handleChange(id, e.target.value)
-              }}
-              required />
+              onChange={(e) => this.handleChange(id, e.target.value)}
+              required 
+            />
           </Col>
         </Row>
         <Row style={styles.rows}>
