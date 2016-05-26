@@ -16,7 +16,7 @@ const changeLetterStatus = (client, done, letter_id, newStatus) => {
 }
 
 const removeLetter = (client, done, letter_id) => {
-  client.query('DELETE FROM letter WHERE id = $1',
+  client.query('DELETE FROM letters WHERE id = $1',
     [ letter_id ])
   done()
 }
