@@ -12,7 +12,7 @@ export default class LetterTable extends React.Component {
             <th>Recipients</th>
             <th>Correspondence</th>
             <th>Status</th>
-            <th>Due</th>
+            <th>Created</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +25,7 @@ export default class LetterTable extends React.Component {
                   {letter.topic}
                 </Button>
               </td>
-              <td>{letter.recipients}</td>
+              <td>{letter.recipient}</td>
               <td>{letter.correspondence}</td>
               <td>
                 <DropdownButton bsStyle='info' title={letter.status} id={`dropdown-basic-${i}`}>
@@ -34,7 +34,7 @@ export default class LetterTable extends React.Component {
                   <MenuItem eventKey='3' active>Waiting review</MenuItem>
                   <MenuItem eventKey='4'>Sent</MenuItem>
                 </DropdownButton></td>
-              <td>{letter.due}</td>
+              <td>{letter.date_created}</td>
             </tr>
           )
         }) : ''}
