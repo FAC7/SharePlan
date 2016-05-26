@@ -41,7 +41,7 @@ export default class ClinicianDashboard extends React.Component {
       }
     })
     .then((response) => {
-      console.log(response)
+      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 44', response)
       const realDataFormat = [{
         patient_id: 'jfewah8493',
         first_name: 'Kat',
@@ -68,16 +68,13 @@ export default class ClinicianDashboard extends React.Component {
         date_created: '2016-01-28'
       }]
 
-      const clientArray = {}
+      const clientsObj = realDataFormat.reduce((acc, letter) => {
+        const id = letter.patient_id
+        acc[id] = acc[id] ? { letters: acc[id].letters.concat(letter) } : { letters: [ letter ] }
+        return acc
+      }, {})
 
-      realDataFormat.forEach((letter) => {
-        if (clientArray[letter.patient_id]) {
-          clientArray[letter.patient_id].letters.push(letter)
-        } else {
-          clientArray[letter.patient_id] = {letters: [letter]}
-        }
-      })
-      this.setState({ clinician_id: clientArray })
+      this.setState({ clients: clientsObj })
     })
     .catch((response) => {
       console.log(response)

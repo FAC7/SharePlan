@@ -29,10 +29,11 @@ export default class ClientList extends React.Component {
                     <ProgressBar bsStyle='info' now={this.trackProgress(this.props.clients[patientID].letters)[1]}/>
                   </Col>
                   <Col xs={3}>
-                    <p>{this.trackProgress(this.props.clients[patientID].letters[0])}</p>
+                    <p>{this.trackProgress(this.props.clients[patientID].letters)[0]}</p>
                   </Col>
                 </Row>
               }
+              key={i}
             >
               <LetterTable letters={this.props.clients[patientID].letters}/>
             </Panel>
