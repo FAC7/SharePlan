@@ -68,10 +68,10 @@ export default class ClinicianDashboard extends React.Component {
         date_created: '2016-01-28'
       }]
 
-      const clientsObj = realDataFormat.reduce((acc, letter) => {
+      const clientsObj = realDataFormat.reduce((clientObj, letter) => {
         const id = letter.patient_id
-        acc[id] = acc[id] ? { letters: acc[id].letters.concat(letter) } : { letters: [ letter ] }
-        return acc
+        clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
+        return clientObj
       }, {})
 
       this.setState({ clients: clientsObj })
