@@ -33,5 +33,6 @@ node_modules
 .node_repl_history
 
 backend/dist
+public/app.js
 dump.rdb
 config.env
