@@ -17,34 +17,57 @@ export default class ClientList extends React.Component {
   render () {
     return (
       <Accordion>
-          {this.props.clients.map((client, i) => {
-            return (
-              <Panel
-                header={
-                  <Row>
-                    <Col xs={3}>
-                      <p>{client.id}</p>
-                    </Col>
-                    <Col xs={6}>
-                      <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
-                    </Col>
-                    <Col xs={3}>
-                      <p> {this.trackProgress(client.letters)[0]} </p>
-                    </Col>
-                  </Row>
-                }
-                eventKey={i}
-                key={i}
-              >
-                <LetterTable letters={client.letters}/>
-              </Panel>
-              )
-          })}
+        {Object.keys(this.props.clients).map((patientID, i) => {
+          return (
+            <Panel
+              header={
+                <Row>
+                  <Col xs={3}>
+                    <p>{patientID}</p>
+                  </Col>
+                  <Col xs={6}>
+                    <ProgressBar bsStyle='info' now={this.trackProgress(this.props.clients[patientID].letters)[1]}/>
+                  </Col>
+                  <Col xs={3}>
+                    <p>{this.trackProgress(this.props.clients[patientID].letters[0])}</p>
+                  </Col>
+                </Row>
+              }
+            >
+              <LetterTable letters={this.props.clients[patientID].letters}/>
+            </Panel>
+          )
+        })}
       </Accordion>
     )
   }
 }
 
 ClientList.propTypes = {
-  clients: React.PropTypes.array
+  clients: React.PropTypes.object
 }
+
+// {this.props.clients.map((client, i) => {
+//   return (
+//     <Panel
+//       header={
+//         <Row>
+//           <Col xs={3}>
+//             <p>{client.id}</p>
+//           </Col>
+//           <Col xs={6}>
+//             <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
+//           </Col>
+//           <Col xs={3}>
+//             <p> {this.trackProgress(client.letters)[0]} </p>
+//           </Col>
+//         </Row>
+//       }
+//       eventKey={i}
+//       key={i}
+//     >
+//       <LetterTable letters={client.letters}/>
+//     </Panel>
+//     )
+// })}
+// </Accordion>
