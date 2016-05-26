@@ -12,7 +12,7 @@ export default class ClinicianDashboard extends React.Component {
   constructor () {
     super()
     this.state = {
-      clients: [],
+      clients: {},
       showModal: false,
       clinician_id: ''
     }
@@ -105,7 +105,7 @@ export default class ClinicianDashboard extends React.Component {
 
 ClinicianDashboard.propTypes = {
   currentUser: React.PropTypes.string,
-  clients: React.PropTypes.array
+  clients: React.PropTypes.object
 }
 
 ClinicianDashboard.defaultProps = {
