@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
+import { browserHistory } from 'react-router'
+import axios from 'axios'
+import cookie from 'react-cookie'
+
+import DefaultButton from '../Button/'
 
 const styles = {
   rows: {
@@ -8,91 +13,142 @@ const styles = {
 }
 
 export default class SignupPanel extends Component {
+  constructor () {
+    super()
+    this.state = {
+      patient_id: '',
+      clinician_id: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      mobile_number: '',
+      password_hash: ''
+    }
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleClick () {
+    const url = this.props.userType === 'client' ? '/signup-patient' : 'signup-clinician'
+    const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
+    axios.post(url, {
+      [client_id]: this.state[client_id],
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
+      mobile_number: this.state.mobile_number,
+      password_hash: this.state.password_hash
+    })
+    .then((response) => {
+      console.log(response.data)
+      cookie.save(client_id, this.state[client_id], { path: '/' })
+      browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+    })
+    .catch((response) => {
+      console.log(response)
+    })
+  }
+
+  handleChange (inputType, inputValue) {
+    this.setState({ [inputType]: inputValue })
+  }
+
   render () {
-    let action
     let userType
     let client_id
     if (this.props.userType === 'client') {
-      action = '/signup-patient'
       userType = 'Patient'
       client_id = 'patient_id'
     } else {
-      action = '/signup-clinician'
       userType = 'Clinician'
       client_id = 'clinician_id'
     }
 
-    console.log(action, ' <<< action')
-
     return (
       <div className='signup-split-panel'>
-        <form action={action} method='POST' >
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>First Name</label>
-            </Col>
-            <Col sm={8}>
-              <input name='first_name' className='signup-input' type='text' required/>
-            </Col>
-          </Row>
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Last Name</label>
-            </Col>
-            <Col sm={8}>
-              <input name='last_name' className='signup-input' type='text' required/>
-            </Col>
-          </Row>
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>{userType} ID</label>
-            </Col>
-            <Col sm={8}>
-              <input name={client_id} className='signup-input' type='text' required/>
-            </Col>
-          </Row>
-          {this.props.userType === 'client'
-          ? <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Email</label>
-            </Col>
-            <Col sm={8}>
-              <input name='email' className='signup-input' type='text' required/>
-            </Col>
-          </Row> : ''
-          }
-          {this.props.userType === 'client'
-          ? <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Mobile Number</label>
-            </Col>
-            <Col sm={8}>
-              <input name='mobile_number' className='signup-input' type='text' required/>
-            </Col>
-          </Row> : ''
-          }
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Password</label>
-            </Col>
-            <Col sm={8}>
-              <input name='password_hash' type='password' className='signup-input' required/>
-            </Col>
-          </Row>
-          <Row style={styles.rows}>
-            <Col sm={4}>
-              <label className='signup-form-label'>Confirm Password</label>
-            </Col>
-            <Col sm={8}>
-              <input name='password_confirm' type='password' className='signup-input' required/>
-            </Col>
-          </Row>
-          <Row style={styles.rows}>
-            <Col smOffset={5} sm={4}>
-              <input className='btn-primary btn-lg btn' type='submit'/>
-            </Col>
-          </Row>
-        </form>
+        <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>First Name</label>
+          </Col>
+          <Col sm={8}>
+            <input name='first_name' className='signup-input' type='text' onChange={(e) => {
+              return this.handleChange('first_name', e.target.value)
+            }}
+            required />
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>Last Name</label>
+          </Col>
+          <Col sm={8}>
+            <input name='last_name' className='signup-input' type='text' onChange={(e) => {
+              return this.handleChange('last_name', e.target.value)
+            }}
+            required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>{userType} ID</label>
+          </Col>
+          <Col sm={8}>
+            <input name={client_id} className='signup-input' type='text' onChange={(e) => {
+              return this.handleChange(client_id, e.target.value)
+            }}
+            required/>
+          </Col>
+        </Row>
+        {this.props.userType === 'client'
+        ? <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>Email</label>
+          </Col>
+          <Col sm={8}>
+            <input name='email' className='signup-input' type='text' onChange={(e) => {
+              return this.handleChange('email', e.target.value)
+            }}
+            required/>
+          </Col>
+        </Row> : ''
+        }
+        { this.props.userType === 'client'
+        ? <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>Mobile Number</label>
+          </Col>
+          <Col sm={8}>
+            <input name='mobile_number' className='signup-input' type='text' onChange={(e) => {
+              return this.handleChange('mobile_number', e.target.value)
+            }}
+            required/>
+          </Col>
+        </Row> : ''
+        }
+        <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>Password</label>
+          </Col>
+          <Col sm={8}>
+            <input name='password_hash' type='password' className='signup-input' onChange={(e) => {
+              return this.handleChange('password_hash', e.target.value)
+            }}
+            required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col sm={4}>
+            <label className='signup-form-label'>Confirm Password</label>
+          </Col>
+          <Col sm={8}>
+            <input name='password_confirm' type='password' className='signup-input' required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={5} sm={4}>
+            <DefaultButton buttonName='Sign Up' handleClick={this.handleClick}/>
+          </Col>
+        </Row>
       </div>
     )
   }

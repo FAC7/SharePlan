@@ -24,6 +24,7 @@ export default class LoginPanel extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
+
   handleClick () {
     const url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician'
     const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
@@ -87,4 +88,8 @@ export default class LoginPanel extends Component {
       </div>
     )
   }
+}
+
+LoginPanel.propTypes = {
+  userType: React.PropTypes.string
 }
