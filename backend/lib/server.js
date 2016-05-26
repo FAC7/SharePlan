@@ -1,4 +1,7 @@
 const Hapi = require('hapi')
+const pg = require('pg')
+const conString = process.env.DATABASE_URL || 'postgres://postgres:postgrespassword@localhost/shareplan'
+const pgSetup = require('../data/pgSetup.js')
 
 // Server Plugins
 const Inert = require('inert')
@@ -49,6 +52,13 @@ module.exports = () => {
     }
   })
   server.route(Routes)
+
+  pg.connect(conString, (err, client, done) => {
+    if (err) {
+      return console.error('error fetching client from pool', err)
+    }
+    pgSetup(client, done)
+  })
 
   return server
 }
