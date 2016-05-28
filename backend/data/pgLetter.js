@@ -1,11 +1,12 @@
 const addNewLetter = (client, done, data, reply) => {
-  client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5);',
+  client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5, $6);',
     [
       data.topic,
-      data.recipient,
+      data.recipients,
       data.patient_id,
-      data.status,
+      data.possible_statuses['1'],
       data.possible_statuses,
+      data.date_created,
     ])
   client.query('SELECT patient_id FROM clinicians_patients WHERE clinician_id = $1',
     [ data.clinician_id ], (err, result) => {

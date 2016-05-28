@@ -13,7 +13,7 @@ module.exports = (client, done) => {
 
       client.query('CREATE TABLE public.letters( ' +
       'topic text, ' +
-      'recipient text, ' +
+      'recipients text, ' +
       'patient_id text, ' +
       'status text, ' +
       'possible_statuses text, ' +
