@@ -42,5 +42,5 @@ const getPatientLetters = (client, done, patientID, reply) => {
 module.exports = {
   signUpPatient,
   checkPatientLogin,
-  getPatientLetters,
+  getPatientLetters
 }

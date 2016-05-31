@@ -10,7 +10,7 @@ module.exports = {
       if (err) {
         return console.error('error fetching client from pool', err)
       }
-      pgFunctions.getPatientLetters(client, done, request.query.patient_id, reply)
+      pgFunctions.getPatientLetters(client, done, request.state.patient_id, reply)
     })
   }
 }
