@@ -10,9 +10,11 @@ export default class ClientDashboard extends React.Component {
   constructor () {
     super()
     this.state = {
-      filterActiveLetters: this.filterActiveLetters.bind(this),
-      filterSentLetters: this.filterSentLetters.bind(this),
+      patient_id: '',
+      letters: []
     }
+    this.filterActiveLetters = this.filterActiveLetters.bind(this)
+    this.filterSentLetters = this.filterSentLetters.bind(this)
   }
 
   componentWillMount () {
@@ -22,18 +24,29 @@ export default class ClientDashboard extends React.Component {
     } else {
       browserHistory.push('/')
     }
-    axios.get('/get-patient-letters', { patient_id: this.state.patient_id }
-  ).then(response => {console.log(response)})
+  }
+
+  componentDidMount () {
+    console.log('PATIENT STATE', this.state.patient_id)
+    axios.get('/get-patient-letters', {
+      patient_id: this.state.patient_id
+    })
+    .then(response => {
+      this.setState({ letters: response.data })
+    })
+    .catch(response => {
+      console.log(response)
+    })
   }
 
   filterActiveLetters () {
-    return this.props.letters.filter((letter) => {
+    return this.state.letters.filter((letter) => {
       return letter.status !== 'Sent'
     })
   }
 
   filterSentLetters () {
-    return this.props.letters.filter((letter) => {
+    return this.state.letters.filter((letter) => {
       return letter.status === 'Sent'
     })
   }
@@ -55,61 +68,60 @@ ClientDashboard.propTypes = {
   letters: React.PropTypes.array
 }
 
-ClientDashboard.defaultProps = {
-  letters: [
-    {
-      topic: 'Assessment results',
-      recipient: [
-        'School'
-      ],
-      correspondence: [
-        'patient', "patient's mum", 'school'
-      ],
-      status: 'Waiting review',
-      due: '10/11/16'
-    },
-    {
-      topic: 'Assessment results',
-      recipient: [
-        'School'
-      ],
-      correspondence: [
-        'patient', "patient's mum", 'school'
-      ],
-      status: 'In preparation',
-      due: '10/11/16'
-    },
-    {
-      topic: 'Assessment results',
-      recipient: [
-        'School'
-      ],
-      correspondence: [
-        'patient', "patient's mum", 'school'
-      ],
-      status: 'Sent',
-      due: '10/11/16'
-    }, {
-      topic: 'Assessment results',
-      recipient: [
-        'School'
-      ],
-      correspondence: [
-        'patient', "patient's mum", 'school'
-      ],
-      status: 'Sent',
-      due: '10/11/16'
-    }, {
-      topic: 'Assessment results',
-      recipient: [
-        'School'
-      ],
-      correspondence: [
-        'patient', "patient's mum", 'school'
-      ],
-      status: 'In preparation',
-      due: '10/11/16'
-    }
-
-  ]
-}
+// ClientDashboard.defaultProps = {
+//   letters: [
+//     {
+//       topic: 'Assessment results',
+//       recipient: [
+//         'School'
+//       ],
+//       correspondence: [
+//         'patient', "patient's mum", 'school'
+//       ],
+//       status: 'Waiting review',
+//       due: '10/11/16'
+//     },
+//     {
+//       topic: 'Assessment results',
+//       recipient: [
+//         'School'
+//       ],
+//       correspondence: [
+//         'patient', "patient's mum", 'school'
+//       ],
+//       status: 'In preparation',
+//       due: '10/11/16'
+//     },
+//     {
+//       topic: 'Assessment results',
+//       recipient: [
+//         'School'
+//       ],
+//       correspondence: [
+//         'patient', "patient's mum", 'school'
+//       ],
+//       status: 'Sent',
+//       due: '10/11/16'
+//     }, {
+//       topic: 'Assessment results',
+//       recipient: [
+//         'School'
+//       ],
+//       correspondence: [
+//         'patient', "patient's mum", 'school'
+//       ],
+//       status: 'Sent',
+//       due: '10/11/16'
+//     }, {
+//       topic: 'Assessment results',
+//       recipient: [
+//         'School'
+//       ],
+//       correspondence: [
+//         'patient', "patient's mum", 'school'
+//       ],
+//       status: 'In preparation',
+//       due: '10/11/16'
+//     }
+//   ]
+// }
