@@ -19,13 +19,15 @@ export default class ClinicianDashboard extends React.Component {
     this.toggleModal = this.toggleModal.bind(this)
   }
 
-  componentDidMount () {
+  componentWillMount () {
     if (cookie.load('clinician_id')) {
       this.setState({ clinician_id: cookie.load('clinician_id') })
-      this.getClients()
     } else {
       browserHistory.push('/')
     }
+  }
+  componentDidMount () {
+    this.getClients()
   }
 
   getClients () {

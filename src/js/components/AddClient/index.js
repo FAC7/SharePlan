@@ -3,7 +3,6 @@ import { Modal, Button, Col, Form, FormGroup, ControlLabel, FormControl } from '
 import axios from 'axios'
 import cookie from 'react-cookie'
 import RecipientInput from './recipientInput.js'
-import StatusInput from './statusInput.js'
 
 export default class AddClient extends React.Component {
   constructor () {
@@ -21,9 +20,7 @@ export default class AddClient extends React.Component {
       },
     }
     this.addRecipient = this.addRecipient.bind(this)
-    this.addStatusInput = this.addStatusInput.bind(this)
     this.formChange = this.formChange.bind(this)
-    this.addFormStatus = this.addFormStatus.bind(this)
     this.submitItem = this.submitItem.bind(this)
   }
 

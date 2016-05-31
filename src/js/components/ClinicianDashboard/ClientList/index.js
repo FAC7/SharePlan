@@ -14,6 +14,7 @@ export default class ClientList extends React.Component {
   }
 
   render () {
+    console.log(this.props.clients)
     return (
       <Accordion>
         {Object.keys(this.props.clients).map((patientID, i) => {

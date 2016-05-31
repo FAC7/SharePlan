@@ -10,7 +10,7 @@ const addNewLetter = (client, done, data, reply) => {
     ])
   client.query('SELECT patient_id FROM clinicians_patients WHERE clinician_id = $1',
     [ data.clinician_id ], (err, result) => {
-      console.log(result.rows)
+      console.log(result)
       if (result.rows.filter(row => row.patient_id === data.patient_id).length === 0) {
         client.query('INSERT INTO clinicians_patients VALUES ($1, $2)', [ data.clinician_id, data.patient_id ], (error) => {
           if (error) console.error(error)
