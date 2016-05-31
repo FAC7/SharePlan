@@ -19,13 +19,15 @@ export default class ClinicianDashboard extends React.Component {
     this.toggleModal = this.toggleModal.bind(this)
   }
 
-  componentDidMount () {
+  componentWillMount () {
     if (cookie.load('clinician_id')) {
       this.setState({ clinician_id: cookie.load('clinician_id') })
-      this.getClients()
     } else {
       browserHistory.push('/')
     }
+  }
+  componentDidMount () {
+    this.getClients()
   }
 
   getClients () {
@@ -35,7 +37,8 @@ export default class ClinicianDashboard extends React.Component {
       }
     })
     .then((response) => {
-      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39', response)
+      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39',
+      response)
       console.log('clinician_id, ClinicianDashboard line 40', this.state.clinician_id)
       // const realDataFormat = [ {
       //   patient_id: 'jfewah8493',

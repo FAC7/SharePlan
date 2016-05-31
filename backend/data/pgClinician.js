@@ -36,6 +36,7 @@ const getAllPatientsLetters = (client, done, clinician_id, reply) => {
       if (err) {
         return console.error('error running query', err)
       }
+      console.log('rows', result.rows)
       reply(JSON.stringify(result.rows))
       done()
     })
