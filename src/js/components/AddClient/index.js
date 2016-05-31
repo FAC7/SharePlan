@@ -133,7 +133,7 @@ export default class AddClient extends React.Component {
                   Recipient(s)
                 </Col>
                 <Col sm={9}>
-                  <FormControl type='text' placeholder='e.g. School, Hospital, Parents' onChange={this.formChange.bind(null, 'recipients')}/>
+                  <FormControl type='text' placeholder='e.g. School, Hospital, Parents' onChange={this.formChange.bind(null, 'recipient')}/>
                 </Col>
               </FormGroup>
               <FormGroup>

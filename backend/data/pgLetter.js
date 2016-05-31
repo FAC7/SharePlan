@@ -2,7 +2,7 @@ const addNewLetter = (client, done, data, reply) => {
   client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5, $6);',
     [
       data.topic,
-      data.recipients,
+      data.recipient,
       data.patient_id,
       data.possible_statuses['1'],
       data.possible_statuses,

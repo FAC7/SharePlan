@@ -27,7 +27,7 @@ const checkClinicianLogin = (client, done, data, reply) => {
 
 const getAllPatientsLetters = (client, done, clinician_id, reply) => {
   client.query(
-    'SELECT patients.patient_id, first_name, last_name, topic, recipients, status, date_created ' +
+    'SELECT patients.patient_id, first_name, last_name, topic, recipient, status, date_created ' +
     'FROM clinicians_patients, letters, patients ' +
     'WHERE clinicians_patients.clinician_id = $1 ' +
     'AND clinicians_patients.patient_id = letters.patient_id ' +
