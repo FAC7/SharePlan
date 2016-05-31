@@ -23,8 +23,8 @@ const addNewLetter = (client, done, data, reply) => {
   done()
 }
 
-const changeLetterStatus = (client, done, letter_id, newStatus) => {
-  client.query('UPDATE letters SET status = $1 WHERE id = $2', [ newStatus, letter_id ])
+const changeLetterStatus = (client, done, date_created, newStatus) => {
+  client.query('UPDATE letters SET status = $1 WHERE date_created = $2', [ newStatus, date_created ])
   done()
 }
 
