@@ -38,7 +38,7 @@ export default class ClientLetterTable extends React.Component {
                  </Button>
                </td>
                <td>
-                 {letter.recipients}
+                 {letter.recipient}
                </td>
                <td>
                  <Row>
@@ -99,7 +99,7 @@ export default class ClientLetterTable extends React.Component {
                  </Button>
                </td>
                <td>
-                 {letter.recipients}
+                 {letter.recipient}
                </td>
              </tr>
              )

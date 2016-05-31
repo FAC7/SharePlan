@@ -58,7 +58,7 @@ ClientDashboard.defaultProps = {
   letters: [
     {
       topic: 'Assessment results',
-      recipients: [
+      recipient: [
         'School'
       ],
       correspondence: [
@@ -69,7 +69,7 @@ ClientDashboard.defaultProps = {
     },
     {
       topic: 'Assessment results',
-      recipients: [
+      recipient: [
         'School'
       ],
       correspondence: [
@@ -80,7 +80,7 @@ ClientDashboard.defaultProps = {
     },
     {
       topic: 'Assessment results',
-      recipients: [
+      recipient: [
         'School'
       ],
       correspondence: [
@@ -90,7 +90,7 @@ ClientDashboard.defaultProps = {
       due: '10/11/16'
     }, {
       topic: 'Assessment results',
-      recipients: [
+      recipient: [
         'School'
       ],
       correspondence: [
@@ -100,7 +100,7 @@ ClientDashboard.defaultProps = {
       due: '10/11/16'
     }, {
       topic: 'Assessment results',
-      recipients: [
+      recipient: [
         'School'
       ],
       correspondence: [
