@@ -47627,7 +47627,8 @@
 	              onChange: function onChange(e) {
 	                return _this3.handleChange(id, e.target.value);
 	              },
-	              required: true })
+	              required: true
+	            })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -47760,20 +47761,15 @@
 	    value: function componentWillMount() {
 	      if (_reactCookie2.default.load('clinician_id')) {
 	        this.setState({ clinician_id: _reactCookie2.default.load('clinician_id') });
-	        // get all patient letters request here
 	      } else {
-	          _reactRouter.browserHistory.push('/');
-	        }
+	        _reactRouter.browserHistory.push('/');
+	      }
 	    }
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.getClients();
-	      this.toggleModal = this.toggleModal.bind(this);
 	    }
-
-	    // getClients() will be an axios request to access all previous clients this clinician has dealth with?
-
 	  }, {
 	    key: 'getClients',
 	    value: function getClients() {
@@ -47784,34 +47780,41 @@
 	          clinician_id: this.state.clinician_id
 	        }
 	      }).then(function (response) {
-	        console.log('response from /get-all-patients-letters request, ClinicianDashboard line 44', response);
-	        var realDataFormat = [{
-	          patient_id: 'jfewah8493',
-	          first_name: 'Kat',
-	          last_name: 'Bow',
-	          topic: 'some topic',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }, {
-	          patient_id: 'jfewah8493',
-	          first_name: 'Kat',
-	          last_name: 'Bow',
-	          topic: 'some topicssss',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }, {
-	          patient_id: 'jfewah9093',
-	          first_name: 'Kit',
-	          last_name: 'Bew',
-	          topic: 'some topic',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }];
+	        console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39', response);
+	        console.log('clinician_id, ClinicianDashboard line 40', _this2.state.clinician_id);
+	        // const realDataFormat = [ {
+	        //   patient_id: 'jfewah8493',
+	        //   first_name: 'Kat',
+	        //   last_name: 'Bow',
+	        //   topic: 'some topic',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // }, {
+	        //   patient_id: 'jfewah8493',
+	        //   first_name: 'Kat',
+	        //   last_name: 'Bow',
+	        //   topic: 'some topicssss',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // }, {
+	        //   patient_id: 'jfewah9093',
+	        //   first_name: 'Kit',
+	        //   last_name: 'Bew',
+	        //   topic: 'some topic',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // } ]
 
-	        var clientsObj = realDataFormat.reduce(function (clientObj, letter) {
+	        // const clientsObj = realDataFormat.reduce((clientObj, letter) => {
+	        //   const id = letter.patient_id
+	        //   clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
+	        //   return clientObj
+	        // }, {})
+
+	        var clientsObj = response.data.reduce(function (clientObj, letter) {
 	          var id = letter.patient_id;
 	          clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [letter];
 	          return clientObj;
@@ -47973,14 +47976,14 @@
 	        return letter.status === 'Sent';
 	      }).length;
 	      var progressString = complete.toString() + '/' + total.toString() + ' letters sent';
-	      var progressNumber = complete / total * 100;
-	      return [progressString, progressNumber];
+	      return progressString;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
+	      console.log(this.props.clients);
 	      return _react2.default.createElement(
 	        _reactBootstrap.Accordion,
 	        null,
@@ -48000,18 +48003,14 @@
 	                    patientID
 	                  )
 	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { xs: 6 },
-	                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'info', now: _this2.trackProgress(_this2.props.clients[patientID])[1] })
-	                ),
+	                _react2.default.createElement(_reactBootstrap.Col, { xs: 6 }),
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
 	                  { xs: 3 },
 	                  _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    _this2.trackProgress(_this2.props.clients[patientID])[0]
+	                    _this2.trackProgress(_this2.props.clients[patientID])
 	                  )
 	                )
 	              ),
@@ -48081,6 +48080,10 @@
 
 	var _reactBootstrap = __webpack_require__(232);
 
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -48095,12 +48098,48 @@
 	  function LetterTable() {
 	    _classCallCheck(this, LetterTable);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LetterTable).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LetterTable).call(this));
+
+	    _this.state = {};
+	    _this.postData = _this.postData.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(LetterTable, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        letters: this.props.letters
+	      });
+	    }
+	  }, {
+	    key: 'changeStatus',
+	    value: function changeStatus(letterStatus, index, date_created) {
+	      console.log('letter', date_created);
+	      var letters = this.state.letters;
+	      letters[index].status = letterStatus;
+	      this.setState({
+	        letters: letters
+	      });
+	      this.postData(letterStatus, date_created);
+	    }
+	  }, {
+	    key: 'postData',
+	    value: function postData(letterStatus, date_created) {
+	      _axios2.default.post('/change-letter-status', {
+	        newStatus: letterStatus,
+	        date_created: date_created
+	      }).then(function (response) {
+	        console.log(response);
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        _reactBootstrap.Table,
 	        { responsive: true },
@@ -48110,11 +48149,6 @@
 	          _react2.default.createElement(
 	            'tr',
 	            null,
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'ID'
-	            ),
 	            _react2.default.createElement(
 	              'th',
 	              null,
@@ -48128,7 +48162,7 @@
 	            _react2.default.createElement(
 	              'th',
 	              null,
-	              'Correspondence'
+	              'Progress'
 	            ),
 	            _react2.default.createElement(
 	              'th',
@@ -48145,15 +48179,10 @@
 	        _react2.default.createElement(
 	          'tbody',
 	          null,
-	          this.props.letters ? this.props.letters.map(function (letter, i) {
+	          this.state.letters ? this.state.letters.map(function (letter, i) {
 	            return _react2.default.createElement(
 	              'tr',
 	              { key: i },
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                i
-	              ),
 	              _react2.default.createElement(
 	                'td',
 	                null,
@@ -48171,7 +48200,7 @@
 	              _react2.default.createElement(
 	                'td',
 	                null,
-	                letter.correspondence
+	                _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'info', now: letter.status === 'In progress' ? 50 : 100 })
 	              ),
 	              _react2.default.createElement(
 	                'td',
@@ -48181,22 +48210,19 @@
 	                  { bsStyle: 'info', title: letter.status, id: 'dropdown-basic-' + i },
 	                  _react2.default.createElement(
 	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '1' },
-	                    'On the list'
+	                    { eventKey: '1',
+	                      active: letter.status === 'In progress',
+	                      onClick: _this2.changeStatus.bind(_this2, 'In progress', i)
+	                    },
+	                    'In progress'
 	                  ),
 	                  _react2.default.createElement(
 	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '2' },
-	                    'In preperation'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '3', active: true },
-	                    'Waiting review'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '4' },
+	                    {
+	                      active: letter.status === 'Sent',
+	                      eventKey: '2',
+	                      onClick: _this2.changeStatus.bind(_this2, 'Sent', i, letter.date_created)
+	                    },
 	                    'Sent'
 	                  )
 	                )
@@ -48218,6 +48244,11 @@
 
 	exports.default = LetterTable;
 
+
+	LetterTable.defaultProps = {
+	  letters: _react2.default.PropTypes.array
+	};
+
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/ellielo/fac7/projects/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
@@ -48232,6 +48263,8 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -48240,11 +48273,21 @@
 
 	var _reactBootstrap = __webpack_require__(232);
 
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _reactCookie = __webpack_require__(521);
+
+	var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
 	var _recipientInput = __webpack_require__(528);
 
 	var _recipientInput2 = _interopRequireDefault(_recipientInput);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -48261,18 +48304,80 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddClient).call(this));
 
 	    _this.state = {
-	      inputList: []
+	      inputList: [],
+	      formContent: {
+	        topic: '',
+	        recipient: '',
+	        patient_id: '',
+	        possible_statuses: {
+	          1: 'In progress',
+	          2: 'Sent'
+	        }
+	      }
 	    };
-	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.addRecipient = _this.addRecipient.bind(_this);
+	    _this.formChange = _this.formChange.bind(_this);
+	    _this.submitItem = _this.submitItem.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(AddClient, [{
-	    key: 'handleClick',
-	    value: function handleClick() {
+	    key: 'addRecipient',
+	    value: function addRecipient() {
 	      var inputList = this.state.inputList;
 	      this.setState({
 	        inputList: inputList.concat(_react2.default.createElement(_recipientInput2.default, null))
+	      });
+	    }
+
+	    // addStatusInput () {
+	    //   this.setState({
+	    //     statusList: this.state.statusList.concat('status')
+	    //   })
+	    // }
+
+	  }, {
+	    key: 'formChange',
+	    value: function formChange(property, e) {
+	      this.setState({
+	        formContent: _extends({}, this.state.formContent, _defineProperty({}, property, e.target.value))
+	      });
+	    }
+
+	    // addFormStatus () {
+	    //   this.setState({
+	    //     formContent: {
+	    //       ...this.state.formContent,
+	    //       possible_statuses: {
+	    //         1: 'In progress',
+	    //         2: 'Sent'
+	    //       }
+	    //     }
+	    //   })
+	    // }
+
+	  }, {
+	    key: 'submitItem',
+	    value: function submitItem() {
+	      var _this2 = this;
+
+	      _axios2.default.post('/add-new-letter', _extends({}, this.state.formContent, {
+	        clinician_id: _reactCookie2.default.load('clinician_id'),
+	        date_created: Date.now()
+	      })).then(function (response) {
+	        console.log(response);
+	        _this2.props.toggleModal();
+	        _this2.setState({
+	          formContent: {
+	            topic: '',
+	            recipient: '',
+	            patient_id: '',
+	            possible_statuses: {
+	              1: 'In progress',
+	              2: 'Sent'
+	            }
+	          }
+	        });
 	      });
 	    }
 	  }, {
@@ -48288,7 +48393,7 @@
 	            bsSize: 'large',
 	            onClick: this.props.toggleModal
 	          },
-	          'Add New Patient Letters'
+	          'Add New Item'
 	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Modal,
@@ -48322,8 +48427,12 @@
 	                ),
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Patient ID' })
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. FO04835382',
+	                    onChange: this.formChange.bind(null, 'patient_id')
+	                  })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -48332,12 +48441,16 @@
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
 	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                  'Email'
+	                  'Topic'
 	                ),
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email' })
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. March Assessment',
+	                    onChange: this.formChange.bind(null, 'topic')
+	                  })
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -48346,25 +48459,18 @@
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
 	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                  'Mobile Number'
+	                  'Recipient(s)'
 	                ),
 	                _react2.default.createElement(
 	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Mobile Number' })
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. School, Hospital, Parents',
+	                    onChange: this.formChange.bind(null, 'recipient')
+	                  })
 	                )
 	              ),
-	              _react2.default.createElement(_recipientInput2.default, null),
-	              _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { smOffset: 9, sm: 3 },
-	                _react2.default.createElement(
-	                  _reactBootstrap.Button,
-	                  { bsStyle: 'primary', onClick: this.handleClick },
-	                  'Add New Recipient'
-	                )
-	              ),
-	              this.state.inputList,
 	              _react2.default.createElement(
 	                _reactBootstrap.FormGroup,
 	                null,
@@ -48373,8 +48479,8 @@
 	                  { smOffset: 2, sm: 10 },
 	                  _react2.default.createElement(
 	                    _reactBootstrap.Button,
-	                    { bsStyle: 'primary', type: 'submit' },
-	                    'Add Patient Details'
+	                    { bsStyle: 'primary', onClick: this.submitItem },
+	                    'Submit'
 	                  )
 	                )
 	              )
@@ -48532,9 +48638,11 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClientDashboard).call(this));
 
 	    _this.state = {
-	      filterActiveLetters: _this.filterActiveLetters.bind(_this),
-	      filterSentLetters: _this.filterSentLetters.bind(_this)
+	      patient_id: '',
+	      letters: []
 	    };
+	    _this.filterActiveLetters = _this.filterActiveLetters.bind(_this);
+	    _this.filterSentLetters = _this.filterSentLetters.bind(_this);
 	    return _this;
 	  }
 
@@ -48549,17 +48657,30 @@
 	        }
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      console.log('PATIENT STATE', this.state.patient_id);
+	      _axios2.default.get('/get-patient-letters', {
+	        patient_id: this.state.patient_id
+	      }).then(function (response) {
+	        _this2.setState({ letters: response.data });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'filterActiveLetters',
 	    value: function filterActiveLetters() {
-	      return this.props.letters.filter(function (letter) {
-	        console.log(letter.status);
+	      return this.state.letters.filter(function (letter) {
 	        return letter.status !== 'Sent';
 	      });
 	    }
 	  }, {
 	    key: 'filterSentLetters',
 	    value: function filterSentLetters() {
-	      return this.props.letters.filter(function (letter) {
+	      return this.state.letters.filter(function (letter) {
 	        return letter.status === 'Sent';
 	      });
 	    }
@@ -48592,39 +48713,63 @@
 	  letters: _react2.default.PropTypes.array
 	};
 
-	ClientDashboard.defaultProps = {
-	  letters: [{
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Waiting review',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'In preparation',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Sent',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Sent',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'In preparation',
-	    due: '10/11/16'
-	  }]
-	};
+	// ClientDashboard.defaultProps = {
+	//   letters: [
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Waiting review',
+	//       due: '10/11/16'
+	//     },
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'In preparation',
+	//       due: '10/11/16'
+	//     },
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Sent',
+	//       due: '10/11/16'
+	//     }, {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Sent',
+	//       due: '10/11/16'
+	//     }, {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'In preparation',
+	//       due: '10/11/16'
+	//     }
+	//   ]
+	// }
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/ellielo/fac7/projects/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
@@ -48726,7 +48871,7 @@
 	                _react2.default.createElement(
 	                  'td',
 	                  null,
-	                  letter.recipients
+	                  letter.recipient
 	                ),
 	                _react2.default.createElement(
 	                  'td',
@@ -48739,8 +48884,8 @@
 	                      { className: 'arrow-status', xs: 2 },
 	                      _react2.default.createElement(
 	                        'p',
-	                        { className: _this2.colorText(letter.status, 'On the list') },
-	                        'On the list'
+	                        { className: _this2.colorText(letter.status, 'In progress') },
+	                        'In progress'
 	                      )
 	                    ),
 	                    _react2.default.createElement(
@@ -48753,35 +48898,7 @@
 	                      { xs: 3 },
 	                      _react2.default.createElement(
 	                        'p',
-	                        { className: _this2.colorText(letter.status, 'In preparation') },
-	                        'In preparation'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 1 },
-	                      _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'chevron-right' })
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        { className: _this2.colorText(letter.status, 'Waiting review') },
-	                        'Waiting review'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 1 },
-	                      _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'chevron-right' })
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        null,
+	                        { className: _this2.colorText(letter.status, 'Sent') },
 	                        'Sent'
 	                      )
 	                    )
@@ -48791,32 +48908,32 @@
 	            }) : ''
 	          )
 	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { responsive: true },
-	          _react2.default.createElement(
-	            'thead',
-	            null,
+	        this.props.sentLetters ? this.props.sentLetters.map(function (letter, i) {
+	          return _react2.default.createElement(
+	            _reactBootstrap.Table,
+	            { responsive: true },
 	            _react2.default.createElement(
-	              'tr',
+	              'thead',
 	              null,
 	              _react2.default.createElement(
-	                'th',
+	                'tr',
 	                null,
-	                'Topic'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Recipients'
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Topic'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Recipients'
+	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            this.props.sentLetters ? this.props.sentLetters.map(function (letter, i) {
-	              return _react2.default.createElement(
+	            ),
+	            _react2.default.createElement(
+	              'tbody',
+	              null,
+	              _react2.default.createElement(
 	                'tr',
 	                { key: i },
 	                _react2.default.createElement(
@@ -48831,12 +48948,12 @@
 	                _react2.default.createElement(
 	                  'td',
 	                  null,
-	                  letter.recipients
+	                  letter.recipient
 	                )
-	              );
-	            }) : ''
-	          )
-	        )
+	              )
+	            )
+	          );
+	        }) : ''
 	      );
 	    }
 	  }]);
@@ -48850,15 +48967,6 @@
 	ClientLetterTable.propTypes = {
 	  activeLetters: _react2.default.PropTypes.array,
 	  sentLetters: _react2.default.PropTypes.array
-	};
-
-	ClientLetterTable.defaultProps = {
-	  progressBar: {
-	    'On the list': 25,
-	    'In preparation': 50,
-	    'Waiting review': 75,
-	    'Sent': 100
-	  }
 	};
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/ellielo/fac7/projects/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
