@@ -1,5 +1,7 @@
 import React from 'react'
-import { Table, thead, th, td, tr, tbody, ProgressBar, DropdownButton, MenuItem, Button } from 'react-bootstrap'
+import {
+  Table, thead, th, td, tr, tbody, ProgressBar, DropdownButton, MenuItem, Button
+} from 'react-bootstrap'
 import axios from 'axios'
 export default class LetterTable extends React.Component {
   constructor () {
@@ -12,6 +14,7 @@ export default class LetterTable extends React.Component {
       letters: this.props.letters
     })
   }
+
   changeStatus (letterStatus, index, date_created) {
     console.log('letter', date_created)
     const letters = this.state.letters
@@ -21,6 +24,7 @@ export default class LetterTable extends React.Component {
     })
     this.postData(letterStatus, date_created)
   }
+
   postData (letterStatus, date_created) {
     axios.post('/change-letter-status', {
       newStatus: letterStatus,
@@ -33,12 +37,12 @@ export default class LetterTable extends React.Component {
       console.log(response)
     })
   }
+
   render () {
     return (
       <Table responsive>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Topic</th>
             <th>Recipients</th>
             <th>Progress</th>
@@ -50,7 +54,6 @@ export default class LetterTable extends React.Component {
         {this.state.letters? this.state.letters.map((letter, i) => {
           return (
             <tr key={i}>
-              <td>{i}</td>
               <td>
                 <Button bsStyle='link'>
                   {letter.topic}
