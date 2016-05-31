@@ -43,31 +43,15 @@ export default class ClientLetterTable extends React.Component {
                <td>
                  <Row>
                    <Col className='arrow-status' xs={2}>
-                   <p className={this.colorText(letter.status, 'On the list')}>
-                     On the list
+                   <p className={this.colorText(letter.status, 'In progress')}>
+                     In progress
                    </p>
                    </Col>
                    <Col xs={1}>
                    <Glyphicon className='arrow-right' glyph='chevron-right' />
                    </Col>
                    <Col xs={3}>
-                   <p className={this.colorText(letter.status, 'In preparation')}>
-                     In preparation
-                   </p>
-                   </Col>
-                   <Col xs={1}>
-                   <Glyphicon glyph='chevron-right' />
-                   </Col>
-                   <Col xs={2}>
-                   <p className={this.colorText(letter.status, 'Waiting review')}>
-                     Waiting review
-                   </p>
-                   </Col>
-                   <Col xs={1}>
-                   <Glyphicon glyph='chevron-right' />
-                   </Col>
-                   <Col xs={2}>
-                   <p>
+                   <p className={this.colorText(letter.status, 'Sent')}>
                      Sent
                    </p>
                    </Col>
@@ -78,6 +62,8 @@ export default class ClientLetterTable extends React.Component {
           }) : ''}
         </tbody>
       </Table>
+      {this.props.sentLetters ? this.props.sentLetters.map((letter, i) => {
+        return (
       <Table responsive>
         <thead>
           <tr>
@@ -90,8 +76,6 @@ export default class ClientLetterTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.sentLetters ? this.props.sentLetters.map((letter, i) => {
-            return (
              <tr key={i}>
                <td>
                  <Button bsStyle='link'>
@@ -102,10 +86,10 @@ export default class ClientLetterTable extends React.Component {
                  {letter.recipient}
                </td>
              </tr>
-             )
-          }) : ''}
-        </tbody>
-      </Table>
+            </tbody>
+          </Table>
+        )
+      }) : ''}
     </div>
     )
   }
@@ -114,13 +98,4 @@ export default class ClientLetterTable extends React.Component {
 ClientLetterTable.propTypes = {
   activeLetters: React.PropTypes.array,
   sentLetters: React.PropTypes.array
-}
-
-ClientLetterTable.defaultProps = {
-  progressBar: {
-    'On the list': 25,
-    'In preparation': 50,
-    'Waiting review': 75,
-    'Sent': 100
-  }
 }
