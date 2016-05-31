@@ -22,11 +22,12 @@ export default class ClientDashboard extends React.Component {
     } else {
       browserHistory.push('/')
     }
+    axios.get('/get-patient-letters', { patient_id: this.state.patient_id }
+  ).then(response => {console.log(response)})
   }
 
   filterActiveLetters () {
     return this.props.letters.filter((letter) => {
-      console.log(letter.status)
       return letter.status !== 'Sent'
     })
   }

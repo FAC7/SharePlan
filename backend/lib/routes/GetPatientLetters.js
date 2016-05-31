@@ -6,6 +6,7 @@ module.exports = {
   path: '/get-patient-letters',
   method: 'GET',
   handler: (request, reply) => {
+    console.log(request.query.patient_id)
     pg.connect(conString, (err, client, done) => {
       if (err) {
         return console.error('error fetching client from pool', err)
