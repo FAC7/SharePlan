@@ -14,8 +14,12 @@ export default class LetterTable extends React.Component {
   }
 
   componentWillMount () {
+    const letters = this.props.letters
+    const sortedLetters = letters.sort((prev, curr) => {
+      return prev.date_created - curr.date_created
+    })
     this.setState({
-      letters: this.props.letters
+      letters: sortedLetters
     })
   }
 
