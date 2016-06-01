@@ -23,11 +23,10 @@ export default class ClientList extends React.Component {
               eventKey={i.toString()}
               header={
                 <Row>
-                  <Col xs={3}>
+                  <Col xs={6}>
                     <p>{patientID}</p>
                   </Col>
-                  <Col xs={6}/>
-                  <Col xs={3}>
+                  <Col xs={6}>
                     <p>{this.trackProgress(this.props.clients[patientID])}</p>
                   </Col>
                 </Row>
