@@ -14,8 +14,9 @@ export default class AddClient extends React.Component {
         recipient: '',
         patient_id: '',
         possible_statuses: {
-          1: 'In progress',
-          2: 'Sent'
+          1: 'On the list',
+          2: 'In progress',
+          3: 'Sent'
         },
       },
     }
@@ -46,18 +47,6 @@ export default class AddClient extends React.Component {
     })
   }
 
-  // addFormStatus () {
-  //   this.setState({
-  //     formContent: {
-  //       ...this.state.formContent,
-  //       possible_statuses: {
-  //         1: 'In progress',
-  //         2: 'Sent'
-  //       }
-  //     }
-  //   })
-  // }
-
   submitItem () {
     axios.post('/add-new-letter', {
       ...this.state.formContent,
@@ -73,8 +62,9 @@ export default class AddClient extends React.Component {
           recipient: '',
           patient_id: '',
           possible_statuses: {
-            1: 'In progress',
-            2: 'Sent'
+            1: 'On the list',
+            2: 'In progress',
+            3: 'Sent'
           },
         }
       })
