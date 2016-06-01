@@ -1,15 +1,19 @@
 const addNewLetter = (client, done, data, reply) => {
-  client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5);',
+  client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5, $6);',
     [
       data.topic,
       data.recipient,
       data.patient_id,
-      data.status,
+      data.possible_statuses['1'],
       data.possible_statuses,
+      data.date_created
     ])
   client.query('SELECT patient_id FROM clinicians_patients WHERE clinician_id = $1',
     [ data.clinician_id ], (err, result) => {
-      console.log(result.rows)
+      console.log(result)
+      if (err) {
+        console.error(err)
+      }
       if (result.rows.filter(row => row.patient_id === data.patient_id).length === 0) {
         client.query('INSERT INTO clinicians_patients VALUES ($1, $2)', [ data.clinician_id, data.patient_id ], (error) => {
           if (error) console.error(error)
@@ -22,8 +26,8 @@ const addNewLetter = (client, done, data, reply) => {
   done()
 }
 
-const changeLetterStatus = (client, done, letter_id, newStatus) => {
-  client.query('UPDATE letters SET status = $1 WHERE id = $2', [ newStatus, letter_id ])
+const changeLetterStatus = (client, done, date_created, newStatus) => {
+  client.query('UPDATE letters SET status = $1 WHERE date_created = $2', [ newStatus, date_created ])
   done()
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion, Panel, ProgressBar, Row, Col } from 'react-bootstrap'
+import { Accordion, Panel, Row, Col } from 'react-bootstrap'
 import LetterTable from '../LetterTable/index.js'
 
 export default class ClientList extends React.Component {
@@ -10,30 +10,29 @@ export default class ClientList extends React.Component {
       return letter.status === 'Sent'
     }).length
     const progressString = complete.toString() + '/' + total.toString() + ' letters sent'
-    const progressNumber = complete / total * 100
-    return [ progressString, progressNumber ]
+    return progressString
   }
 
   render () {
+    console.log(this.props.clients)
     return (
       <Accordion>
         {Object.keys(this.props.clients).map((patientID, i) => {
           return (
             <Panel
+              key={i}
+              eventKey={i.toString()}
               header={
                 <Row>
                   <Col xs={3}>
                     <p>{patientID}</p>
                   </Col>
-                  <Col xs={6}>
-                    <ProgressBar bsStyle='info' now={this.trackProgress(this.props.clients[patientID])[1]}/>
-                  </Col>
+                  <Col xs={6}/>
                   <Col xs={3}>
-                    <p>{this.trackProgress(this.props.clients[patientID])[0]}</p>
+                    <p>{this.trackProgress(this.props.clients[patientID])}</p>
                   </Col>
                 </Row>
               }
-              key={i}
             >
               <LetterTable letters={this.props.clients[patientID]}/>
             </Panel>
