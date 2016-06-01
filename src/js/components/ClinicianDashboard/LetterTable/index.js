@@ -20,13 +20,13 @@ export default class LetterTable extends React.Component {
   }
 
   changeStatus (letterStatus, index, date_created) {
-    console.log('letter', date_created)
     const letters = this.state.letters
     letters[index].status = letterStatus
     this.setState({
       letters: letters
     })
     this.postData(letterStatus, date_created)
+    console.log('state', this.state)
   }
 
   postData (letterStatus, date_created) {
@@ -43,6 +43,11 @@ export default class LetterTable extends React.Component {
   }
 
   render () {
+    const letterColor = {
+      'On the list': 0,
+      'In progress': 50,
+      'Sent': 100
+    }
     return (
       <Table responsive>
         <thead>
@@ -65,19 +70,27 @@ export default class LetterTable extends React.Component {
               </td>
               <td>{letter.recipient}</td>
               <td>
-                <ProgressBar bsStyle='info' now={letter.status === 'In progress' ? 50 : 100}/>
+                <ProgressBar bsStyle='info' now={letterColor[letter.status]}/>
               </td>
               <td>
                 <DropdownButton bsStyle='info' title={letter.status} id={`dropdown-basic-${i}`}>
-                  <MenuItem eventKey='1'
+                  <MenuItem
+                    eventKey='1'
+                    active={letter.status === 'On the list'}
+                    onClick={this.changeStatus.bind(this, 'On the list', i, letter.date_created)}
+                  >
+                    On the list
+                  </MenuItem>
+                  <MenuItem
+                    eventKey='2'
                     active={letter.status === 'In progress'}
-                    onClick={this.changeStatus.bind(this, 'In progress', i)}
+                    onClick={this.changeStatus.bind(this, 'In progress', i, letter.date_created)}
                   >
                     In progress
                   </MenuItem>
                   <MenuItem
                     active={letter.status === 'Sent'}
-                    eventKey='2'
+                    eventKey='3'
                     onClick={this.changeStatus.bind(this, 'Sent', i, letter.date_created)}
                   >
                     Sent
