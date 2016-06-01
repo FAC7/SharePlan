@@ -1,14 +1,31 @@
 @import 'variables';
 // general styling
 body {
-	// background-color: #3FA9F5;
-	// color: white;
+	background-color: $header-color;
+	color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+.logo {
+	width: 100%;
+	margin-top: 1em;
 }
 
+// homepage
 .login-btn {
   display: block !important;
   margin: 0 auto !important;
   min-width: 150px;
+}
+
+.default-button {
+	background-color: $bright-green;
+	padding: 1em;
+  width: 100%;
+  border-radius: 14px;
+	border-width: 0.5px;
+}
+.homepage-button {
+	font-size: 1.25em;
 }
 
 .R2zU9JsZW1r2id-qp7H3S {
@@ -20,11 +37,22 @@ body {
 .modal-container .modal, .modal-container .modal-backdrop {
   position: absolute;
 }
-
+.homepage-buttons-container {
+	margin-top: 3em;
+}
+.brand-title {
+	font-size: 6em;
+}
+.title-container {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em;
+}
 
 // Client Dashboard
 
-// Client letter Table 
+// Client letter Table
 
 .active-state {
 	color: $bright-green;
@@ -35,5 +63,3 @@ body {
 .arrow-right {
 	padding-left: 1px;
 }
-
-

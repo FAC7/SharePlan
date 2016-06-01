@@ -1,9 +1,9 @@
 import React from 'react'
+import DefaultButton from '../../components/Button/'
 import { Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 import axios from 'axios'
 import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
-
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClient from '../../components/AddClient/index.js'
 
@@ -31,7 +31,11 @@ export default class ClinicianDashboard extends React.Component {
   componentDidMount () {
     this.getClients()
   }
-
+  onLogout () {
+    cookie.remove('clinician_id', { path: '/' })
+    cookie.remove('patient_id', { path: '/' })
+    browserHistory.push('/')
+  }
   getClients () {
     axios.get('/get-all-patients-letters', {
       params: {
@@ -78,6 +82,9 @@ export default class ClinicianDashboard extends React.Component {
   render () {
     return (
       <Grid>
+        <Row>
+          <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
+        </Row>
         <Row>
           <form>
             <FormGroup controlId='formControlsText'>
