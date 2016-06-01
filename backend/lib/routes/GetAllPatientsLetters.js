@@ -7,7 +7,6 @@ module.exports = {
   method: 'GET',
   handler: (request, reply) => {
     pg.connect(conString, (err, client, done) => {
-      console.log('equer', request.query)
       if (err) {
         return console.error('error fetching client from pool', err)
       }
