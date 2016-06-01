@@ -27,19 +27,18 @@ const checkClinicianLogin = (client, done, data, reply) => {
 
 const getAllPatientsLetters = (client, done, clinician_id, reply) => {
   client.query(
-    'SELECT patients.patient_id, first_name, last_name, topic, recipient, status, date_created ' +
-    'FROM clinicians_patients, letters, patients ' +
+    'SELECT clinicians_patients.patient_id, topic, recipient, status, date_created ' +
+    'FROM clinicians_patients, letters ' +
     'WHERE clinicians_patients.clinician_id = $1 ' +
-    'AND clinicians_patients.patient_id = letters.patient_id ' +
-    'AND patients.patient_id = letters.patient_id',
+    'AND clinicians_patients.patient_id = letters.patient_id ',
     [ clinician_id ], (err, result) => {
       if (err) {
-        return console.error('error running query', err)
+        console.error('error running query', err)
       }
-      console.log('rows', result.rows)
       reply(JSON.stringify(result.rows))
       done()
-    })
+    }
+  )
 }
 
 module.exports = {
