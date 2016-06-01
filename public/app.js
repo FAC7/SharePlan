@@ -25687,7 +25687,7 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _ClinicianDashboard = __webpack_require__(522);
+	var _ClinicianDashboard = __webpack_require__(524);
 
 	var _ClinicianDashboard2 = _interopRequireDefault(_ClinicianDashboard);
 
@@ -45521,7 +45521,7 @@
 
 	var _signupPanel2 = _interopRequireDefault(_signupPanel);
 
-	var _loginPanel = __webpack_require__(503);
+	var _loginPanel = __webpack_require__(523);
 
 	var _loginPanel2 = _interopRequireDefault(_loginPanel);
 
@@ -45623,11 +45623,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _axios = __webpack_require__(504);
+	var _axios = __webpack_require__(503);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(526);
+	var _reactCookie = __webpack_require__(521);
 
 	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
@@ -45886,209 +45886,22 @@
 /* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(232);
-
-	var _reactRouter = __webpack_require__(168);
-
-	var _axios = __webpack_require__(504);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _reactCookie = __webpack_require__(526);
-
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
-
-	var _Button = __webpack_require__(500);
-
-	var _Button2 = _interopRequireDefault(_Button);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var styles = {
-	  rows: {
-	    padding: '5px'
-	  }
-	};
-
-	var LoginPanel = function (_Component) {
-	  _inherits(LoginPanel, _Component);
-
-	  function LoginPanel() {
-	    _classCallCheck(this, LoginPanel);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginPanel).call(this));
-
-	    _this.state = {
-	      patient_id: '',
-	      clinician_id: '',
-	      password_hash: '',
-	      incorrectPassword: false
-	    };
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    _this.handleChange = _this.handleChange.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(LoginPanel, [{
-	    key: 'handleClick',
-	    value: function handleClick() {
-	      var _axios$post,
-	          _this2 = this;
-
-	      var url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician';
-	      var client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
-	      _axios2.default.post(url, (_axios$post = {}, _defineProperty(_axios$post, client_id, this.state[client_id]), _defineProperty(_axios$post, 'password_hash', this.state.password_hash), _axios$post)).then(function (response) {
-	        console.log(response.data);
-	        if (response.data === 'incorrect password') {
-	          _this2.setState({ incorrectPassword: true });
-	        } else {
-	          _reactCookie2.default.save(client_id, _this2.state[client_id], { path: '/' });
-	          _reactRouter.browserHistory.push(_this2.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard');
-	        }
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    }
-	  }, {
-	    key: 'handleChange',
-	    value: function handleChange(inputType, inputValue) {
-	      this.setState(_defineProperty({}, inputType, inputValue));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this3 = this;
-
-	      var clientType = this.props.userType === 'client' ? 'Patient' : 'Clinician';
-	      var id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'login-split-panel' },
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          { style: styles.rows },
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 3 },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'signup-form-label' },
-	              clientType,
-	              ' ID'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 9 },
-	            _react2.default.createElement('input', { className: 'signup-input', type: 'text', name: id,
-	              onChange: function onChange(e) {
-	                return _this3.handleChange(id, e.target.value);
-	              },
-	              required: true })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          { style: styles.rows },
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 3 },
-	            _react2.default.createElement(
-	              'label',
-	              { className: 'signup-form-label' },
-	              'Password'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 9 },
-	            _react2.default.createElement('input', { type: 'password', className: 'signup-input', name: 'password_hash', onChange: function onChange(e) {
-	                return _this3.handleChange('password_hash', e.target.value);
-	              }, required: true })
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          { style: styles.rows },
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { sm: 9 },
-	            this.state.incorrectPassword ? _react2.default.createElement(
-	              'p',
-	              null,
-	              'Incorrect ',
-	              clientType,
-	              ' ID or Password'
-	            ) : ''
-	          )
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          { style: styles.rows },
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { smOffset: 4, sm: 4 },
-	            _react2.default.createElement(_Button2.default, { buttonName: 'Login', handleClick: this.handleClick })
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return LoginPanel;
-	}(_react.Component);
-
-	exports.default = LoginPanel;
-
-
-	LoginPanel.propTypes = {
-	  userType: _react2.default.PropTypes.string
-	};
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "loginPanel.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+	module.exports = __webpack_require__(504);
 
 /***/ },
 /* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(505);
-
-/***/ },
-/* 505 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
-	var defaults = __webpack_require__(506);
-	var utils = __webpack_require__(507);
-	var dispatchRequest = __webpack_require__(508);
-	var InterceptorManager = __webpack_require__(517);
-	var isAbsoluteURL = __webpack_require__(518);
-	var combineURLs = __webpack_require__(519);
-	var bind = __webpack_require__(520);
-	var transformData = __webpack_require__(512);
+	var defaults = __webpack_require__(505);
+	var utils = __webpack_require__(506);
+	var dispatchRequest = __webpack_require__(507);
+	var InterceptorManager = __webpack_require__(516);
+	var isAbsoluteURL = __webpack_require__(517);
+	var combineURLs = __webpack_require__(518);
+	var bind = __webpack_require__(519);
+	var transformData = __webpack_require__(511);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -46174,7 +45987,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(521);
+	axios.spread = __webpack_require__(520);
 
 	// Provide aliases for supported request methods
 	utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
@@ -46202,12 +46015,12 @@
 
 
 /***/ },
-/* 506 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -46274,7 +46087,7 @@
 
 
 /***/ },
-/* 507 */
+/* 506 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -46546,7 +46359,7 @@
 
 
 /***/ },
-/* 508 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -46568,10 +46381,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(509);
+	        adapter = __webpack_require__(508);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(509);
+	        adapter = __webpack_require__(508);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -46587,18 +46400,18 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 509 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
-	var utils = __webpack_require__(507);
-	var buildURL = __webpack_require__(510);
-	var parseHeaders = __webpack_require__(511);
-	var transformData = __webpack_require__(512);
-	var isURLSameOrigin = __webpack_require__(513);
-	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(514);
-	var settle = __webpack_require__(515);
+	var utils = __webpack_require__(506);
+	var buildURL = __webpack_require__(509);
+	var parseHeaders = __webpack_require__(510);
+	var transformData = __webpack_require__(511);
+	var isURLSameOrigin = __webpack_require__(512);
+	var btoa = (typeof window !== 'undefined' && window.btoa) || __webpack_require__(513);
+	var settle = __webpack_require__(514);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -46695,7 +46508,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(516);
+	    var cookies = __webpack_require__(515);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -46756,12 +46569,12 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 510 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -46829,12 +46642,12 @@
 
 
 /***/ },
-/* 511 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	/**
 	 * Parse headers into an object
@@ -46872,12 +46685,12 @@
 
 
 /***/ },
-/* 512 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	/**
 	 * Transform the data for a request or a response
@@ -46898,12 +46711,12 @@
 
 
 /***/ },
-/* 513 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -46972,7 +46785,7 @@
 
 
 /***/ },
-/* 514 */
+/* 513 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47014,7 +46827,7 @@
 
 
 /***/ },
-/* 515 */
+/* 514 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47038,12 +46851,12 @@
 
 
 /***/ },
-/* 516 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -47097,12 +46910,12 @@
 
 
 /***/ },
-/* 517 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(507);
+	var utils = __webpack_require__(506);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -47155,7 +46968,7 @@
 
 
 /***/ },
-/* 518 */
+/* 517 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47175,7 +46988,7 @@
 
 
 /***/ },
-/* 519 */
+/* 518 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47193,7 +47006,7 @@
 
 
 /***/ },
-/* 520 */
+/* 519 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47210,7 +47023,7 @@
 
 
 /***/ },
-/* 521 */
+/* 520 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -47243,727 +47056,10 @@
 
 
 /***/ },
-/* 522 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(232);
-
-	var _axios = __webpack_require__(504);
-
-	var _axios2 = _interopRequireDefault(_axios);
-
-	var _reactCookie = __webpack_require__(526);
-
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
-
-	var _reactRouter = __webpack_require__(168);
-
-	var _index = __webpack_require__(523);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _index3 = __webpack_require__(525);
-
-	var _index4 = _interopRequireDefault(_index3);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ClinicianDashboard = function (_React$Component) {
-	  _inherits(ClinicianDashboard, _React$Component);
-
-	  function ClinicianDashboard() {
-	    _classCallCheck(this, ClinicianDashboard);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClinicianDashboard).call(this));
-
-	    _this.state = {
-	      clients: {},
-	      showModal: false,
-	      clinician_id: ''
-	    };
-	    _this.toggleModal = _this.toggleModal.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(ClinicianDashboard, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      if (_reactCookie2.default.load('clinician_id')) {
-	        this.setState({ clinician_id: _reactCookie2.default.load('clinician_id') });
-	        // get all patient letters request here
-	      } else {
-	          _reactRouter.browserHistory.push('/');
-	        }
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.getClients();
-	      this.toggleModal = this.toggleModal.bind(this);
-	    }
-
-	    // getClients() will be an axios request to access all previous clients this clinician has dealth with?
-
-	  }, {
-	    key: 'getClients',
-	    value: function getClients() {
-	      var _this2 = this;
-
-	      _axios2.default.get('/get-all-patients-letters', {
-	        params: {
-	          clinician_id: this.state.clinician_id
-	        }
-	      }).then(function (response) {
-	        console.log('response from /get-all-patients-letters request, ClinicianDashboard line 44', response);
-	        var realDataFormat = [{
-	          patient_id: 'jfewah8493',
-	          first_name: 'Kat',
-	          last_name: 'Bow',
-	          topic: 'some topic',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }, {
-	          patient_id: 'jfewah8493',
-	          first_name: 'Kat',
-	          last_name: 'Bow',
-	          topic: 'some topicssss',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }, {
-	          patient_id: 'jfewah9093',
-	          first_name: 'Kit',
-	          last_name: 'Bew',
-	          topic: 'some topic',
-	          recipient: 'Mum',
-	          status: 'sent',
-	          date_created: '2016-01-28'
-	        }];
-
-	        var clientsObj = realDataFormat.reduce(function (clientObj, letter) {
-	          var id = letter.patient_id;
-	          clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [letter];
-	          return clientObj;
-	        }, {});
-
-	        _this2.setState({ clients: clientsObj });
-	      }).catch(function (response) {
-	        console.log(response);
-	      });
-	    }
-	  }, {
-	    key: 'toggleModal',
-	    value: function toggleModal() {
-	      this.setState({ showModal: !this.state.showModal });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        _reactBootstrap.Grid,
-	        null,
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(_index4.default, { toggleModal: this.toggleModal, showModal: this.state.showModal })
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { xs: 10, xsOffset: 1 },
-	            _react2.default.createElement(_index2.default, _extends({}, this.props, { clients: this.state.clients }))
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return ClinicianDashboard;
-	}(_react2.default.Component);
-
-	exports.default = ClinicianDashboard;
-
-
-	ClinicianDashboard.propTypes = {
-	  currentUser: _react2.default.PropTypes.string,
-	  clients: _react2.default.PropTypes.object
-	};
-
-	ClinicianDashboard.defaultProps = {
-	  currentUser: 'katbow',
-	  clients: {
-	    54634563456: {
-	      letters: [{
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Sent',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Waiting review',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'On the list',
-	        date_created: '10/11/16'
-	      }]
-	    },
-	    1324523452345: {
-	      letters: [{
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'On the list',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Sent',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Waiting review',
-	        date_created: '10/11/16'
-	      }]
-	    },
-	    24356345766: {
-	      letters: [{
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Sent',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'On the list',
-	        date_created: '10/11/16'
-	      }, {
-	        topic: 'Assessment results',
-	        recipient: 'School',
-	        status: 'Waiting review',
-	        date_created: '10/11/16'
-	      }]
-	    }
-	  }
-	};
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-/* 523 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(232);
-
-	var _index = __webpack_require__(524);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ClientList = function (_React$Component) {
-	  _inherits(ClientList, _React$Component);
-
-	  function ClientList() {
-	    _classCallCheck(this, ClientList);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ClientList).apply(this, arguments));
-	  }
-
-	  _createClass(ClientList, [{
-	    key: 'trackProgress',
-	    value: function trackProgress(letters) {
-	      var total = letters.length;
-	      var complete = letters.filter(function (letter) {
-	        return letter.status === 'Sent';
-	      }).length;
-	      var progressString = complete.toString() + '/' + total.toString() + ' letters sent';
-	      var progressNumber = complete / total * 100;
-	      return [progressString, progressNumber];
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement(
-	        _reactBootstrap.Accordion,
-	        null,
-	        Object.keys(this.props.clients).map(function (patientID, i) {
-	          return _react2.default.createElement(
-	            _reactBootstrap.Panel,
-	            {
-	              header: _react2.default.createElement(
-	                _reactBootstrap.Row,
-	                null,
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { xs: 3 },
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    patientID
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { xs: 6 },
-	                  _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'info', now: _this2.trackProgress(_this2.props.clients[patientID])[1] })
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { xs: 3 },
-	                  _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    _this2.trackProgress(_this2.props.clients[patientID])[0]
-	                  )
-	                )
-	              ),
-	              key: i
-	            },
-	            _react2.default.createElement(_index2.default, { letters: _this2.props.clients[patientID] })
-	          );
-	        })
-	      );
-	    }
-	  }]);
-
-	  return ClientList;
-	}(_react2.default.Component);
-
-	exports.default = ClientList;
-
-
-	ClientList.propTypes = {
-	  clients: _react2.default.PropTypes.object
-	};
-
-	// {this.props.clients.map((client, i) => {
-	//   return (
-	//     <Panel
-	//       header={
-	//         <Row>
-	//           <Col xs={3}>
-	//             <p>{client.id}</p>
-	//           </Col>
-	//           <Col xs={6}>
-	//             <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
-	//           </Col>
-	//           <Col xs={3}>
-	//             <p> {this.trackProgress(client.letters)[0]} </p>
-	//           </Col>
-	//         </Row>
-	//       }
-	//       eventKey={i}
-	//       key={i}
-	//     >
-	//       <LetterTable letters={client.letters}/>
-	//     </Panel>
-	//     )
-	// })}
-	// </Accordion>
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-/* 524 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(232);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var LetterTable = function (_React$Component) {
-	  _inherits(LetterTable, _React$Component);
-
-	  function LetterTable() {
-	    _classCallCheck(this, LetterTable);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LetterTable).apply(this, arguments));
-	  }
-
-	  _createClass(LetterTable, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        _reactBootstrap.Table,
-	        { responsive: true },
-	        _react2.default.createElement(
-	          'thead',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'ID'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Topic'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Recipients'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Correspondence'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Status'
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              null,
-	              'Created'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          this.props.letters ? this.props.letters.map(function (letter, i) {
-	            return _react2.default.createElement(
-	              'tr',
-	              { key: i },
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                i
-	              ),
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                _react2.default.createElement(
-	                  _reactBootstrap.Button,
-	                  { bsStyle: 'link' },
-	                  letter.topic
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                letter.recipient
-	              ),
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                letter.correspondence
-	              ),
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                _react2.default.createElement(
-	                  _reactBootstrap.DropdownButton,
-	                  { bsStyle: 'info', title: letter.status, id: 'dropdown-basic-' + i },
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '1' },
-	                    'On the list'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '2' },
-	                    'In preperation'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '3', active: true },
-	                    'Waiting review'
-	                  ),
-	                  _react2.default.createElement(
-	                    _reactBootstrap.MenuItem,
-	                    { eventKey: '4' },
-	                    'Sent'
-	                  )
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'td',
-	                null,
-	                letter.date_created
-	              )
-	            );
-	          }) : ''
-	        )
-	      );
-	    }
-	  }]);
-
-	  return LetterTable;
-	}(_react2.default.Component);
-
-	exports.default = LetterTable;
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-/* 525 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactBootstrap = __webpack_require__(232);
-
-	var _recipientInput = __webpack_require__(528);
-
-	var _recipientInput2 = _interopRequireDefault(_recipientInput);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var AddClient = function (_React$Component) {
-	  _inherits(AddClient, _React$Component);
-
-	  function AddClient() {
-	    _classCallCheck(this, AddClient);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddClient).call(this));
-
-	    _this.state = {
-	      inputList: []
-	    };
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(AddClient, [{
-	    key: 'handleClick',
-	    value: function handleClick() {
-	      var inputList = this.state.inputList;
-	      this.setState({
-	        inputList: inputList.concat(_react2.default.createElement(_recipientInput2.default, null))
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'modal-container', style: { height: 200 } },
-	        _react2.default.createElement(
-	          _reactBootstrap.Button,
-	          {
-	            bsStyle: 'primary',
-	            bsSize: 'large',
-	            onClick: this.props.toggleModal
-	          },
-	          'Add New Patient Letters'
-	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Modal,
-	          {
-	            show: this.props.showModal,
-	            onHide: this.props.toggleModal,
-	            bsSize: 'lg'
-	          },
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Header,
-	            { closeButton: true },
-	            _react2.default.createElement(
-	              _reactBootstrap.Modal.Title,
-	              { id: 'contained-modal-title' },
-	              'Client Form'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Body,
-	            null,
-	            _react2.default.createElement(
-	              _reactBootstrap.Form,
-	              { horizontal: true },
-	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                { controlId: 'formHorizontalEmail' },
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                  'Patient ID'
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Patient ID' })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                { controlId: 'formHorizontalEmail' },
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                  'Email'
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Email' })
-	                )
-	              ),
-	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                { controlId: 'formHorizontalEmail' },
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
-	                  'Mobile Number'
-	                ),
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { sm: 10 },
-	                  _react2.default.createElement(_reactBootstrap.FormControl, { type: 'email', placeholder: 'Mobile Number' })
-	                )
-	              ),
-	              _react2.default.createElement(_recipientInput2.default, null),
-	              _react2.default.createElement(
-	                _reactBootstrap.Col,
-	                { smOffset: 9, sm: 3 },
-	                _react2.default.createElement(
-	                  _reactBootstrap.Button,
-	                  { bsStyle: 'primary', onClick: this.handleClick },
-	                  'Add New Recipient'
-	                )
-	              ),
-	              this.state.inputList,
-	              _react2.default.createElement(
-	                _reactBootstrap.FormGroup,
-	                null,
-	                _react2.default.createElement(
-	                  _reactBootstrap.Col,
-	                  { smOffset: 2, sm: 10 },
-	                  _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { bsStyle: 'primary', type: 'submit' },
-	                    'Add Patient Details'
-	                  )
-	                )
-	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Modal.Footer,
-	            null,
-	            _react2.default.createElement(
-	              _reactBootstrap.Button,
-	              { onClick: this.props.toggleModal },
-	              'Close'
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return AddClient;
-	}(_react2.default.Component);
-
-	exports.default = AddClient;
-
-
-	AddClient.propTypes = {
-	  showModal: _react2.default.PropTypes.bool,
-	  toggleModal: _react2.default.PropTypes.func
-	};
-
-	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
-
-/***/ },
-/* 526 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var cookie = __webpack_require__(527);
+	var cookie = __webpack_require__(522);
 
 	var _rawCookie = {};
 	var _res = undefined;
@@ -48059,7 +47155,7 @@
 
 
 /***/ },
-/* 527 */
+/* 522 */
 /***/ function(module, exports) {
 
 	/*!
@@ -48221,6 +47317,1017 @@
 
 
 /***/ },
+/* 523 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _reactRouter = __webpack_require__(168);
+
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _reactCookie = __webpack_require__(521);
+
+	var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+	var _Button = __webpack_require__(500);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var styles = {
+	  rows: {
+	    padding: '5px'
+	  }
+	};
+
+	var LoginPanel = function (_Component) {
+	  _inherits(LoginPanel, _Component);
+
+	  function LoginPanel() {
+	    _classCallCheck(this, LoginPanel);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LoginPanel).call(this));
+
+	    _this.state = {
+	      patient_id: '',
+	      clinician_id: '',
+	      password_hash: '',
+	      incorrectPassword: false
+	    };
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.handleChange = _this.handleChange.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(LoginPanel, [{
+	    key: 'handleClick',
+	    value: function handleClick() {
+	      var _axios$post,
+	          _this2 = this;
+
+	      var url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician';
+	      var client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
+	      _axios2.default.post(url, (_axios$post = {}, _defineProperty(_axios$post, client_id, this.state[client_id]), _defineProperty(_axios$post, 'password_hash', this.state.password_hash), _axios$post)).then(function (response) {
+	        console.log(response.data);
+	        if (response.data === 'incorrect password') {
+	          _this2.setState({ incorrectPassword: true });
+	        } else {
+	          _reactCookie2.default.save(client_id, _this2.state[client_id], { path: '/' });
+	          _reactRouter.browserHistory.push(_this2.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard');
+	        }
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: 'handleChange',
+	    value: function handleChange(inputType, inputValue) {
+	      this.setState(_defineProperty({}, inputType, inputValue));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this3 = this;
+
+	      var clientType = this.props.userType === 'client' ? 'Patient' : 'Clinician';
+	      var id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'login-split-panel' },
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 3 },
+	            _react2.default.createElement(
+	              'label',
+	              { className: 'signup-form-label' },
+	              clientType,
+	              ' ID'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 9 },
+	            _react2.default.createElement('input', { className: 'signup-input', type: 'text', name: id,
+	              onChange: function onChange(e) {
+	                return _this3.handleChange(id, e.target.value);
+	              },
+	              required: true
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 3 },
+	            _react2.default.createElement(
+	              'label',
+	              { className: 'signup-form-label' },
+	              'Password'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 9 },
+	            _react2.default.createElement('input', { type: 'password', className: 'signup-input', name: 'password_hash', onChange: function onChange(e) {
+	                return _this3.handleChange('password_hash', e.target.value);
+	              }, required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { sm: 9 },
+	            this.state.incorrectPassword ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'Incorrect ',
+	              clientType,
+	              ' ID or Password'
+	            ) : ''
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 4 },
+	            _react2.default.createElement(_Button2.default, { buttonName: 'Login', handleClick: this.handleClick })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LoginPanel;
+	}(_react.Component);
+
+	exports.default = LoginPanel;
+
+
+	LoginPanel.propTypes = {
+	  userType: _react2.default.PropTypes.string
+	};
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "loginPanel.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 524 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _reactCookie = __webpack_require__(521);
+
+	var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+	var _reactRouter = __webpack_require__(168);
+
+	var _index = __webpack_require__(525);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _index3 = __webpack_require__(527);
+
+	var _index4 = _interopRequireDefault(_index3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ClinicianDashboard = function (_React$Component) {
+	  _inherits(ClinicianDashboard, _React$Component);
+
+	  function ClinicianDashboard() {
+	    _classCallCheck(this, ClinicianDashboard);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClinicianDashboard).call(this));
+
+	    _this.state = {
+	      clients: {},
+	      showModal: false,
+	      clinician_id: ''
+	    };
+	    _this.toggleModal = _this.toggleModal.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(ClinicianDashboard, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      if (_reactCookie2.default.load('clinician_id')) {
+	        this.setState({ clinician_id: _reactCookie2.default.load('clinician_id') });
+	      } else {
+	        _reactRouter.browserHistory.push('/');
+	      }
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getClients();
+	    }
+	  }, {
+	    key: 'getClients',
+	    value: function getClients() {
+	      var _this2 = this;
+
+	      _axios2.default.get('/get-all-patients-letters', {
+	        params: {
+	          clinician_id: this.state.clinician_id
+	        }
+	      }).then(function (response) {
+	        console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39', response);
+	        console.log('clinician_id, ClinicianDashboard line 40', _this2.state.clinician_id);
+	        // const realDataFormat = [ {
+	        //   patient_id: 'jfewah8493',
+	        //   first_name: 'Kat',
+	        //   last_name: 'Bow',
+	        //   topic: 'some topic',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // }, {
+	        //   patient_id: 'jfewah8493',
+	        //   first_name: 'Kat',
+	        //   last_name: 'Bow',
+	        //   topic: 'some topicssss',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // }, {
+	        //   patient_id: 'jfewah9093',
+	        //   first_name: 'Kit',
+	        //   last_name: 'Bew',
+	        //   topic: 'some topic',
+	        //   recipient: 'Mum',
+	        //   status: 'sent',
+	        //   date_created: '2016-01-28'
+	        // } ]
+
+	        // const clientsObj = realDataFormat.reduce((clientObj, letter) => {
+	        //   const id = letter.patient_id
+	        //   clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
+	        //   return clientObj
+	        // }, {})
+
+	        var clientsObj = response.data.reduce(function (clientObj, letter) {
+	          var id = letter.patient_id;
+	          clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [letter];
+	          return clientObj;
+	        }, {});
+
+	        _this2.setState({ clients: clientsObj });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: 'toggleModal',
+	    value: function toggleModal() {
+	      this.setState({ showModal: !this.state.showModal });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.Grid,
+	        null,
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(_index4.default, { toggleModal: this.toggleModal, showModal: this.state.showModal })
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { xs: 10, xsOffset: 1 },
+	            _react2.default.createElement(_index2.default, _extends({}, this.props, { clients: this.state.clients }))
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ClinicianDashboard;
+	}(_react2.default.Component);
+
+	exports.default = ClinicianDashboard;
+
+
+	ClinicianDashboard.propTypes = {
+	  currentUser: _react2.default.PropTypes.string,
+	  clients: _react2.default.PropTypes.object
+	};
+
+	ClinicianDashboard.defaultProps = {
+	  currentUser: 'katbow',
+	  clients: {
+	    54634563456: {
+	      letters: [{
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Sent',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Waiting review',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'On the list',
+	        date_created: '10/11/16'
+	      }]
+	    },
+	    1324523452345: {
+	      letters: [{
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'On the list',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Sent',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Waiting review',
+	        date_created: '10/11/16'
+	      }]
+	    },
+	    24356345766: {
+	      letters: [{
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Sent',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'On the list',
+	        date_created: '10/11/16'
+	      }, {
+	        topic: 'Assessment results',
+	        recipient: 'School',
+	        status: 'Waiting review',
+	        date_created: '10/11/16'
+	      }]
+	    }
+	  }
+	};
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 525 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _index = __webpack_require__(526);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ClientList = function (_React$Component) {
+	  _inherits(ClientList, _React$Component);
+
+	  function ClientList() {
+	    _classCallCheck(this, ClientList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ClientList).apply(this, arguments));
+	  }
+
+	  _createClass(ClientList, [{
+	    key: 'trackProgress',
+	    value: function trackProgress(letters) {
+	      var total = letters.length;
+	      var complete = letters.filter(function (letter) {
+	        return letter.status === 'Sent';
+	      }).length;
+	      var progressString = complete.toString() + '/' + total.toString() + ' letters sent';
+	      return progressString;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      console.log(this.props.clients);
+	      return _react2.default.createElement(
+	        _reactBootstrap.Accordion,
+	        null,
+	        Object.keys(this.props.clients).map(function (patientID, i) {
+	          return _react2.default.createElement(
+	            _reactBootstrap.Panel,
+	            {
+	              key: i,
+	              eventKey: i.toString(),
+	              header: _react2.default.createElement(
+	                _reactBootstrap.Row,
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { xs: 3 },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    patientID
+	                  )
+	                ),
+	                _react2.default.createElement(_reactBootstrap.Col, { xs: 6 }),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { xs: 3 },
+	                  _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _this2.trackProgress(_this2.props.clients[patientID])
+	                  )
+	                )
+	              )
+	            },
+	            _react2.default.createElement(_index2.default, { letters: _this2.props.clients[patientID] })
+	          );
+	        })
+	      );
+	    }
+	  }]);
+
+	  return ClientList;
+	}(_react2.default.Component);
+
+	exports.default = ClientList;
+
+
+	ClientList.propTypes = {
+	  clients: _react2.default.PropTypes.object
+	};
+
+	// {this.props.clients.map((client, i) => {
+	//   return (
+	//     <Panel
+	//       header={
+	//         <Row>
+	//           <Col xs={3}>
+	//             <p>{client.id}</p>
+	//           </Col>
+	//           <Col xs={6}>
+	//             <ProgressBar bsStyle='info' now={this.trackProgress(client.letters)[1]}/>
+	//           </Col>
+	//           <Col xs={3}>
+	//             <p> {this.trackProgress(client.letters)[0]} </p>
+	//           </Col>
+	//         </Row>
+	//       }
+	//       eventKey={i}
+	//       key={i}
+	//     >
+	//       <LetterTable letters={client.letters}/>
+	//     </Panel>
+	//     )
+	// })}
+	// </Accordion>
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 526 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LetterTable = function (_React$Component) {
+	  _inherits(LetterTable, _React$Component);
+
+	  function LetterTable() {
+	    _classCallCheck(this, LetterTable);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LetterTable).call(this));
+
+	    _this.state = {};
+	    _this.postData = _this.postData.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(LetterTable, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this.setState({
+	        letters: this.props.letters
+	      });
+	    }
+	  }, {
+	    key: 'changeStatus',
+	    value: function changeStatus(letterStatus, index, date_created) {
+	      console.log('letter', date_created);
+	      var letters = this.state.letters;
+	      letters[index].status = letterStatus;
+	      this.setState({
+	        letters: letters
+	      });
+	      this.postData(letterStatus, date_created);
+	    }
+	  }, {
+	    key: 'postData',
+	    value: function postData(letterStatus, date_created) {
+	      _axios2.default.post('/change-letter-status', {
+	        newStatus: letterStatus,
+	        date_created: date_created
+	      }).then(function (response) {
+	        console.log(response);
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        _reactBootstrap.Table,
+	        { responsive: true },
+	        _react2.default.createElement(
+	          'thead',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            null,
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Topic'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Recipients'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Progress'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Status'
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              null,
+	              'Created'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          this.state.letters ? this.state.letters.map(function (letter, i) {
+	            return _react2.default.createElement(
+	              'tr',
+	              { key: i },
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.Button,
+	                  { bsStyle: 'link' },
+	                  letter.topic
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                letter.recipient
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(_reactBootstrap.ProgressBar, { bsStyle: 'info', now: letter.status === 'In progress' ? 50 : 100 })
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.DropdownButton,
+	                  { bsStyle: 'info', title: letter.status, id: 'dropdown-basic-' + i },
+	                  _react2.default.createElement(
+	                    _reactBootstrap.MenuItem,
+	                    { eventKey: '1',
+	                      active: letter.status === 'In progress',
+	                      onClick: _this2.changeStatus.bind(_this2, 'In progress', i)
+	                    },
+	                    'In progress'
+	                  ),
+	                  _react2.default.createElement(
+	                    _reactBootstrap.MenuItem,
+	                    {
+	                      active: letter.status === 'Sent',
+	                      eventKey: '2',
+	                      onClick: _this2.changeStatus.bind(_this2, 'Sent', i, letter.date_created)
+	                    },
+	                    'Sent'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'td',
+	                null,
+	                letter.date_created
+	              )
+	            );
+	          }) : ''
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LetterTable;
+	}(_react2.default.Component);
+
+	exports.default = LetterTable;
+
+
+	LetterTable.defaultProps = {
+	  letters: _react2.default.PropTypes.array
+	};
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 527 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _axios = __webpack_require__(503);
+
+	var _axios2 = _interopRequireDefault(_axios);
+
+	var _reactCookie = __webpack_require__(521);
+
+	var _reactCookie2 = _interopRequireDefault(_reactCookie);
+
+	var _recipientInput = __webpack_require__(528);
+
+	var _recipientInput2 = _interopRequireDefault(_recipientInput);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddClient = function (_React$Component) {
+	  _inherits(AddClient, _React$Component);
+
+	  function AddClient() {
+	    _classCallCheck(this, AddClient);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AddClient).call(this));
+
+	    _this.state = {
+	      inputList: [],
+	      formContent: {
+	        topic: '',
+	        recipient: '',
+	        patient_id: '',
+	        possible_statuses: {
+	          1: 'In progress',
+	          2: 'Sent'
+	        }
+	      }
+	    };
+	    _this.addRecipient = _this.addRecipient.bind(_this);
+	    _this.formChange = _this.formChange.bind(_this);
+	    _this.submitItem = _this.submitItem.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(AddClient, [{
+	    key: 'addRecipient',
+	    value: function addRecipient() {
+	      var inputList = this.state.inputList;
+	      this.setState({
+	        inputList: inputList.concat(_react2.default.createElement(_recipientInput2.default, null))
+	      });
+	    }
+
+	    // addStatusInput () {
+	    //   this.setState({
+	    //     statusList: this.state.statusList.concat('status')
+	    //   })
+	    // }
+
+	  }, {
+	    key: 'formChange',
+	    value: function formChange(property, e) {
+	      this.setState({
+	        formContent: _extends({}, this.state.formContent, _defineProperty({}, property, e.target.value))
+	      });
+	    }
+
+	    // addFormStatus () {
+	    //   this.setState({
+	    //     formContent: {
+	    //       ...this.state.formContent,
+	    //       possible_statuses: {
+	    //         1: 'In progress',
+	    //         2: 'Sent'
+	    //       }
+	    //     }
+	    //   })
+	    // }
+
+	  }, {
+	    key: 'submitItem',
+	    value: function submitItem() {
+	      var _this2 = this;
+
+	      _axios2.default.post('/add-new-letter', _extends({}, this.state.formContent, {
+	        clinician_id: _reactCookie2.default.load('clinician_id'),
+	        date_created: Date.now()
+	      })).then(function (response) {
+	        console.log(response);
+	        _this2.props.toggleModal();
+	        _this2.setState({
+	          formContent: {
+	            topic: '',
+	            recipient: '',
+	            patient_id: '',
+	            possible_statuses: {
+	              1: 'In progress',
+	              2: 'Sent'
+	            }
+	          }
+	        });
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'modal-container', style: { height: 200 } },
+	        _react2.default.createElement(
+	          _reactBootstrap.Button,
+	          {
+	            bsStyle: 'primary',
+	            bsSize: 'large',
+	            onClick: this.props.toggleModal
+	          },
+	          'Add New Item'
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Modal,
+	          {
+	            show: this.props.showModal,
+	            onHide: this.props.toggleModal,
+	            bsSize: 'lg'
+	          },
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Header,
+	            { closeButton: true },
+	            _react2.default.createElement(
+	              _reactBootstrap.Modal.Title,
+	              { id: 'contained-modal-title' },
+	              'Client Form'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Body,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Form,
+	              { horizontal: true },
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                { controlId: 'formHorizontalEmail' },
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                  'Patient ID'
+	                ),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. FO04835382',
+	                    onChange: this.formChange.bind(null, 'patient_id')
+	                  })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                { controlId: 'formHorizontalEmail' },
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                  'Topic'
+	                ),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. March Assessment',
+	                    onChange: this.formChange.bind(null, 'topic')
+	                  })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                { controlId: 'formHorizontalEmail' },
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { componentClass: _reactBootstrap.ControlLabel, sm: 2 },
+	                  'Recipient(s)'
+	                ),
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { sm: 9 },
+	                  _react2.default.createElement(_reactBootstrap.FormControl, {
+	                    type: 'text',
+	                    placeholder: 'e.g. School, Hospital, Parents',
+	                    onChange: this.formChange.bind(null, 'recipient')
+	                  })
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _reactBootstrap.FormGroup,
+	                null,
+	                _react2.default.createElement(
+	                  _reactBootstrap.Col,
+	                  { smOffset: 2, sm: 10 },
+	                  _react2.default.createElement(
+	                    _reactBootstrap.Button,
+	                    { bsStyle: 'primary', onClick: this.submitItem },
+	                    'Submit'
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            _reactBootstrap.Modal.Footer,
+	            null,
+	            _react2.default.createElement(
+	              _reactBootstrap.Button,
+	              { onClick: this.props.toggleModal },
+	              'Close'
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AddClient;
+	}(_react2.default.Component);
+
+	exports.default = AddClient;
+
+
+	AddClient.propTypes = {
+	  showModal: _react2.default.PropTypes.bool,
+	  toggleModal: _react2.default.PropTypes.func
+	};
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
 /* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -48318,11 +48425,11 @@
 
 	var _reactRouter = __webpack_require__(168);
 
-	var _axios = __webpack_require__(504);
+	var _axios = __webpack_require__(503);
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(526);
+	var _reactCookie = __webpack_require__(521);
 
 	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
@@ -48345,9 +48452,11 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClientDashboard).call(this));
 
 	    _this.state = {
-	      filterActiveLetters: _this.filterActiveLetters.bind(_this),
-	      filterSentLetters: _this.filterSentLetters.bind(_this)
+	      patient_id: '',
+	      letters: []
 	    };
+	    _this.filterActiveLetters = _this.filterActiveLetters.bind(_this);
+	    _this.filterSentLetters = _this.filterSentLetters.bind(_this);
 	    return _this;
 	  }
 
@@ -48362,17 +48471,30 @@
 	        }
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      console.log('PATIENT STATE', this.state.patient_id);
+	      _axios2.default.get('/get-patient-letters', {
+	        patient_id: this.state.patient_id
+	      }).then(function (response) {
+	        _this2.setState({ letters: response.data });
+	      }).catch(function (response) {
+	        console.log(response);
+	      });
+	    }
+	  }, {
 	    key: 'filterActiveLetters',
 	    value: function filterActiveLetters() {
-	      return this.props.letters.filter(function (letter) {
-	        console.log(letter.status);
+	      return this.state.letters.filter(function (letter) {
 	        return letter.status !== 'Sent';
 	      });
 	    }
 	  }, {
 	    key: 'filterSentLetters',
 	    value: function filterSentLetters() {
-	      return this.props.letters.filter(function (letter) {
+	      return this.state.letters.filter(function (letter) {
 	        return letter.status === 'Sent';
 	      });
 	    }
@@ -48405,39 +48527,63 @@
 	  letters: _react2.default.PropTypes.array
 	};
 
-	ClientDashboard.defaultProps = {
-	  letters: [{
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Waiting review',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'In preparation',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Sent',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'Sent',
-	    due: '10/11/16'
-	  }, {
-	    topic: 'Assessment results',
-	    recipients: ['School'],
-	    correspondence: ['patient', "patient's mum", 'school'],
-	    status: 'In preparation',
-	    due: '10/11/16'
-	  }]
-	};
+	// ClientDashboard.defaultProps = {
+	//   letters: [
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Waiting review',
+	//       due: '10/11/16'
+	//     },
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'In preparation',
+	//       due: '10/11/16'
+	//     },
+	//     {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Sent',
+	//       due: '10/11/16'
+	//     }, {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'Sent',
+	//       due: '10/11/16'
+	//     }, {
+	//       topic: 'Assessment results',
+	//       recipient: [
+	//         'School'
+	//       ],
+	//       correspondence: [
+	//         'patient', "patient's mum", 'school'
+	//       ],
+	//       status: 'In preparation',
+	//       due: '10/11/16'
+	//     }
+	//   ]
+	// }
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
@@ -48539,7 +48685,7 @@
 	                _react2.default.createElement(
 	                  'td',
 	                  null,
-	                  letter.recipients
+	                  letter.recipient
 	                ),
 	                _react2.default.createElement(
 	                  'td',
@@ -48552,8 +48698,8 @@
 	                      { className: 'arrow-status', xs: 2 },
 	                      _react2.default.createElement(
 	                        'p',
-	                        { className: _this2.colorText(letter.status, 'On the list') },
-	                        'On the list'
+	                        { className: _this2.colorText(letter.status, 'In progress') },
+	                        'In progress'
 	                      )
 	                    ),
 	                    _react2.default.createElement(
@@ -48566,35 +48712,7 @@
 	                      { xs: 3 },
 	                      _react2.default.createElement(
 	                        'p',
-	                        { className: _this2.colorText(letter.status, 'In preparation') },
-	                        'In preparation'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 1 },
-	                      _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'chevron-right' })
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        { className: _this2.colorText(letter.status, 'Waiting review') },
-	                        'Waiting review'
-	                      )
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 1 },
-	                      _react2.default.createElement(_reactBootstrap.Glyphicon, { glyph: 'chevron-right' })
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        null,
+	                        { className: _this2.colorText(letter.status, 'Sent') },
 	                        'Sent'
 	                      )
 	                    )
@@ -48604,32 +48722,32 @@
 	            }) : ''
 	          )
 	        ),
-	        _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { responsive: true },
-	          _react2.default.createElement(
-	            'thead',
-	            null,
+	        this.props.sentLetters ? this.props.sentLetters.map(function (letter, i) {
+	          return _react2.default.createElement(
+	            _reactBootstrap.Table,
+	            { responsive: true },
 	            _react2.default.createElement(
-	              'tr',
+	              'thead',
 	              null,
 	              _react2.default.createElement(
-	                'th',
+	                'tr',
 	                null,
-	                'Topic'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Recipients'
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Topic'
+	                ),
+	                _react2.default.createElement(
+	                  'th',
+	                  null,
+	                  'Recipients'
+	                )
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            this.props.sentLetters ? this.props.sentLetters.map(function (letter, i) {
-	              return _react2.default.createElement(
+	            ),
+	            _react2.default.createElement(
+	              'tbody',
+	              null,
+	              _react2.default.createElement(
 	                'tr',
 	                { key: i },
 	                _react2.default.createElement(
@@ -48644,12 +48762,12 @@
 	                _react2.default.createElement(
 	                  'td',
 	                  null,
-	                  letter.recipients
+	                  letter.recipient
 	                )
-	              );
-	            }) : ''
-	          )
-	        )
+	              )
+	            )
+	          );
+	        }) : ''
 	      );
 	    }
 	  }]);
@@ -48663,15 +48781,6 @@
 	ClientLetterTable.propTypes = {
 	  activeLetters: _react2.default.PropTypes.array,
 	  sentLetters: _react2.default.PropTypes.array
-	};
-
-	ClientLetterTable.defaultProps = {
-	  progressBar: {
-	    'On the list': 25,
-	    'In preparation': 50,
-	    'Waiting review': 75,
-	    'Sent': 100
-	  }
 	};
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
