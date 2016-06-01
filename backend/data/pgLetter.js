@@ -6,11 +6,14 @@ const addNewLetter = (client, done, data, reply) => {
       data.patient_id,
       data.possible_statuses['1'],
       data.possible_statuses,
-      data.date_created,
+      data.date_created
     ])
   client.query('SELECT patient_id FROM clinicians_patients WHERE clinician_id = $1',
     [ data.clinician_id ], (err, result) => {
       console.log(result)
+      if (err) {
+        console.error(err)
+      }
       if (result.rows.filter(row => row.patient_id === data.patient_id).length === 0) {
         client.query('INSERT INTO clinicians_patients VALUES ($1, $2)', [ data.clinician_id, data.patient_id ], (error) => {
           if (error) console.error(error)
