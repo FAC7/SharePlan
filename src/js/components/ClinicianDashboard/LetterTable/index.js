@@ -3,6 +3,7 @@ import {
   Table, thead, th, td, tr, tbody, ProgressBar, DropdownButton, MenuItem, Button
 } from 'react-bootstrap'
 import axios from 'axios'
+
 export default class LetterTable extends React.Component {
   constructor () {
     super()
@@ -11,6 +12,7 @@ export default class LetterTable extends React.Component {
     }
     this.changeStatus = this.changeStatus.bind(this)
     this.postData = this.postData.bind(this)
+    this.formatDate = this.formatDate.bind(this)
   }
 
   componentWillMount () {
@@ -30,7 +32,6 @@ export default class LetterTable extends React.Component {
       letters: letters
     })
     this.postData(letterStatus, date_created)
-    console.log('state', this.state)
   }
 
   postData (letterStatus, date_created) {
@@ -44,6 +45,17 @@ export default class LetterTable extends React.Component {
     .catch((response) => {
       console.log(response)
     })
+  }
+
+  formatDate (createdDate) {
+    const d = new Date(+createdDate)
+    let day = d.getDate()
+    let month = d.getMonth()
+    const year = d.getFullYear()
+    day = day.toString().length === 1 ? '0' + day : day
+    month = month.toString().length === 1 ? '0' + month : month
+    const prettyDate = day + '/' + month + '/' + year
+    return prettyDate
   }
 
   render () {
@@ -100,7 +112,7 @@ export default class LetterTable extends React.Component {
                     Sent
                   </MenuItem>
                 </DropdownButton></td>
-              <td>{letter.date_created}</td>
+              <td>{this.formatDate(letter.date_created)}</td>
             </tr>
           )
         }) : ''}
