@@ -6,9 +6,13 @@ import axios from 'axios'
 export default class LetterTable extends React.Component {
   constructor () {
     super()
-    this.state = {}
+    this.state = {
+      letters: []
+    }
+    this.changeStatus = this.changeStatus.bind(this)
     this.postData = this.postData.bind(this)
   }
+
   componentWillMount () {
     this.setState({
       letters: this.props.letters
@@ -56,7 +60,7 @@ export default class LetterTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-        {this.state.letters? this.state.letters.map((letter, i) => {
+        {this.state.letters ? this.state.letters.map((letter, i) => {
           return (
             <tr key={i}>
               <td>
@@ -102,6 +106,6 @@ export default class LetterTable extends React.Component {
   }
 }
 
-LetterTable.defaultProps = {
+LetterTable.propTypes = {
   letters: React.PropTypes.array
 }

@@ -17,6 +17,7 @@ export default class ClinicianDashboard extends React.Component {
       clinician_id: ''
     }
     this.toggleModal = this.toggleModal.bind(this)
+    this.getClients = this.getClients.bind(this)
   }
 
   componentWillMount () {
@@ -26,6 +27,7 @@ export default class ClinicianDashboard extends React.Component {
       browserHistory.push('/')
     }
   }
+
   componentDidMount () {
     this.getClients()
   }
@@ -37,10 +39,6 @@ export default class ClinicianDashboard extends React.Component {
       }
     })
     .then((response) => {
-      console.log('response from /get-all-patients-letters request, ClinicianDashboard line 39',
-      response)
-      console.log('clinician_id, ClinicianDashboard line 40', this.state.clinician_id)
-
       const clientsObj = response.data.reduce((clientObj, letter) => {
         const id = letter.patient_id
         clientObj[id] = clientObj[id] ? clientObj[id].concat(letter) : [ letter ]
@@ -92,7 +90,7 @@ export default class ClinicianDashboard extends React.Component {
           </form>
         </Row>
         <Row>
-          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal} getClients={this.getClients}/>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
