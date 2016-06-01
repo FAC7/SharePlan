@@ -20,6 +20,8 @@ export default class ClientList extends React.Component {
         {Object.keys(this.props.clients).map((patientID, i) => {
           return (
             <Panel
+              key={i}
+              eventKey={i.toString()}
               header={
                 <Row>
                   <Col xs={3}>
@@ -31,7 +33,6 @@ export default class ClientList extends React.Component {
                   </Col>
                 </Row>
               }
-              key={i}
             >
               <LetterTable letters={this.props.clients[patientID]}/>
             </Panel>
