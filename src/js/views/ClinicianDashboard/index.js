@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 import axios from 'axios'
 import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
@@ -45,10 +45,29 @@ export default class ClinicianDashboard extends React.Component {
         return clientObj
       }, {})
 
-      this.setState({ clients: clientsObj })
+      this.setState({
+        fullClientsObj: clientsObj,
+        clients: clientsObj
+      })
     })
     .catch((response) => {
       console.log(response)
+    })
+  }
+
+  handleChange (e) {
+    const input = e.target.value
+    const fullClientsObj = this.state.fullClientsObj
+    const filteredList = Object.keys(fullClientsObj).filter((client_id) => {
+      return client_id.indexOf(input) > -1
+    })
+
+    const newClientObject = {}
+    filteredList.forEach((clientId) => {
+      newClientObject[clientId] = this.state.fullClientsObj[clientId]
+    })
+    this.setState({
+      clients: newClientObject
     })
   }
 
@@ -59,6 +78,17 @@ export default class ClinicianDashboard extends React.Component {
   render () {
     return (
       <Grid>
+        <Row>
+          <form>
+            <FormGroup controlId='formControlsText'>
+              <ControlLabel>Search for patients</ControlLabel>
+              <FormControl
+                onChange={this.handleChange.bind(this)}
+                type='text' placeholder='Search by Patient ID'
+              />
+            </FormGroup>
+          </form>
+        </Row>
         <Row>
           <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal} getClients={this.getClients}/>
         </Row>
