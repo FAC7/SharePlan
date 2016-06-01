@@ -15,6 +15,7 @@ export default class ClientDashboard extends React.Component {
     }
     this.filterActiveLetters = this.filterActiveLetters.bind(this)
     this.filterSentLetters = this.filterSentLetters.bind(this)
+    this.getLetters = this.getLetters.bind(this)
   }
 
   componentWillMount () {
@@ -27,7 +28,19 @@ export default class ClientDashboard extends React.Component {
   }
 
   componentDidMount () {
-    console.log('PATIENT STATE', this.state.patient_id)
+    this.getLetters()
+    // axios.get('/get-patient-letters', {
+    //   patient_id: this.state.patient_id
+    // })
+    // .then(response => {
+    //   this.setState({ letters: response.data })
+    // })
+    // .catch(response => {
+    //   console.log(response)
+    // })
+  }
+
+  getLetters () {
     axios.get('/get-patient-letters', {
       patient_id: this.state.patient_id
     })
@@ -56,7 +69,7 @@ export default class ClientDashboard extends React.Component {
       <Grid>
         <Row>
           <Col xs={10} xsOffset={1}>
-            <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()} />
+            <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()}/>
           </Col>
         </Row>
       </Grid>
@@ -67,61 +80,3 @@ export default class ClientDashboard extends React.Component {
 ClientDashboard.propTypes = {
   letters: React.PropTypes.array
 }
-
-// ClientDashboard.defaultProps = {
-//   letters: [
-//     {
-//       topic: 'Assessment results',
-//       recipient: [
-//         'School'
-//       ],
-//       correspondence: [
-//         'patient', "patient's mum", 'school'
-//       ],
-//       status: 'Waiting review',
-//       due: '10/11/16'
-//     },
-//     {
-//       topic: 'Assessment results',
-//       recipient: [
-//         'School'
-//       ],
-//       correspondence: [
-//         'patient', "patient's mum", 'school'
-//       ],
-//       status: 'In preparation',
-//       due: '10/11/16'
-//     },
-//     {
-//       topic: 'Assessment results',
-//       recipient: [
-//         'School'
-//       ],
-//       correspondence: [
-//         'patient', "patient's mum", 'school'
-//       ],
-//       status: 'Sent',
-//       due: '10/11/16'
-//     }, {
-//       topic: 'Assessment results',
-//       recipient: [
-//         'School'
-//       ],
-//       correspondence: [
-//         'patient', "patient's mum", 'school'
-//       ],
-//       status: 'Sent',
-//       due: '10/11/16'
-//     }, {
-//       topic: 'Assessment results',
-//       recipient: [
-//         'School'
-//       ],
-//       correspondence: [
-//         'patient', "patient's mum", 'school'
-//       ],
-//       status: 'In preparation',
-//       due: '10/11/16'
-//     }
-//   ]
-// }
