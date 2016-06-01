@@ -17,8 +17,8 @@ export default class AddClient extends React.Component {
           1: 'On the list',
           2: 'In progress',
           3: 'Sent'
-        },
-      },
+        }
+      }
     }
     this.addRecipient = this.addRecipient.bind(this)
     this.formChange = this.formChange.bind(this)
@@ -54,8 +54,9 @@ export default class AddClient extends React.Component {
       date_created: Date.now()
     })
     .then((response) => {
-      console.log(response)
+      console.log('ADD CLIENT RESPONSE', response)
       this.props.toggleModal()
+      this.props.getClients()
       this.setState({
         formContent: {
           topic: '',
@@ -65,7 +66,7 @@ export default class AddClient extends React.Component {
             1: 'On the list',
             2: 'In progress',
             3: 'Sent'
-          },
+          }
         }
       })
     })
@@ -148,5 +149,6 @@ export default class AddClient extends React.Component {
 
 AddClient.propTypes = {
   showModal: React.PropTypes.bool,
-  toggleModal: React.PropTypes.func
+  toggleModal: React.PropTypes.func,
+  getClients: React.PropTypes.func
 }

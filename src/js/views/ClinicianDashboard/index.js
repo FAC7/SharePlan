@@ -17,6 +17,7 @@ export default class ClinicianDashboard extends React.Component {
       clinician_id: ''
     }
     this.toggleModal = this.toggleModal.bind(this)
+    this.getClients = this.getClients.bind(this)
   }
 
   componentWillMount () {
@@ -59,7 +60,7 @@ export default class ClinicianDashboard extends React.Component {
     return (
       <Grid>
         <Row>
-          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal}/>
+          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal} getClients={this.getClients}/>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
