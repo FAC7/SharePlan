@@ -4,6 +4,8 @@ import { browserHistory } from 'react-router'
 import axios from 'axios'
 import cookie from 'react-cookie'
 import { Row, Col, Grid } from 'react-bootstrap'
+import DefaultButton from '../../components/Button/'
+
 
 export default class ClientDashboard extends React.Component {
 
@@ -39,6 +41,11 @@ export default class ClientDashboard extends React.Component {
     //   console.log(response)
     // })
   }
+  onLogout () {
+    cookie.remove('clinician_id', { path: '/' })
+    cookie.remove('patient_id', { path: '/' })
+    browserHistory.push('/')
+  }
 
   getLetters () {
     axios.get('/get-patient-letters', {
@@ -67,6 +74,9 @@ export default class ClientDashboard extends React.Component {
   render () {
     return (
       <Grid>
+        <Row>
+          <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
+        </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
             <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()}/>

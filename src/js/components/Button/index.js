@@ -5,8 +5,8 @@ export default class DefaultButton extends Component {
   render () {
     return (
       <Button
-        bsStyle='primary'
         bsSize='large'
+        bsClass={this.props.cssClass + ' default-button'}
         onClick={this.props.handleClick}
       >{this.props.buttonName}</Button>
     )
@@ -15,5 +15,6 @@ export default class DefaultButton extends Component {
 
 DefaultButton.propTypes = {
   buttonName: React.PropTypes.string.isRequired,
-  handleClick: React.PropTypes.func
+  handleClick: React.PropTypes.func,
+  cssClass: React.PropTypes.string
 }

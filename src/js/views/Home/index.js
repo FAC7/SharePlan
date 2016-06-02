@@ -25,22 +25,50 @@ export default class Home extends Component {
       <div>
         <Grid>
           <Row>
-            <Col lg={6} md={6} xs={12}>
-              <Row>
-                <Col lgOffset={8} lg={4} mdOffset={8} md={4} xsOffset={4} xs={4} >
-                  <DefaultButton buttonName='I am a Patient' handleClick={this.toggleModal.bind(this, 'client')}/>
-                </Col>
-              </Row>
-            </Col>
-            <Col lg={6} md={6} xs={12}>
-              <Col lg={4} md={4} xsOffset={4} xs={4}>
-                <DefaultButton buttonName='I am a Clinician' handleClick={this.toggleModal.bind(this, 'clinician')}/>
-              </Col>
+            <Col xs={10}
+              md={6}
+              lg={4}
+              mdOffset={3}
+              lgOffset={4}
+              xsOffset={1}
+            >
+              <img className='logo' src='/img/logo.png' />
             </Col>
           </Row>
           <Row>
-            <Col xs={12}>
-              <img className='logo' src='/img/logo.png' />
+            <Col md={6} mdOffset={3} xs={12}>
+              <div className='title-container'>
+                <h2 className='brand-title'>SharePlan</h2>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col
+              lg={6}
+              md={8}
+              xs={10}
+              lgOffset={3}
+              mdOffset={2}
+              xsOffset={1}
+            >
+              <Row>
+                <div className='homepage-buttons-container'>
+                  <Col lg={5}>
+                    <DefaultButton
+                      cssClass='homepage-button'
+                      buttonName='I am a Patient'
+                      handleClick={this.toggleModal.bind(this, 'client')}
+                    />
+                  </Col>
+                  <Col lg={5} lgOffset={2}>
+                    <DefaultButton
+                      cssClass='homepage-button'
+                      buttonName='I am a Clinician'
+                      handleClick={this.toggleModal.bind(this, 'clinician')}
+                    />
+                  </Col>
+                </div>
+              </Row>
             </Col>
           </Row>
         </Grid>
