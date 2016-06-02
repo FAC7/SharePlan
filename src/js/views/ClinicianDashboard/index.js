@@ -61,17 +61,8 @@ export default class ClinicianDashboard extends React.Component {
 
   handleChange (e) {
     const input = e.target.value
-    const fullClientsObj = this.state.fullClientsObj
-    const filteredList = Object.keys(fullClientsObj).filter((client_id) => {
-      return client_id.indexOf(input) > -1
-    })
-
-    const newClientObject = {}
-    filteredList.forEach((clientId) => {
-      newClientObject[clientId] = this.state.fullClientsObj[clientId]
-    })
     this.setState({
-      clients: newClientObject
+      filter: input
     })
   }
 
@@ -101,11 +92,15 @@ export default class ClinicianDashboard extends React.Component {
           <Col xs={4} xsOffset={1} >
             <form className='search-bar-container'>
               <FormGroup controlId='formControlsText'>
-                <ControlLabel><h4>Search for Patients</h4></ControlLabel>
-                <FormControl
-                  onChange={this.handleChange.bind(this)}
-                  type='text' placeholder='Search by Patient ID'
-                />
+                <Row>
+                  <ControlLabel><h4>Search for Patients</h4></ControlLabel>
+                </Row>
+                <div className='search-bar'>
+                  <FormControl
+                    onChange={this.handleChange.bind(this)}
+                    type='text' placeholder='Search by Patient ID'
+                  />
+                </div>
               </FormGroup>
             </form>
           </Col>
@@ -126,9 +121,9 @@ export default class ClinicianDashboard extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={10} xsOffset={1}>
+          <Col xs={8} xsOffset={2}>
             <div className='client-list-container'>
-              <ClientList {...this.props} clients={this.state.clients}/>
+              <ClientList {...this.props} filter={this.state.filter} clients={this.state.clients}/>
             </div>
           </Col>
         </Row>

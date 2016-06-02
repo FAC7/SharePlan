@@ -79,7 +79,7 @@ export default class AddClient extends React.Component {
           bsSize={'lg'}
         >
           <Modal.Header closeButton>
-            <Modal.Title id='contained-modal-title'>Client Form</Modal.Title>
+            <Modal.Title id='contained-modal-title'>Add Patient Letter</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form horizontal>
