@@ -16,6 +16,7 @@ export default class ClientLetterTable extends React.Component {
       <div>
         {this.props.activeLetters ?
           <div className='client-table'>
+          <h2>Letters in Progress</h2>
             <Table responsive className='client-heading'>
               <thead>
                 <tr>
@@ -74,20 +75,21 @@ export default class ClientLetterTable extends React.Component {
          }
         {this.props.sentLetters ?
           <div className='client-table'>
-            <Table responsive className='client-heading'>
-              <thead>
-              <div>
-                <tr>
-                  <th>
-                    Topic
-                  </th>
-                  <th>
-                    Recipients
-                  </th>
-                </tr>
-                </div>
-              </thead>
-              <tbody>
+            <h2>Sent Letters</h2>
+              <Table responsive className='client-heading'>
+                <thead>
+                <div>
+                  <tr>
+                    <th>
+                      Topic
+                    </th>
+                    <th>
+                      Recipients
+                    </th>
+                  </tr>
+                  </div>
+                </thead>
+                <tbody>
 
                 {this.props.sentLetters.map((letter, i) => {
                   return (
@@ -105,9 +107,10 @@ export default class ClientLetterTable extends React.Component {
                   )}
               </tbody>
             </Table>
-          </div> : ''}
+          </div>
+      : ''}
       </div>
-    )
+  )
   }
 }
 
