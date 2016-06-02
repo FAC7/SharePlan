@@ -80,7 +80,7 @@ export default class LoginPanel extends Component {
           </Col>
         </Row>
         <Row style={styles.rows}>
-          <Col smOffset={4} sm={4}>
+          <Col smOffset={3} sm={9}>
             <DefaultButton buttonName='Login' handleClick={this.handleClick}/>
           </Col>
         </Row>
