@@ -9,7 +9,7 @@ export default class ClientList extends React.Component {
     const complete = letters.filter((letter) => {
       return letter.status === 'Sent'
     }).length
-    const progressString = complete.toString() + '/' + total.toString() + ' Letters Sent'
+    const progressString = complete.toString() + ' out of ' + total.toString() + ' Letters Sent'
     return progressString
   }
 
@@ -23,11 +23,14 @@ export default class ClientList extends React.Component {
               eventKey={i.toString()}
               header={
                 <Row>
-                  <Col xs={6}>
-                    <p>Patient ID: {patientID}</p>
+                  <Col xs={2} xsOffset={1}>
+                    <p><strong>Patient ID:</strong></p>
                   </Col>
-                  <Col xs={6}>
-                    <p> Progress: {this.trackProgress(this.props.clients[patientID])}</p>
+                  <Col xs={2}>
+                    <p>{patientID}</p>
+                  </Col>
+                  <Col xs={4} xsOffset={2}>
+                    <p>{this.trackProgress(this.props.clients[patientID])}</p>
                   </Col>
                 </Row>
               }

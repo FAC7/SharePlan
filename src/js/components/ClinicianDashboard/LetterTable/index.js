@@ -15,7 +15,7 @@ export default class LetterTable extends React.Component {
     this.formatDate = this.formatDate.bind(this)
   }
 
-  componentWillMount () {
+  componentDidMount () {
     const letters = this.props.letters
     const sortedLetters = letters.sort((prev, curr) => {
       return prev.date_created - curr.date_created
@@ -86,7 +86,9 @@ export default class LetterTable extends React.Component {
               </td>
               <td>{letter.recipient}</td>
               <td>
-                <ProgressBar bsStyle='info' now={letterColor[letter.status]}/>
+                <ProgressBar
+                  bsStyle='warning' now={letterColor[letter.status]}
+                />
               </td>
               <td>
                 <DropdownButton bsStyle='info' title={letter.status} id={`dropdown-basic-${i}`}>
