@@ -1,27 +1,12 @@
 import React from 'react'
-import { Link, browserHistory } from 'react-router'
-import cookie from 'react-cookie'
-
-import DefaultButton from '../Button/'
+import { Row, Col, Grid } from 'react-bootstrap'
 
 export default class Header extends React.Component {
-
-  onLogout () {
-    cookie.remove('clinician_id', { path: '/' })
-    cookie.remove('patient_id', { path: '/' })
-    browserHistory.push('/')
-  }
-
   render () {
     return (
-      <div>
-        <header>
-          <Link to={'/'}>
-            <h2 className='brand-title'>{this.props.brandName}</h2>
-          </Link>
-          <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
-        </header>
-      </div>
+      <Grid>
+        
+      </Grid>
     )
   }
 }

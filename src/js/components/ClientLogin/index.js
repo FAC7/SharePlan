@@ -9,7 +9,16 @@ export default class Login extends Component {
     return (
       <Modal bsSize={'lg'} show={this.props.showModal} onHide={this.props.toggleModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Sign Up or Login</Modal.Title>
+          <Modal.Title>
+            <Row>
+              <Col sm={6}>
+                Sign Up
+              </Col>
+              <Col sm={5}>
+                Login
+              </Col>
+            </Row>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -31,5 +40,6 @@ export default class Login extends Component {
 
 Login.propTypes = {
   showModal: React.PropTypes.bool,
-  toggleModal: React.PropTypes.func
+  toggleModal: React.PropTypes.func,
+  userType: React.PropTypes.string
 }
