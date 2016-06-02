@@ -87,7 +87,7 @@ export default class ClientDashboard extends React.Component {
         <Row>
           <Col xs={10} xsOffset={1}>
             <ClientLetterTable
-              sentLetters={this.filterSentLetters('Sent')}
+              sentLetters={this.filterSentLetters()}
               activeLetters={this.filterActiveLetters()}
             />
           </Col>
