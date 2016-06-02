@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Modal, Button, Row, Col } from 'react-bootstrap'
+import { Modal, Row, Col } from 'react-bootstrap'
 
 import SignupPanel from './signupPanel.js'
 import LoginPanel from './loginPanel.js'
+import DefaultButton from '../Button/'
 
 export default class Login extends Component {
   render () {
@@ -31,7 +32,7 @@ export default class Login extends Component {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.toggleModal}>Close</Button>
+          <DefaultButton handleClick={this.props.toggleModal} buttonName='Close'/>
         </Modal.Footer>
       </Modal>
     )

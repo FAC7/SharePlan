@@ -15,5 +15,6 @@ export default class DefaultButton extends Component {
 
 DefaultButton.propTypes = {
   buttonName: React.PropTypes.string.isRequired,
-  handleClick: React.PropTypes.func
+  handleClick: React.PropTypes.func,
+  cssClass: React.PropTypes.string
 }

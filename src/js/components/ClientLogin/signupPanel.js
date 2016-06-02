@@ -145,7 +145,7 @@ export default class SignupPanel extends Component {
           </Col>
         </Row>
         <Row style={styles.rows}>
-          <Col smOffset={5} sm={4}>
+          <Col smOffset={4} sm={8}>
             <DefaultButton buttonName='Sign Up' handleClick={this.handleClick}/>
           </Col>
         </Row>
