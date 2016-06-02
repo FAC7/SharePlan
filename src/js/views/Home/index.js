@@ -36,7 +36,7 @@ export default class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col xs={6} xsOffset={3}>
+            <Col md={6} mdOffset={3} xs={12}>
               <div className='title-container'>
                 <h2 className='brand-title'>SharePlan</h2>
               </div>
@@ -49,6 +49,7 @@ export default class Home extends Component {
               xs={10}
               lgOffset={3}
               mdOffset={2}
+              xsOffset={1}
             >
               <Row>
                 <div className='homepage-buttons-container'>
