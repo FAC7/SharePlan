@@ -62,7 +62,7 @@ export default class LoginPanel extends Component {
           <Col sm={9}>
             <input className='signup-input' type='text' name={id}
               onChange={(e) => this.handleChange(id, e.target.value)}
-              required 
+              required
             />
           </Col>
         </Row>
@@ -82,6 +82,14 @@ export default class LoginPanel extends Component {
         <Row style={styles.rows}>
           <Col smOffset={4} sm={4}>
             <DefaultButton buttonName='Login' handleClick={this.handleClick}/>
+          </Col>
+        </Row>
+        <Row>
+          <Col smOffset={4} sm={8}>
+            <div className={this.props.userType === 'client'
+            ? 'image-container patient-image' : 'image-container'}>
+              <img className='logo' src='/img/logo.png' />
+            </div>
           </Col>
         </Row>
       </div>
