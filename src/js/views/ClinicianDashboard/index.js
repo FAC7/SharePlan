@@ -61,17 +61,8 @@ export default class ClinicianDashboard extends React.Component {
 
   handleChange (e) {
     const input = e.target.value
-    const fullClientsObj = this.state.fullClientsObj
-    const filteredList = Object.keys(fullClientsObj).filter((client_id) => {
-      return client_id.indexOf(input) > -1
-    })
-
-    const newClientObject = {}
-    filteredList.forEach((clientId) => {
-      newClientObject[clientId] = this.state.fullClientsObj[clientId]
-    })
     this.setState({
-      clients: newClientObject
+      filter: input
     })
   }
 
@@ -132,7 +123,7 @@ export default class ClinicianDashboard extends React.Component {
         <Row>
           <Col xs={8} xsOffset={2}>
             <div className='client-list-container'>
-              <ClientList {...this.props} clients={this.state.clients}/>
+              <ClientList {...this.props} filter={this.state.filter} clients={this.state.clients}/>
             </div>
           </Col>
         </Row>

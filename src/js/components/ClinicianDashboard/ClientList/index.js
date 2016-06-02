@@ -3,6 +3,19 @@ import { Accordion, Panel, Row, Col } from 'react-bootstrap'
 import LetterTable from '../LetterTable/index.js'
 
 export default class ClientList extends React.Component {
+  filter (value) {
+    console.log('called')
+    const clients = this.props.clients
+    const filteredList = Object.keys(clients).filter((client_id) => {
+      return client_id.indexOf(value) > -1
+    })
+
+    const newClientObject = {}
+    filteredList.forEach((clientId) => {
+      newClientObject[clientId] = clients[clientId]
+    })
+    return newClientObject
+  }
 
   trackProgress (letters) {
     const total = letters.length
@@ -14,9 +27,11 @@ export default class ClientList extends React.Component {
   }
 
   render () {
+    const input = this.props.filter
+    const clients = input ? this.filter(input) : this.props.clients
     return (
       <Accordion>
-        {Object.keys(this.props.clients).map((patientID, i) => {
+        {Object.keys(clients).map((patientID, i) => {
           return (
             <Panel
               key={i}
