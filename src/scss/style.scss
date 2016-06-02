@@ -1,5 +1,5 @@
 @import 'variables';
-// general styling
+/******************************* general styling ****************************/
 body {
 	background-color: $header-color;
 	color: white;
@@ -7,10 +7,18 @@ body {
 }
 .logo {
 	width: 100%;
-	margin-top: 1em;
+	max-width: 360px;
+	display: block;
+	margin: 1em auto 1em auto;
 }
 
-// homepage
+.container {
+	margin-bottom: 30px;
+	margin-top: 15px;
+	padding: 0;
+}
+
+/******************************* homepage ****************************/
 .login-btn {
   display: block !important;
   margin: 0 auto !important;
@@ -20,12 +28,17 @@ body {
 .default-button {
 	background-color: $bright-green;
 	padding: 1em;
-  width: 100%;
   border-radius: 14px;
 	border-width: 0.5px;
+	border: none;
+	margin: 10px;
+	min-width: 175px;
 }
 .homepage-button {
-	font-size: 1.25em;
+	font-size: 1.45em;
+	width: 100%;
+	display: block;
+	margin: 20px auto 15px auto;
 }
 
 .R2zU9JsZW1r2id-qp7H3S {
@@ -50,9 +63,22 @@ body {
 	padding: 0.5em;
 }
 
-// Client Dashboard
+@media screen and (max-width: 1080px) {
+	.homepage-button {
+		width: 60%;
+	}
+}
 
-// Client letter Table
+@media screen and (max-width: 600px) {
+	.brand-title {
+		font-size: 4.5em;
+	}
+}
+
+/******************************* Client Dashboard ****************************/
+
+
+/**************************** Client letter Table **************************/
 
 .active-state {
 	color: $bright-green;
@@ -88,4 +114,20 @@ body {
 	border: 1px solid $grey-blue;
 	border-top-left-radius: 14px;
   border-top-right-radius: 14px;
+}
+// Login-modals
+
+.modal-content {
+	.signup-form-label, .signup-input, .modal-title {
+		color: black;
+	}
+	.signup-split-panel {
+		border-right: 2px dotted darkgray;
+	}
+	.image-container {
+		width: 100px;
+	}
+	.patient-image {
+		padding-top: 30px
+	}
 }

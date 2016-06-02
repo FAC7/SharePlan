@@ -70,7 +70,7 @@ export default class AddClient extends React.Component {
   render () {
     return (
       <div className='modal-container'>
-        <DefaultButton buttonName='Add New Client'
+        <DefaultButton buttonName='Add Letter'
           handleClick={this.props.toggleModal}
         />
         <Modal
