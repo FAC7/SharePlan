@@ -115,6 +115,7 @@ body {
 	border-top-left-radius: 14px;
   border-top-right-radius: 14px;
 }
+
 // Login-modals
 
 .modal-content {
@@ -129,5 +130,13 @@ body {
 	}
 	.patient-image {
 		padding-top: 30px
+	}
+}
+
+// Add Letter modal
+
+.modal-content {
+	.control-label {
+		color: black;
 	}
 }
