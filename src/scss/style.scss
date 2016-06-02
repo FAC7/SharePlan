@@ -89,3 +89,20 @@ body {
 .arrow-right {
 	padding-left: 1px;
 }
+
+// Login-modals
+
+.modal-content {
+	.signup-form-label, .signup-input, .modal-title {
+		color: black;
+	}
+	.signup-split-panel {
+		border-right: 2px dotted darkgray;
+	}
+	.image-container {
+		width: 100px;
+	}
+	.patient-image {
+		padding-top: 30px
+	}
+}
