@@ -97,7 +97,6 @@ button {
 			border-radius: 15px;
 		}
 			th {
-				text-align: center;
 				background-color: $grey-blue;
 				border: 1px solid $grey-blue;
 				font-size: 17px;
@@ -116,6 +115,8 @@ button {
 	}
 	.active-state {
 		color: $bright-green;
+		margin-top: 11px;
+		font-weight: 700;
 	}
 	.arrow-status {
 		padding: 0 inherit;
