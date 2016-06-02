@@ -90,6 +90,31 @@ body {
 	padding-left: 1px;
 }
 
+//clinician dashboard
+
+.search-bar-container {
+	padding-top: 1em;
+	text-align: center;
+}
+.header-buttons {
+	padding-top: 1em;
+	text-align: center;
+}
+.client-list-container{
+	padding-top: 1em;
+}
+.clinician-dashboard-logo {
+	width: 142%;
+}
+.panel-default .panel-heading {
+	background-color: $grey-blue;
+	background-image: none;
+	vertical-align: middle;
+	color: white;
+	border: 1px solid $grey-blue;
+	border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
 // Login-modals
 
 .modal-content {

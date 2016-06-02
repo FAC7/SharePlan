@@ -82,26 +82,54 @@ export default class ClinicianDashboard extends React.Component {
   render () {
     return (
       <Grid>
+
         <Row>
-          <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
-        </Row>
-        <Row>
-          <form>
-            <FormGroup controlId='formControlsText'>
-              <ControlLabel>Search for patients</ControlLabel>
-              <FormControl
-                onChange={this.handleChange.bind(this)}
-                type='text' placeholder='Search by Patient ID'
-              />
-            </FormGroup>
-          </form>
-        </Row>
-        <Row>
-          <AddClient toggleModal={this.toggleModal} showModal={this.state.showModal} getClients={this.getClients}/>
+          <Col xs={2} xsOffset={1}>
+            <div className='header-buttons'>
+              <Row>
+                <h4>Add a Letter to a Client</h4>
+              </Row>
+              <Row>
+                <AddClient
+                  toggleModal={this.toggleModal}
+                  showModal={this.state.showModal}
+                  getClients={this.getClients}
+                />
+              </Row>
+            </div>
+          </Col>
+          <Col xs={4} xsOffset={1} >
+            <form className='search-bar-container'>
+              <FormGroup controlId='formControlsText'>
+                <ControlLabel><h4>Search for Patients</h4></ControlLabel>
+                <FormControl
+                  onChange={this.handleChange.bind(this)}
+                  type='text' placeholder='Search by Patient ID'
+                />
+              </FormGroup>
+            </form>
+          </Col>
+          <Col xs={2} xsOffset={1}>
+            <div className='header-buttons'>
+              <Row>
+                <h4> Logged in as {this.state.clinician_id} </h4>
+              </Row>
+              <Row>
+                <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
+              </Row>
+            </div>
+          </Col>
+          <Col xs={1}>
+            <div className='clinician-dashboard-logo'>
+              <img className='logo' src='/img/logo.png'/>
+            </div>
+          </Col>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
-            <ClientList {...this.props} clients={this.state.clients}/>
+            <div className='client-list-container'>
+              <ClientList {...this.props} clients={this.state.clients}/>
+            </div>
           </Col>
         </Row>
       </Grid>

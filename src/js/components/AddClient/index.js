@@ -1,8 +1,9 @@
 import React from 'react'
-import { Modal, Button, Col, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
+import { Modal, Col, Form, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 import axios from 'axios'
 import cookie from 'react-cookie'
 import RecipientInput from './recipientInput.js'
+import DefaultButton from '../Button/index.js'
 
 export default class AddClient extends React.Component {
   constructor () {
@@ -31,12 +32,6 @@ export default class AddClient extends React.Component {
       inputList: inputList.concat(<RecipientInput />)
     })
   }
-
-  // addStatusInput () {
-  //   this.setState({
-  //     statusList: this.state.statusList.concat('status')
-  //   })
-  // }
 
   formChange (property, e) {
     this.setState({
@@ -74,15 +69,10 @@ export default class AddClient extends React.Component {
 
   render () {
     return (
-      <div className='modal-container' style={{ height: 200 }}>
-        <Button
-          bsStyle='primary'
-          bsSize='large'
-          onClick={this.props.toggleModal}
-        >
-          Add New Item
-        </Button>
-
+      <div className='modal-container'>
+        <DefaultButton buttonName='Add Letter'
+          handleClick={this.props.toggleModal}
+        />
         <Modal
           show={this.props.showModal}
           onHide={this.props.toggleModal}
@@ -131,15 +121,13 @@ export default class AddClient extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Col smOffset={2} sm={10}>
-                  <Button bsStyle='primary' onClick={this.submitItem}>
-                    Submit
-                  </Button>
+                  <DefaultButton buttonName='Submit' handleClick={this.submitItem}/>
                 </Col>
               </FormGroup>
             </Form>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.props.toggleModal}>Close</Button>
+            <DefaultButton buttonName='Close' handleClick={this.props.toggleModal}/>
           </Modal.Footer>
         </Modal>
       </div>
