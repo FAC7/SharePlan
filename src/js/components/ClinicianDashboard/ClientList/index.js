@@ -9,7 +9,7 @@ export default class ClientList extends React.Component {
     const complete = letters.filter((letter) => {
       return letter.status === 'Sent'
     }).length
-    const progressString = complete.toString() + '/' + total.toString() + ' letters sent'
+    const progressString = complete.toString() + '/' + total.toString() + ' Letters Sent'
     return progressString
   }
 
@@ -24,10 +24,10 @@ export default class ClientList extends React.Component {
               header={
                 <Row>
                   <Col xs={6}>
-                    <p>{patientID}</p>
+                    <p>Patient ID: {patientID}</p>
                   </Col>
                   <Col xs={6}>
-                    <p>{this.trackProgress(this.props.clients[patientID])}</p>
+                    <p> Progress: {this.trackProgress(this.props.clients[patientID])}</p>
                   </Col>
                 </Row>
               }
