@@ -5,6 +5,9 @@ body {
 	color: white;
   font-family: 'Open Sans', sans-serif;
 }
+button {
+	outline: none;
+}
 .logo {
 	width: 100%;
 	max-width: 360px;
@@ -75,10 +78,26 @@ body {
 	}
 }
 
-/******************************* Client Dashboard ****************************/
-
-
 /**************************** Client letter Table **************************/
+
+.client-table {
+	background: white;
+	border: 1px solid $grey;
+	border-radius: 5px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	.table-responsive {
+		border-radius: 15px;
+	}
+		th {
+			text-align: center;
+			background-color: $grey-blue;
+			border: 1px solid $grey-blue;
+			font-size: 17px;
+		  padding: 16px !important;
+			text-align: center;
+		}
+}
 
 .active-state {
 	color: $bright-green;
@@ -90,7 +109,7 @@ body {
 	padding-left: 1px;
 }
 
-//clinician dashboard
+/******************************* Clinician Dashboard ****************************/
 
 .search-bar-container {
 	padding-top: 1em;
@@ -112,10 +131,13 @@ body {
 	vertical-align: middle;
 	color: white;
 	border: 1px solid $grey-blue;
-	border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
 }
-// Login-modals
+.panel-group .panel, .panel-default .panel-heading {
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+}
+
+/******************************* Login-modals ****************************/
 
 .modal-content {
 	.signup-form-label, .signup-input, .modal-title {
