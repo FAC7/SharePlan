@@ -75,11 +75,21 @@ export default class ClientDashboard extends React.Component {
     return (
       <Grid>
         <Row>
+          <Col xs={4} xsOffset={4}>
+            <div className='client-dashboard-logo'>
+              <img src='/img/logo.png' className='logo'/>
+            </div>
+          </Col>
+        </Row>
+        <Row>
           <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
         </Row>
         <Row>
           <Col xs={10} xsOffset={1}>
-            <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()}/>
+            <ClientLetterTable
+              sentLetters={this.filterSentLetters('Sent')}
+              activeLetters={this.filterActiveLetters()}
+            />
           </Col>
         </Row>
       </Grid>
