@@ -108,7 +108,7 @@ export default class ClinicianDashboard extends React.Component {
           <Col xs={2} xsOffset={1}>
             <div className='header-buttons'>
               <Row>
-                <h4> Logged in as {this.state.clinician_id} </h4>
+                <h4> Logged in as: <strong>{this.state.clinician_id}</strong></h4>
               </Row>
               <Row>
                 <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>

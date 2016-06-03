@@ -21,7 +21,7 @@ export default class ClientLetterTable extends React.Component {
       <div className='client-letter-table'>
         {this.props.activeLetters.length > 0 ?
           <div>
-          <h2>Letters in Progress</h2>
+            <h2>Pending Letters</h2>
             <div className='client-table'>
               <Table responsive className='client-heading'>
                 <thead>
@@ -42,9 +42,7 @@ export default class ClientLetterTable extends React.Component {
                     return (
                       <tr key={i}>
                         <td>
-                          <Button bsStyle='link'>
-                            {letter.topic}
-                          </Button>
+                          {letter.topic}
                         </td>
                         <td>
                          {letter.recipient}
@@ -85,35 +83,35 @@ export default class ClientLetterTable extends React.Component {
          }
         {this.props.sentLetters.length !== 0 ?
           <div className='sent-letters'>
-          <h2>Sent Letters</h2>
+            <h2>Sent Letters</h2>
             <div className='client-table'>
-                <Table responsive className='client-heading'>
-                  <thead>
-                    <tr>
-                      <th>
-                        Topic
-                      </th>
-                      <th>
-                        Recipients
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <Table responsive className='client-heading'>
+                <thead>
+                  <tr>
+                    <th>
+                      Topic
+                    </th>
+                    <th>
+                      Recipients
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                  {this.props.sentLetters.map((letter, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>
-                          <Button bsStyle='link'>
-                           {letter.topic}
-                          </Button>
-                        </td>
-                        <td>
-                          {letter.recipient}
-                        </td>
-                      </tr>
-                      )}
+                {this.props.sentLetters.map((letter, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>
+                        <Button bsStyle='link'>
+                         {letter.topic}
+                        </Button>
+                      </td>
+                      <td>
+                        {letter.recipient}
+                      </td>
+                    </tr>
                     )}
+                  )}
                 </tbody>
               </Table>
             </div>

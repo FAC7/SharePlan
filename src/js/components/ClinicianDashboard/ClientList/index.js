@@ -39,10 +39,10 @@ export default class ClientList extends React.Component {
               header={
                 <Row>
                   <Col xs={2} xsOffset={1}>
-                    <p><strong>Patient ID:</strong></p>
+                    <p>Patient ID:</p>
                   </Col>
                   <Col xs={2}>
-                    <p>{patientID}</p>
+                    <p><strong>{patientID}</strong></p>
                   </Col>
                   <Col xs={4} xsOffset={2}>
                     <p>{this.trackProgress(this.props.clients[patientID])}</p>
