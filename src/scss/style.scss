@@ -201,6 +201,11 @@ button {
 	text-shadow: none;
 	padding: 0.5em;
 }
+.btn-info:focus, .btn-info:hover {
+	background: $bright-green;
+}
+.open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover {
+}
 .search-bar {
 	padding-top: 0.5em;
 }
