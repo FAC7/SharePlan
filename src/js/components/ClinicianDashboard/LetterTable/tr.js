@@ -54,9 +54,7 @@ export default class TableRow extends React.Component {
     return (
       <tr key={this.props.index}>
         <td>
-          <Button bsStyle='link'>
-            {this.props.topic}
-          </Button>
+          {this.props.topic}
         </td>
         <td>{this.props.recipient}</td>
         <td>

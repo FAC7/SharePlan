@@ -85,6 +85,9 @@ button {
 .logout button {
 	float: right;
 }
+.logout h4 {
+	text-align: center;
+}
 
 .client-letter-table {
 	h2 {
@@ -102,14 +105,12 @@ button {
 		margin: 10px 0 20px 0;
 		.table-responsive {
 			border-radius: 15px;
-			overflow-x: visible;
 		}
 			th {
 				background-color: $grey-blue;
 				border: 1px solid $grey-blue;
 				font-size: 17px;
 			  padding: 16px !important;
-				text-align: center;
 			}
 			td, .btn-link {
 				font-size: 18px;
@@ -121,7 +122,7 @@ button {
 		padding: 9px 12px 0 12px;
 		font-size: 15px;
 		text-align: center;
-		width: 150px;
+		width: 7em;
 		margin: 0 10px;
 	}
 	.active-box {
