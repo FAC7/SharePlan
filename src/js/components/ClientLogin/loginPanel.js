@@ -75,7 +75,7 @@ export default class LoginPanel extends Component {
           </Col>
         </Row>
         <Row style={styles.rows}>
-          <Col sm={9}>
+          <Col smOffset={2} sm={9}>
             {this.state.incorrectPassword ? <p>Incorrect {clientType} ID or Password</p> : ''}
           </Col>
         </Row>
