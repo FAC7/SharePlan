@@ -238,6 +238,9 @@ button {
 	.patient-image {
 		padding-top: 30px
 	}
+	p {
+		color: red;
+	}
 }
 
 // Add Letter modal
@@ -246,4 +249,11 @@ button {
 	.control-label {
 		color: black;
 	}
+}
+
+// footer logo
+
+.footer-logo {
+	margin-top: 2.5em;
+	padding: 1em;
 }

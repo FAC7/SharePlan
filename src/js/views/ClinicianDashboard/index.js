@@ -6,6 +6,7 @@ import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClient from '../../components/AddClient/index.js'
+import Footer from '../../components/Footer/index.js'
 
 export default class ClinicianDashboard extends React.Component {
 
@@ -114,11 +115,6 @@ export default class ClinicianDashboard extends React.Component {
               </Row>
             </div>
           </Col>
-          <Col xs={1}>
-            <div className='clinician-dashboard-logo'>
-              <img className='logo' src='/img/logo.png'/>
-            </div>
-          </Col>
         </Row>
         <Row>
           <Col xs={8} xsOffset={2}>
@@ -127,6 +123,7 @@ export default class ClinicianDashboard extends React.Component {
             </div>
           </Col>
         </Row>
+        <Footer/>
       </Grid>
     )
   }
