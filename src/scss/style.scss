@@ -103,6 +103,9 @@ button {
 			  padding: 16px !important;
 				text-align: center;
 			}
+			td, .btn-link {
+				font-size: 18px;
+			}
 	}
 	.status {
 		background: rgba(255, 255, 255, 0.14);
@@ -113,16 +116,15 @@ button {
 		width: 150px;
 		margin: 0 10px;
 	}
+	.active-box {
+		background: rgba(116, 214, 121, 0.61);
+	}
 	.active-state {
-		color: $bright-green;
-		margin-top: 11px;
+		color: white;
 		font-weight: 700;
 	}
-	.arrow-status {
-		padding: 0 inherit;
-	}
 	.arrow-right {
-		padding-left: 1px;
+		margin-top: 11px;
 	}
 }
 
