@@ -81,7 +81,7 @@ export default class ClientDashboard extends React.Component {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className='logout'>
           <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
         </Row>
         <Row>
