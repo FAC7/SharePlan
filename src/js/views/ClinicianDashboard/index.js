@@ -119,7 +119,11 @@ export default class ClinicianDashboard extends React.Component {
         <Row>
           <Col xs={8} xsOffset={2}>
             <div className='client-list-container'>
-              <ClientList {...this.props} filter={this.state.filter} clients={this.state.clients}/>
+              <ClientList {...this.props}
+                getClients={this.getClients.bind(this)}
+                filter={this.state.filter}
+                clients={this.state.clients}
+              />
             </div>
           </Col>
         </Row>
