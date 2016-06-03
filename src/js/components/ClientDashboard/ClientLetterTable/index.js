@@ -5,10 +5,15 @@ export default class ClientLetterTable extends React.Component {
   constructor () {
     super()
     this.colorText = this.colorText.bind(this)
+    this.colorBox = this.colorBox.bind(this)
   }
 
   colorText (letterStatus, displayStatus) {
     return displayStatus === letterStatus ? 'active-state' : ''
+  }
+
+  colorBox (letterStatus, displayStatus) {
+    return displayStatus === letterStatus ? 'active-box status' : 'status'
   }
 
   render () {
@@ -46,7 +51,7 @@ export default class ClientLetterTable extends React.Component {
                         </td>
                         <td>
                           <Row>
-                            <Col className='arrow-status status' xs={2}>
+                            <Col className={this.colorBox(letter.status, 'On the list')} xs={2}>
                               <p className={this.colorText(letter.status, 'On the list')}>
                                 On the list
                               </p>
@@ -54,7 +59,7 @@ export default class ClientLetterTable extends React.Component {
                             <Col xs={1}>
                               <Glyphicon className='arrow-right' glyph='chevron-right' />
                             </Col>
-                            <Col className='arrow-status status' xs={2}>
+                            <Col className={this.colorBox(letter.status, 'In progress')} xs={2}>
                               <p className={this.colorText(letter.status, 'In progress')}>
                                 In progress
                               </p>
@@ -62,7 +67,7 @@ export default class ClientLetterTable extends React.Component {
                             <Col xs={1}>
                               <Glyphicon className='arrow-right' glyph='chevron-right' />
                             </Col>
-                            <Col xs={3} className='status'>
+                            <Col className={this.colorBox(letter.status, 'Sent')} xs={3}>
                               <p className={this.colorText(letter.status, 'Sent')}>
                                 Sent
                               </p>
