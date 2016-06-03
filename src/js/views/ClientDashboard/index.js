@@ -5,6 +5,7 @@ import axios from 'axios'
 import cookie from 'react-cookie'
 import { Row, Col, Grid } from 'react-bootstrap'
 import DefaultButton from '../../components/Button/'
+import Footer from '../../components/Footer/index.js'
 
 
 export default class ClientDashboard extends React.Component {
@@ -31,15 +32,6 @@ export default class ClientDashboard extends React.Component {
 
   componentDidMount () {
     this.getLetters()
-    // axios.get('/get-patient-letters', {
-    //   patient_id: this.state.patient_id
-    // })
-    // .then(response => {
-    //   this.setState({ letters: response.data })
-    // })
-    // .catch(response => {
-    //   console.log(response)
-    // })
   }
   onLogout () {
     cookie.remove('clinician_id', { path: '/' })
@@ -74,14 +66,21 @@ export default class ClientDashboard extends React.Component {
   render () {
     return (
       <Grid>
-        <Row>
-          <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
-        </Row>
-        <Row>
-          <Col xs={10} xsOffset={1}>
-            <ClientLetterTable sentLetters={this.filterSentLetters('Sent')} activeLetters={this.filterActiveLetters()}/>
+        <Row className='logout'>
+          <Col xs={2} xsOffset={8}>
+            <h4>Logged in as: <strong>{this.state.patient_id}</strong></h4>
+            <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
           </Col>
         </Row>
+        <Row>
+          <Col xs={8} xsOffset={2}>
+            <ClientLetterTable
+              sentLetters={this.filterSentLetters()}
+              activeLetters={this.filterActiveLetters()}
+            />
+          </Col>
+        </Row>
+        <Footer/>
       </Grid>
     )
   }

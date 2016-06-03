@@ -6,6 +6,7 @@ import cookie from 'react-cookie'
 import { browserHistory } from 'react-router'
 import ClientList from '../../components/ClinicianDashboard/ClientList/index.js'
 import AddClient from '../../components/AddClient/index.js'
+import Footer from '../../components/Footer/index.js'
 
 export default class ClinicianDashboard extends React.Component {
 
@@ -107,26 +108,26 @@ export default class ClinicianDashboard extends React.Component {
           <Col xs={2} xsOffset={1}>
             <div className='header-buttons'>
               <Row>
-                <h4> Logged in as {this.state.clinician_id} </h4>
+                <h4> Logged in as: <strong>{this.state.clinician_id}</strong></h4>
               </Row>
               <Row>
                 <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
               </Row>
             </div>
           </Col>
-          <Col xs={1}>
-            <div className='clinician-dashboard-logo'>
-              <img className='logo' src='/img/logo.png'/>
-            </div>
-          </Col>
         </Row>
         <Row>
           <Col xs={8} xsOffset={2}>
             <div className='client-list-container'>
-              <ClientList {...this.props} filter={this.state.filter} clients={this.state.clients}/>
+              <ClientList {...this.props}
+                getClients={this.getClients.bind(this)}
+                filter={this.state.filter}
+                clients={this.state.clients}
+              />
             </div>
           </Col>
         </Row>
+        <Footer/>
       </Grid>
     )
   }
