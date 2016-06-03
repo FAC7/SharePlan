@@ -50,7 +50,10 @@ export default class ClientList extends React.Component {
                 </Row>
               }
             >
-              <LetterTable letters={this.props.clients[patientID]}/>
+              <LetterTable
+                getClients={this.props.getClients}
+                letters={this.props.clients[patientID]}
+              />
             </Panel>
           )
         })}

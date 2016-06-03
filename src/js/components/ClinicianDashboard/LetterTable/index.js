@@ -43,6 +43,7 @@ export default class LetterTable extends React.Component {
               recipient={letter.recipient}
               status={letter.status}
               date_created={letter.date_created}
+              getClients={this.props.getClients}
             />
             )
         }) : ''}

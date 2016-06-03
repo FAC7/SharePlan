@@ -21,6 +21,7 @@ export default class TableRow extends React.Component {
       buttonStatus: buttonStatus
     })
     this.postData(buttonStatus, date_created)
+    this.props.getClients()
   }
   postData (letterStatus, date_created) {
     axios.post('/change-letter-status', {
