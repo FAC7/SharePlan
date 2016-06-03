@@ -5,6 +5,7 @@ import axios from 'axios'
 import cookie from 'react-cookie'
 import { Row, Col, Grid } from 'react-bootstrap'
 import DefaultButton from '../../components/Button/'
+import Footer from '../../components/Footer/index.js'
 
 
 export default class ClientDashboard extends React.Component {
@@ -74,13 +75,6 @@ export default class ClientDashboard extends React.Component {
   render () {
     return (
       <Grid>
-        <Row>
-          <Col xs={4} xsOffset={4}>
-            <div className='client-dashboard-logo'>
-              <img src='/img/logo.png' className='logo'/>
-            </div>
-          </Col>
-        </Row>
         <Row className='logout'>
           <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
         </Row>
@@ -92,6 +86,7 @@ export default class ClientDashboard extends React.Component {
             />
           </Col>
         </Row>
+        <Footer/>
       </Grid>
     )
   }
