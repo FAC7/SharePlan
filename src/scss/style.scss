@@ -19,6 +19,9 @@ button {
 	margin-top: 15px;
 	padding: 0;
 }
+.table-responsive {
+	overflow-x: visible;
+}
 
 /******************************* homepage ****************************/
 .login-btn {
@@ -99,6 +102,7 @@ button {
 		margin: 10px 0 20px 0;
 		.table-responsive {
 			border-radius: 15px;
+			overflow-x: visible;
 		}
 			th {
 				background-color: $grey-blue;
