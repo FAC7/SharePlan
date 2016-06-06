@@ -21,7 +21,11 @@ const checkPatientLogin = (client, done, data, reply) => {
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
 
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        reply.redirect('/client-dashboard')
+        reply().state('patient_id', data.patient_id, {
+          ttl: 24 * 60 * 60 * 1000,
+          isSecure: false,
+          path: '/'
+        })
       } else {
         reply('incorrect password')
       }

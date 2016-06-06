@@ -15,10 +15,15 @@ const checkClinicianLogin = (client, done, data, reply) => {
         return console.error('error running query', err)
       }
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
-
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        reply.redirect('/clinician-dashboard')
+        console.log('verified')
+        reply().state('clinician_id', data.clinician_id, {
+          ttl: 24 * 60 * 60 * 1000,
+          isSecure: false,
+          path: '/'
+        })
       } else {
+        console.log('wrong')
         reply('incorrect password')
       }
       done()

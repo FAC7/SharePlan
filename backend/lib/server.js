@@ -34,7 +34,7 @@ const Routes = [
   SignUpClinician,
   AddNewLetter,
   RemoveLetter,
-  ChangeLetterStatus,
+  ChangeLetterStatus
 ]
 
 // Export the Server
