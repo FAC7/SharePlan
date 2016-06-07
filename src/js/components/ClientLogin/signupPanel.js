@@ -21,7 +21,9 @@ export default class SignupPanel extends Component {
       last_name: '',
       email: '',
       mobile_number: '',
-      password_hash: ''
+      password_hash: '',
+      invalid_username: false,
+      invalid_password: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -39,7 +41,13 @@ export default class SignupPanel extends Component {
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+      if (response.data === 'invalid username') {
+        this.setState({ invalid_username: true })
+      } else if (response.data === 'invalid password') {
+        this.setState({ invalid_password: true })
+      } else {
+        browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+      }
     })
     .catch((response) => {
       console.log(response)
@@ -96,6 +104,11 @@ export default class SignupPanel extends Component {
             required/>
           </Col>
         </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_username ? <p>Invalid Username</p> : ''}
+          </Col>
+        </Row>
         {this.props.userType === 'client'
         ? <Row style={styles.rows}>
           <Col sm={4}>
@@ -131,6 +144,11 @@ export default class SignupPanel extends Component {
               return this.handleChange('password_hash', e.target.value)
             }}
             required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_password ? <p>Invalid Password</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
