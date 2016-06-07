@@ -10,9 +10,8 @@ module.exports = {
       if (err) {
         return console.error('error fetching client from pool', err)
       }
-      pgFunctions.signUpClinician(client, done, request.payload)
-      console.log(request.payload)
-      reply.redirect('/clinician-dashboard')
+      pgFunctions.signUpClinician(client, done, request.payload, reply)
+      // reply.redirect('/clinician-dashboard')
     })
   }
 }

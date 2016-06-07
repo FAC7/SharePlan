@@ -41,7 +41,7 @@ export default class SignupPanel extends Component {
     })
     .then((response) => {
       console.log(response.data)
-      cookie.save(client_id, this.state[client_id], { path: '/' })
+      // cookie.save(client_id, this.state[client_id], { path: '/' })
       browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
     })
     .catch((response) => {

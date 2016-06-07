@@ -39,7 +39,6 @@ export default class LoginPanel extends Component {
       if (response.data === 'incorrect password') {
         this.setState({ incorrectPassword: true })
       } else {
-        // cookie.save(client_id, this.state[client_id], { path: '/' })
         browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
       }
     })
