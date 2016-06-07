@@ -10,9 +10,7 @@ module.exports = {
       if (err) {
         return console.error('error fetching client from pool', err)
       }
-      pgFunctions.signUpPatient(client, done, request.payload)
-      console.log(request.payload)
-      reply.redirect('/client-dashboard')
+      pgFunctions.signUpPatient(client, done, request.payload, reply)
     })
   }
 }

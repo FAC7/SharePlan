@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-import cookie from 'react-cookie'
 
 import DefaultButton from '../Button/'
 
@@ -40,8 +39,6 @@ export default class SignupPanel extends Component {
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      console.log(response.data)
-      cookie.save(client_id, this.state[client_id], { path: '/' })
       browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
     })
     .catch((response) => {

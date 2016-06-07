@@ -7,7 +7,6 @@ import { Row, Col, Grid } from 'react-bootstrap'
 import DefaultButton from '../../components/Button/'
 import Footer from '../../components/Footer/index.js'
 
-
 export default class ClientDashboard extends React.Component {
 
   constructor () {
