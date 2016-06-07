@@ -35,7 +35,6 @@ const checkClinicianLogin = (client, done, data, reply) => {
           path: '/'
         })
       } else {
-        console.log('wrong')
         reply('incorrect password')
       }
       done()
@@ -44,7 +43,6 @@ const checkClinicianLogin = (client, done, data, reply) => {
 
 const getAllPatientsLetters = (client, done, clinician_id, reply) => {
   const decoded = jwt.verify(clinician_id, process.env.JWT_SECRET)
-  console.log(decoded)
   client.query(
     'SELECT clinicians_patients.patient_id, topic, recipient, status, date_created ' +
     'FROM clinicians_patients, letters ' +

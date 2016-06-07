@@ -26,15 +26,12 @@ export default class LoginPanel extends Component {
 
   handleClick () {
     const url = this.props.userType === 'client' ? '/login-patient' : '/login-clinician'
-    console.log(url)
     const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
-    console.log(client_id)
     axios.post(url, {
       [client_id]: this.state[client_id],
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      console.log(response.data)
       if (response.data === 'incorrect password') {
         this.setState({ incorrectPassword: true })
       } else {
