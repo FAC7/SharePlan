@@ -19,8 +19,8 @@ export default class ClientLetterTable extends React.Component {
   render () {
     return (
       <div className='client-letter-table'>
-        {this.props.activeLetters.length > 0 ?
-          <div>
+        {this.props.activeLetters.length > 0
+          ? <div>
             <h2>Pending Letters</h2>
             <div className='client-table'>
               <Table responsive className='client-heading'>
@@ -73,7 +73,7 @@ export default class ClientLetterTable extends React.Component {
                           </Row>
                         </td>
                       </tr>
-                    )})
+                    ) })
                   }
                 </tbody>
               </Table>
@@ -81,8 +81,8 @@ export default class ClientLetterTable extends React.Component {
           </div>
            : ''
          }
-        {this.props.sentLetters.length !== 0 ?
-          <div className='sent-letters'>
+        {this.props.sentLetters.length !== 0
+          ? <div className='sent-letters'>
             <h2>Sent Letters</h2>
             <div className='client-table'>
               <Table responsive className='client-heading'>
@@ -110,7 +110,7 @@ export default class ClientLetterTable extends React.Component {
                         {letter.recipient}
                       </td>
                     </tr>
-                    )}
+                    ) }
                   )}
                 </tbody>
               </Table>

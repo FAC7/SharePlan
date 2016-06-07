@@ -1,5 +1,4 @@
 const bcrypt = require('bcryptjs')
-// const hapiAuthjwt = require('hapi-auth-jwt2')
 const jwt = require('jsonwebtoken')
 require('env2')('config.env')
 
@@ -44,12 +43,14 @@ const checkClinicianLogin = (client, done, data, reply) => {
 }
 
 const getAllPatientsLetters = (client, done, clinician_id, reply) => {
+  const decoded = jwt.verify(clinician_id, process.env.JWT_SECRET)
+  console.log(decoded)
   client.query(
     'SELECT clinicians_patients.patient_id, topic, recipient, status, date_created ' +
     'FROM clinicians_patients, letters ' +
     'WHERE clinicians_patients.clinician_id = $1 ' +
     'AND clinicians_patients.patient_id = letters.patient_id ',
-    [ clinician_id ], (err, result) => {
+    [ decoded.clinicianID ], (err, result) => {
       if (err) {
         console.error('error running query', err)
       }

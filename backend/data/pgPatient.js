@@ -1,4 +1,4 @@
-var bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('env2')('config.env')
 
@@ -43,7 +43,8 @@ const checkPatientLogin = (client, done, data, reply) => {
 }
 
 const getPatientLetters = (client, done, patientID, reply) => {
-  client.query('SELECT * FROM letters WHERE patient_id = $1', [ patientID ], (err, result) => {
+  const decoded = jwt.verify(patientID, process.env.JWT_SECRET)
+  client.query('SELECT * FROM letters WHERE patient_id = $1', [ decoded.patientID ], (err, result) => {
     if (err) {
       return console.error('error running query', err)
     }
