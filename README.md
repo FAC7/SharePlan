@@ -44,7 +44,7 @@ The technologies used:
 
 **Back End** - Hapi
 
-**Security** - bcryptjs
+**Security** - bcryptjs, jsonwebtoken
 
 **Database** - Postgres
 
