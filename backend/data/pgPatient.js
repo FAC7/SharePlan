@@ -1,6 +1,8 @@
 var bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+require('env2')('config.env')
 
-const signUpPatient = (client, done, data) => {
+const signUpPatient = (client, done, data, reply) => {
   const salt = bcrypt.genSaltSync(10)
   const hash = bcrypt.hashSync(data.password_hash, salt)
   client.query('INSERT INTO patients VALUES ($1, $2, $3, $4, $5, $6)',
@@ -8,6 +10,12 @@ const signUpPatient = (client, done, data) => {
       if (err) {
         return console.error('error running query', err)
       }
+      const token = jwt.sign({ patientID: data.patient_id }, process.env.JWT_SECRET)
+      reply().state('patient_id', token, {
+        ttl: 24 * 60 * 60 * 1000,
+        isSecure: false,
+        path: '/'
+      })
       done()
     })
 }
@@ -21,7 +29,8 @@ const checkPatientLogin = (client, done, data, reply) => {
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
 
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        reply().state('patient_id', data.patient_id, {
+        const token = jwt.sign({ patientID: data.patient_id }, process.env.JWT_SECRET)
+        reply().state('patient_id', token, {
           ttl: 24 * 60 * 60 * 1000,
           isSecure: false,
           path: '/'

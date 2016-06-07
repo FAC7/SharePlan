@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-// import cookie from 'react-cookie'
 
 import DefaultButton from '../Button/'
 
