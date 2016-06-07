@@ -6,7 +6,7 @@ require('env2')('config.env')
 const signUpClinician = (client, done, data, reply) => {
   const schema = Joi.object().keys({
     username: Joi.string().alphanum().min(5).max(30).required(),
-    password: Joi.string().alphanum().min(8).required()
+    password: Joi.string().min(8).required()
   })
 
   Joi.validate({ username: data.clinician_id, password: data.password_hash },
