@@ -67,7 +67,7 @@ export default class ClientDashboard extends React.Component {
       <Grid>
         <Row className='logout'>
           <Col xs={2} xsOffset={8}>
-            <h4>Logged in as: <strong>{this.state.patient_id}</strong></h4>
+            <h4>Logged in as: <strong>Client</strong></h4>
             <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
           </Col>
         </Row>

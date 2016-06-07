@@ -32,11 +32,13 @@ export default class ClinicianDashboard extends React.Component {
   componentDidMount () {
     this.getClients()
   }
+
   onLogout () {
     cookie.remove('clinician_id', { path: '/' })
     cookie.remove('patient_id', { path: '/' })
     browserHistory.push('/')
   }
+
   getClients () {
     axios.get('/get-all-patients-letters', {
       params: {
@@ -108,7 +110,7 @@ export default class ClinicianDashboard extends React.Component {
           <Col xs={2} xsOffset={1}>
             <div className='header-buttons'>
               <Row>
-                <h4> Logged in as: <strong>{this.state.clinician_id}</strong></h4>
+                <h4> Logged in as: <strong>Clinician</strong></h4>
               </Row>
               <Row>
                 <DefaultButton buttonName='Log Out' handleClick={this.onLogout}/>
