@@ -1,4 +1,7 @@
 const bcrypt = require('bcryptjs')
+// const hapiAuthjwt = require('hapi-auth-jwt2')
+const jwt = require('jsonwebtoken')
+require('env2')('config.env')
 
 const signUpClinician = (client, done, data) => {
   const salt = bcrypt.genSaltSync(10)
@@ -16,8 +19,8 @@ const checkClinicianLogin = (client, done, data, reply) => {
       }
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
       if (bcrypt.compareSync(data.password_hash, hash)) {
-        console.log('verified')
-        reply().state('clinician_id', data.clinician_id, {
+        const token = jwt.sign({ clinicianID: data.clinician_id }, process.env.JWT_SECRET)
+        reply().state('clinician_id', token, {
           ttl: 24 * 60 * 60 * 1000,
           isSecure: false,
           path: '/'
