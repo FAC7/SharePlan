@@ -25,7 +25,8 @@ export default class SignupPanel extends Component {
       invalid_username: false,
       invalid_password: false,
       missing_field: false,
-      invalid_email: false
+      invalid_email: false,
+      userExists: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -55,6 +56,9 @@ export default class SignupPanel extends Component {
           break
         case 'invalid email':
           this.setState({ invalid_email: true })
+          break
+        case 'user already exists':
+          this.setState({ userExists: true })
           break
         default:
           browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
@@ -188,6 +192,11 @@ export default class SignupPanel extends Component {
           </Col>
           <Col sm={8}>
             <input name='password_confirm' type='password' className='signup-input' placeholder='required' required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.userExists ? <p>User already exists. Please log in</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
