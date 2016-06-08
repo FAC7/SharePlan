@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-import cookie from 'react-cookie'
 
 import DefaultButton from '../Button/'
 
@@ -22,7 +21,12 @@ export default class SignupPanel extends Component {
       last_name: '',
       email: '',
       mobile_number: '',
-      password_hash: ''
+      password_hash: '',
+      invalid_username: false,
+      invalid_password: false,
+      missing_field: false,
+      invalid_email: false,
+      userExists: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -40,9 +44,25 @@ export default class SignupPanel extends Component {
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      console.log(response.data)
-      cookie.save(client_id, this.state[client_id], { path: '/' })
-      browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+      switch (response.data) {
+        case 'invalid username':
+          this.setState({ invalid_username: true })
+          break
+        case 'invalid password':
+          this.setState({ invalid_password: true })
+          break
+        case 'missing required field':
+          this.setState({ missing_field: true })
+          break
+        case 'invalid email':
+          this.setState({ invalid_email: true })
+          break
+        case 'user already exists':
+          this.setState({ userExists: true })
+          break
+        default:
+          browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+      }
     })
     .catch((response) => {
       console.log(response)
@@ -71,10 +91,15 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>First Name</label>
           </Col>
           <Col sm={8}>
-            <input name='first_name' className='signup-input' type='text' onChange={(e) => {
+            <input name='first_name' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('first_name', e.target.value)
             }}
             required />
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -82,10 +107,15 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Last Name</label>
           </Col>
           <Col sm={8}>
-            <input name='last_name' className='signup-input' type='text' onChange={(e) => {
+            <input name='last_name' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('last_name', e.target.value)
             }}
             required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -93,10 +123,15 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>{userType} ID</label>
           </Col>
           <Col sm={8}>
-            <input name={client_id} className='signup-input' type='text' onChange={(e) => {
+            <input name={client_id} className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange(client_id, e.target.value)
             }}
             required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_username ? <p>Invalid Username</p> : ''}
           </Col>
         </Row>
         {this.props.userType === 'client'
@@ -105,20 +140,25 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Email</label>
           </Col>
           <Col sm={8}>
-            <input name='email' className='signup-input' type='text' onChange={(e) => {
+            <input name='email' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('email', e.target.value)
             }}
             required/>
           </Col>
         </Row> : ''
         }
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_email ? <p>Invalid Email</p> : ''}
+          </Col>
+        </Row>
         { this.props.userType === 'client'
         ? <Row style={styles.rows}>
           <Col sm={4}>
             <label className='signup-form-label'>Mobile Number</label>
           </Col>
           <Col sm={8}>
-            <input name='mobile_number' className='signup-input' type='text' onChange={(e) => {
+            <input name='mobile_number' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('mobile_number', e.target.value)
             }}
             required/>
@@ -126,14 +166,24 @@ export default class SignupPanel extends Component {
         </Row> : ''
         }
         <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
           <Col sm={4}>
             <label className='signup-form-label'>Password</label>
           </Col>
           <Col sm={8}>
-            <input name='password_hash' type='password' className='signup-input' onChange={(e) => {
+            <input name='password_hash' type='password' className='signup-input' placeholder='Minimum 8 characters' onChange={(e) => {
               return this.handleChange('password_hash', e.target.value)
             }}
             required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_password ? <p>Password too short</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -141,7 +191,12 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Confirm Password</label>
           </Col>
           <Col sm={8}>
-            <input name='password_confirm' type='password' className='signup-input' required/>
+            <input name='password_confirm' type='password' className='signup-input' placeholder='required' required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.userExists ? <p>User already exists. Please log in</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>

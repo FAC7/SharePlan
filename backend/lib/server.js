@@ -5,7 +5,6 @@ const pgSetup = require('../data/pgSetup.js')
 
 // Server Plugins
 const Inert = require('inert')
-
 const Plugins = [ Inert ]
 
 // Server Routes
@@ -34,12 +33,11 @@ const Routes = [
   SignUpClinician,
   AddNewLetter,
   RemoveLetter,
-  ChangeLetterStatus,
+  ChangeLetterStatus
 ]
 
 // Export the Server
 module.exports = () => {
-
   const server = new Hapi.Server()
 
   server.connection({
@@ -57,6 +55,7 @@ module.exports = () => {
       throw err
     }
   })
+
   server.route(Routes)
 
   pg.connect(conString, (err, client, done) => {

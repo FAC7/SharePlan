@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import axios from 'axios'
-import cookie from 'react-cookie'
 
 import DefaultButton from '../Button/'
 
@@ -26,18 +25,16 @@ export default class LoginPanel extends Component {
   }
 
   handleClick () {
-    const url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician'
+    const url = this.props.userType === 'client' ? '/login-patient' : '/login-clinician'
     const client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id'
     axios.post(url, {
       [client_id]: this.state[client_id],
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      console.log(response.data)
       if (response.data === 'incorrect password') {
         this.setState({ incorrectPassword: true })
       } else {
-        cookie.save(client_id, this.state[client_id], { path: '/' })
         browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
       }
     })
@@ -60,7 +57,7 @@ export default class LoginPanel extends Component {
             <label className='signup-form-label'>{clientType} ID</label>
           </Col>
           <Col sm={9}>
-            <input className='signup-input' type='text' name={id}
+            <input className='signup-input' type='text' placeholder='required' name={id}
               onChange={(e) => this.handleChange(id, e.target.value)}
               required
             />
@@ -71,11 +68,11 @@ export default class LoginPanel extends Component {
             <label className='signup-form-label'>Password</label>
           </Col>
           <Col sm={9}>
-            <input type='password' className='signup-input' name='password_hash' onChange={(e) => this.handleChange('password_hash', e.target.value)} required/>
+            <input type='password' className='signup-input' placeholder='required' name='password_hash' onChange={(e) => this.handleChange('password_hash', e.target.value)} required/>
           </Col>
         </Row>
         <Row style={styles.rows}>
-          <Col sm={9}>
+          <Col smOffset={2} sm={9}>
             {this.state.incorrectPassword ? <p>Incorrect {clientType} ID or Password</p> : ''}
           </Col>
         </Row>
