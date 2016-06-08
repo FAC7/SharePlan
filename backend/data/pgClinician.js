@@ -24,15 +24,17 @@ const signUpClinician = (client, done, data, reply) => {
         client.query('INSERT INTO clinicians VALUES ($1, $2)',
         [ data.clinician_id, hash ], (err, result) => {
           if (err) {
-            return console.error('error running query', err)
+            console.error('error running query', err)
+            reply('user already exists')
+          } else {
+            const token = jwt.sign({ clinicianID: data.clinician_id }, process.env.JWT_SECRET)
+            reply().state('clinician_id', token, {
+              ttl: 24 * 60 * 60 * 1000,
+              isSecure: false,
+              path: '/'
+            })
+            done()
           }
-          const token = jwt.sign({ clinicianID: data.clinician_id }, process.env.JWT_SECRET)
-          reply().state('clinician_id', token, {
-            ttl: 24 * 60 * 60 * 1000,
-            isSecure: false,
-            path: '/'
-          })
-          done()
         })
       } else if (err.details[0].path === 'username') {
         reply('invalid username')
