@@ -25687,11 +25687,11 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _ClinicianDashboard = __webpack_require__(523);
+	var _ClinicianDashboard = __webpack_require__(521);
 
 	var _ClinicianDashboard2 = _interopRequireDefault(_ClinicianDashboard);
 
-	var _ClientDashboard = __webpack_require__(529);
+	var _ClientDashboard = __webpack_require__(530);
 
 	var _ClientDashboard2 = _interopRequireDefault(_ClientDashboard);
 
@@ -44922,7 +44922,7 @@
 
 
 	// module
-	exports.push([module.id, "/******************************* general styling ****************************/\nbody {\n  background-color: #3FA9F5;\n  color: white;\n  font-family: 'Open Sans', sans-serif; }\n\n.logo {\n  width: 100%;\n  max-width: 360px;\n  display: block; }\n\n.container {\n  margin-bottom: 30px;\n  margin-top: 15px;\n  padding: 0; }\n\n/******************************* homepage ****************************/\n.login-btn {\n  display: block !important;\n  margin: 0 auto !important;\n  min-width: 150px; }\n\n.default-button {\n  background-color: #74d679;\n  padding: 1em;\n  border-radius: 14px;\n  border-width: 0.5px;\n  border: none;\n  margin: 10px;\n  min-width: 175px; }\n\n.homepage-button {\n  font-size: 1.45em;\n  width: 100%;\n  display: block;\n  margin: 20px auto 15px auto; }\n\n.R2zU9JsZW1r2id-qp7H3S {\n  width: 100% !important; }\n\n.modal-container {\n  position: relative; }\n\n.modal-container .modal, .modal-container .modal-backdrop {\n  position: absolute; }\n\n.homepage-buttons-container {\n  margin-top: 3em; }\n\n.brand-title {\n  font-size: 6em; }\n\n.title-container {\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  padding: 0.5em; }\n\n@media screen and (max-width: 1080px) {\n  .homepage-button {\n    width: 60%; } }\n\n@media screen and (max-width: 600px) {\n  .brand-title {\n    font-size: 4.5em; } }\n\n/******************************* Client Dashboard ****************************/\n/**************************** Client letter Table **************************/\n.active-state {\n  color: #74d679; }\n\n.arrow-status {\n  padding: 0 inherit; }\n\n.arrow-right {\n  padding-left: 1px; }\n\n.search-bar-container {\n  padding-top: 1em;\n  text-align: center; }\n\n.header-buttons {\n  padding-top: 1em;\n  text-align: center; }\n\n.client-list-container {\n  padding-top: 2em; }\n\n.clinician-dashboard-logo {\n  width: 142%; }\n\n.panel-default .panel-heading {\n  background-color: #2c6ab7;\n  background-image: none;\n  vertical-align: middle;\n  color: white;\n  border: 1px solid #2c6ab7;\n  border-radius: 14px; }\n  .panel-default .panel-heading .collapse {\n    border-bottom-left-radius: none;\n    border-bottom-right-radius: none; }\n\n.panel {\n  background-color: #3FA9F5; }\n\n.panel-collapse .panel-body {\n  border-top: 0px solid #ddd; }\n\n.panel-group .panel {\n  margin-bottom: 14px;\n  border-radius: 14px; }\n\n.panel-default {\n  border: none; }\n\n.panel-group .panel-heading + .panel-collapse > .panel-body {\n  border: none; }\n\n.progress-bar-styling {\n  background-color: white; }\n\n.progress-bar-warning {\n  background-image: linear-gradient(to bottom, #74d679 0, #37ba3e 100%); }\n\n.progress {\n  margin-bottom: 0; }\n\n.btn-info {\n  background-image: none;\n  background-color: #74d679;\n  border: none;\n  box-shadow: none;\n  border-radius: 7px;\n  text-shadow: none;\n  padding: 0.5em; }\n\n.search-bar {\n  padding-top: 0.5em; }\n\n.btn-link {\n  color: #3E6AA3;\n  font-weight: bold; }\n\n.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {\n  vertical-align: middle; }\n\n.mini-bird {\n  height: 100%;\n  width: auto;\n  padding-left: 0.5em; }\n\n.modal-content .signup-form-label, .modal-content .signup-input, .modal-content .modal-title {\n  color: black; }\n\n.modal-content .signup-split-panel {\n  border-right: 2px dotted darkgray; }\n\n.modal-content .image-container {\n  width: 100px; }\n\n.modal-content .patient-image {\n  padding-top: 30px; }\n\n.modal-content .control-label {\n  color: black; }\n", ""]);
+	exports.push([module.id, "/******************************* general styling ****************************/\nbody {\n  background-color: #3FA9F5;\n  color: white;\n  font-family: 'Open Sans', sans-serif; }\n\nbutton {\n  outline: none; }\n\n.logo {\n  width: 100%;\n  max-width: 360px;\n  display: block; }\n\n.container {\n  margin-bottom: 30px;\n  margin-top: 15px;\n  padding: 0; }\n\n.table-responsive {\n  overflow-x: visible; }\n\n/******************************* homepage ****************************/\n.login-btn {\n  display: block !important;\n  margin: 0 auto !important;\n  min-width: 150px; }\n\n.default-button {\n  background-color: #74d679;\n  padding: 1em;\n  border-radius: 14px;\n  border-width: 0.5px;\n  border: none;\n  margin: 10px;\n  min-width: 175px; }\n\n.homepage-button {\n  font-size: 1.45em;\n  width: 100%;\n  display: block;\n  margin: 20px auto 15px auto; }\n\n.R2zU9JsZW1r2id-qp7H3S {\n  width: 100% !important; }\n\n.modal-container {\n  position: relative; }\n\n.modal-container .modal, .modal-container .modal-backdrop {\n  position: absolute; }\n\n.homepage-buttons-container {\n  margin-top: 3em; }\n\n.brand-title {\n  font-size: 6em; }\n\n.title-container {\n  text-align: center;\n  width: 100%;\n  height: 100%;\n  padding: 0.5em; }\n\n@media screen and (max-width: 1080px) {\n  .homepage-button {\n    width: 60%; } }\n\n@media screen and (max-width: 600px) {\n  .brand-title {\n    font-size: 4.5em; } }\n\n/******************************* Client Dashboard ****************************/\n.logout button {\n  float: right; }\n\n.logout h4 {\n  text-align: center; }\n\n.client-letter-table h2 {\n  margin-bottom: 22px;\n  text-align: center; }\n\n.client-letter-table .sent-letters {\n  margin-top: 45px; }\n\n.client-letter-table .client-table {\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);\n  border-radius: 5px;\n  border-top-left-radius: 15px;\n  border-top-right-radius: 15px;\n  margin: 10px 0 20px 0; }\n  .client-letter-table .client-table .table-responsive {\n    border-radius: 15px; }\n  .client-letter-table .client-table th {\n    background-color: #3E6AA3;\n    border: 1px solid #3E6AA3;\n    font-size: 17px;\n    padding: 16px !important; }\n  .client-letter-table .client-table td, .client-letter-table .client-table .btn-link {\n    font-size: 18px; }\n\n.client-letter-table .status {\n  background: rgba(255, 255, 255, 0.14);\n  border-radius: 5px;\n  padding: 9px 12px 0 12px;\n  font-size: 15px;\n  text-align: center;\n  width: 7em;\n  margin: 0 10px; }\n\n.client-letter-table .active-box {\n  background: rgba(116, 214, 121, 0.61); }\n\n.client-letter-table .active-state {\n  color: white;\n  font-weight: 700; }\n\n.client-letter-table .arrow-right {\n  margin-top: 11px; }\n\n/******************************* Clinician Dashboard ****************************/\n.panel-body .table-responsive {\n  min-height: inherit !important;\n  overflow-x: visible !important; }\n\n.search-bar-container {\n  padding-top: 1em;\n  text-align: center; }\n\n.header-buttons {\n  padding-top: 1em;\n  text-align: center; }\n\n.client-list-container {\n  padding-top: 2em; }\n\n.clinician-dashboard-logo {\n  width: 142%; }\n\n.panel-default .panel-heading {\n  background-color: #2c6ab7;\n  background-image: none;\n  vertical-align: middle;\n  color: white;\n  border: 1px solid #2c6ab7;\n  border-radius: 14px; }\n  .panel-default .panel-heading .collapse {\n    border-bottom-left-radius: none;\n    border-bottom-right-radius: none; }\n\n.panel {\n  background-color: #3FA9F5;\n  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }\n\n.panel-collapse .panel-body {\n  border-top: 0px solid #ddd; }\n\n.panel-group .panel {\n  margin-bottom: 14px;\n  border-radius: 14px; }\n\n.panel-default {\n  border: none; }\n\n.panel-group .panel-heading + .panel-collapse > .panel-body {\n  border: none; }\n\n.progress-bar-styling {\n  background-color: white; }\n\n.progress-bar-warning {\n  background-image: linear-gradient(to bottom, #74d679 0, #37ba3e 100%); }\n\n.progress {\n  margin-bottom: 0; }\n\n.btn-info {\n  background-image: none;\n  background-color: #74d679;\n  border: none;\n  box-shadow: none;\n  border-radius: 7px;\n  text-shadow: none;\n  padding: 0.5em; }\n\n.btn-info:focus, .btn-info:hover {\n  background: #74d679; }\n\n.search-bar {\n  padding-top: 0.5em; }\n\n.btn-link {\n  color: #3E6AA3;\n  font-weight: bold; }\n\n.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {\n  vertical-align: middle; }\n\n.mini-bird {\n  height: 100%;\n  width: auto;\n  padding-left: 0.5em; }\n\n.btn-default:focus, .btn-default:hover, .btn-default {\n  background-color: #74d679;\n  background-image: none;\n  border-color: #74d679;\n  color: white; }\n\n.modal-content .signup-form-label, .modal-content .signup-input, .modal-content .modal-title {\n  color: black; }\n\n.modal-content .signup-split-panel {\n  border-right: 2px dotted darkgray; }\n\n.modal-content .image-container {\n  width: 100px; }\n\n.modal-content .patient-image {\n  padding-top: 30px; }\n\n.modal-content p {\n  color: red; }\n\n.modal-content .control-label {\n  color: black; }\n\n.footer-logo {\n  margin-top: 2.5em;\n  padding: 1em; }\n", ""]);
 
 	// exports
 
@@ -45483,7 +45483,7 @@
 
 	var _signupPanel2 = _interopRequireDefault(_signupPanel);
 
-	var _loginPanel = __webpack_require__(522);
+	var _loginPanel = __webpack_require__(520);
 
 	var _loginPanel2 = _interopRequireDefault(_loginPanel);
 
@@ -45603,10 +45603,6 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(520);
-
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
-
 	var _Button = __webpack_require__(499);
 
 	var _Button2 = _interopRequireDefault(_Button);
@@ -45642,7 +45638,12 @@
 	      last_name: '',
 	      email: '',
 	      mobile_number: '',
-	      password_hash: ''
+	      password_hash: '',
+	      invalid_username: false,
+	      invalid_password: false,
+	      missing_field: false,
+	      invalid_email: false,
+	      userExists: false
 	    };
 	    _this.handleClick = _this.handleClick.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
@@ -45658,9 +45659,25 @@
 	      var url = this.props.userType === 'client' ? '/signup-patient' : 'signup-clinician';
 	      var client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
 	      _axios2.default.post(url, (_axios$post = {}, _defineProperty(_axios$post, client_id, this.state[client_id]), _defineProperty(_axios$post, 'first_name', this.state.first_name), _defineProperty(_axios$post, 'last_name', this.state.last_name), _defineProperty(_axios$post, 'email', this.state.email), _defineProperty(_axios$post, 'mobile_number', this.state.mobile_number), _defineProperty(_axios$post, 'password_hash', this.state.password_hash), _axios$post)).then(function (response) {
-	        console.log(response.data);
-	        _reactCookie2.default.save(client_id, _this2.state[client_id], { path: '/' });
-	        _reactRouter.browserHistory.push(_this2.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard');
+	        switch (response.data) {
+	          case 'invalid username':
+	            _this2.setState({ invalid_username: true });
+	            break;
+	          case 'invalid password':
+	            _this2.setState({ invalid_password: true });
+	            break;
+	          case 'missing required field':
+	            _this2.setState({ missing_field: true });
+	            break;
+	          case 'invalid email':
+	            _this2.setState({ invalid_email: true });
+	            break;
+	          case 'user already exists':
+	            _this2.setState({ userExists: true });
+	            break;
+	          default:
+	            _reactRouter.browserHistory.push(_this2.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard');
+	        }
 	      }).catch(function (response) {
 	        console.log(response);
 	      });
@@ -45703,10 +45720,23 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'first_name', className: 'signup-input', type: 'text', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: 'first_name', className: 'signup-input', type: 'text', placeholder: 'required', onChange: function onChange(e) {
 	                return _this3.handleChange('first_name', e.target.value);
 	              },
 	              required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.missing_field ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'This field is required'
+	            ) : ''
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -45724,10 +45754,23 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'last_name', className: 'signup-input', type: 'text', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: 'last_name', className: 'signup-input', type: 'text', placeholder: 'required', onChange: function onChange(e) {
 	                return _this3.handleChange('last_name', e.target.value);
 	              },
 	              required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.missing_field ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'This field is required'
+	            ) : ''
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -45746,10 +45789,23 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: client_id, className: 'signup-input', type: 'text', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: client_id, className: 'signup-input', type: 'text', placeholder: 'required', onChange: function onChange(e) {
 	                return _this3.handleChange(client_id, e.target.value);
 	              },
 	              required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.invalid_username ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'Invalid Username'
+	            ) : ''
 	          )
 	        ),
 	        this.props.userType === 'client' ? _react2.default.createElement(
@@ -45767,12 +45823,25 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'email', className: 'signup-input', type: 'text', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: 'email', className: 'signup-input', type: 'text', placeholder: 'required', onChange: function onChange(e) {
 	                return _this3.handleChange('email', e.target.value);
 	              },
 	              required: true })
 	          )
 	        ) : '',
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.invalid_email ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'Invalid Email'
+	            ) : ''
+	          )
+	        ),
 	        this.props.userType === 'client' ? _react2.default.createElement(
 	          _reactBootstrap.Row,
 	          { style: styles.rows },
@@ -45788,12 +45857,25 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'mobile_number', className: 'signup-input', type: 'text', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: 'mobile_number', className: 'signup-input', type: 'text', placeholder: 'required', onChange: function onChange(e) {
 	                return _this3.handleChange('mobile_number', e.target.value);
 	              },
 	              required: true })
 	          )
 	        ) : '',
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.missing_field ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'This field is required'
+	            ) : ''
+	          )
+	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Row,
 	          { style: styles.rows },
@@ -45809,10 +45891,23 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'password_hash', type: 'password', className: 'signup-input', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { name: 'password_hash', type: 'password', className: 'signup-input', placeholder: 'Minimum 8 characters', onChange: function onChange(e) {
 	                return _this3.handleChange('password_hash', e.target.value);
 	              },
 	              required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.invalid_password ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'Password too short'
+	            ) : ''
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -45830,7 +45925,20 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 8 },
-	            _react2.default.createElement('input', { name: 'password_confirm', type: 'password', className: 'signup-input', required: true })
+	            _react2.default.createElement('input', { name: 'password_confirm', type: 'password', className: 'signup-input', placeholder: 'required', required: true })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          _reactBootstrap.Row,
+	          { style: styles.rows },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { smOffset: 4, sm: 8 },
+	            this.state.userExists ? _react2.default.createElement(
+	              'p',
+	              null,
+	              'User already exists. Please log in'
+	            ) : ''
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -47035,267 +47143,6 @@
 /* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var cookie = __webpack_require__(521);
-
-	var _rawCookie = {};
-	var _res = undefined;
-
-	function load(name, doNotParse) {
-	  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
-	  var cookieVal = cookies && cookies[name];
-
-	  if (!doNotParse) {
-	    try {
-	      cookieVal = JSON.parse(cookieVal);
-	    } catch(e) {
-	      // Not serialized object
-	    }
-	  }
-
-	  return cookieVal;
-	}
-
-	function save(name, val, opt) {
-	  _rawCookie[name] = val;
-
-	  // allow you to work with cookies as objects.
-	  if (typeof val === 'object') {
-	    _rawCookie[name] = JSON.stringify(val);
-	  }
-
-	  // Cookies only work in the browser
-	  if (typeof document !== 'undefined') {
-	    document.cookie = cookie.serialize(name, _rawCookie[name], opt);
-	  }
-
-	  if (_res && _res.cookie) {
-	    _res.cookie(name, val, opt);
-	  }
-	}
-
-	function remove(name, opt) {
-	  delete _rawCookie[name];
-
-	  if (typeof opt === 'undefined') {
-	    opt = {};
-	  } else if (typeof opt === 'string') {
-	    // Will be deprecated in future versions
-	    opt = { path: opt };
-	  }
-
-	  if (typeof document !== 'undefined') {
-	    opt.expires = new Date(1970, 1, 1, 0, 0, 1);
-	    document.cookie = cookie.serialize(name, '', opt);
-	  }
-
-	  if (_res && _res.clearCookie) {
-	    _res.clearCookie(name, opt);
-	  }
-	}
-
-	function setRawCookie(rawCookie) {
-	  if (rawCookie) {
-	    _rawCookie = cookie.parse(rawCookie);
-	  } else {
-	    _rawCookie = {};
-	  }
-	}
-
-	function plugToRequest(req, res) {
-	  if (req.cookie) {
-	    _rawCookie = req.cookie;
-	  } else if (req.cookies) {
-	    _rawCookie = req.cookies;
-	  } else if (req.headers && req.headers.cookie) {
-	    setRawCookie(req.headers.cookie);
-	  } else {
-	    _rawCookie = {};
-	  }
-
-	  _res = res;
-	}
-
-	var reactCookie = {
-	  load: load,
-	  save: save,
-	  remove: remove,
-	  setRawCookie: setRawCookie,
-	  plugToRequest: plugToRequest
-	};
-
-	if (typeof window !== 'undefined') {
-	  window['reactCookie'] = reactCookie;
-	}
-
-	module.exports = reactCookie;
-
-
-/***/ },
-/* 521 */
-/***/ function(module, exports) {
-
-	/*!
-	 * cookie
-	 * Copyright(c) 2012-2014 Roman Shtylman
-	 * Copyright(c) 2015 Douglas Christopher Wilson
-	 * MIT Licensed
-	 */
-
-	/**
-	 * Module exports.
-	 * @public
-	 */
-
-	exports.parse = parse;
-	exports.serialize = serialize;
-
-	/**
-	 * Module variables.
-	 * @private
-	 */
-
-	var decode = decodeURIComponent;
-	var encode = encodeURIComponent;
-
-	/**
-	 * RegExp to match field-content in RFC 7230 sec 3.2
-	 *
-	 * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
-	 * field-vchar   = VCHAR / obs-text
-	 * obs-text      = %x80-FF
-	 */
-
-	var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
-
-	/**
-	 * Parse a cookie header.
-	 *
-	 * Parse the given cookie header string into an object
-	 * The object has the various cookies as keys(names) => values
-	 *
-	 * @param {string} str
-	 * @param {object} [options]
-	 * @return {object}
-	 * @public
-	 */
-
-	function parse(str, options) {
-	  if (typeof str !== 'string') {
-	    throw new TypeError('argument str must be a string');
-	  }
-
-	  var obj = {}
-	  var opt = options || {};
-	  var pairs = str.split(/; */);
-	  var dec = opt.decode || decode;
-
-	  pairs.forEach(function(pair) {
-	    var eq_idx = pair.indexOf('=')
-
-	    // skip things that don't look like key=value
-	    if (eq_idx < 0) {
-	      return;
-	    }
-
-	    var key = pair.substr(0, eq_idx).trim()
-	    var val = pair.substr(++eq_idx, pair.length).trim();
-
-	    // quoted values
-	    if ('"' == val[0]) {
-	      val = val.slice(1, -1);
-	    }
-
-	    // only assign once
-	    if (undefined == obj[key]) {
-	      obj[key] = tryDecode(val, dec);
-	    }
-	  });
-
-	  return obj;
-	}
-
-	/**
-	 * Serialize data into a cookie header.
-	 *
-	 * Serialize the a name value pair into a cookie string suitable for
-	 * http headers. An optional options object specified cookie parameters.
-	 *
-	 * serialize('foo', 'bar', { httpOnly: true })
-	 *   => "foo=bar; httpOnly"
-	 *
-	 * @param {string} name
-	 * @param {string} val
-	 * @param {object} [options]
-	 * @return {string}
-	 * @public
-	 */
-
-	function serialize(name, val, options) {
-	  var opt = options || {};
-	  var enc = opt.encode || encode;
-
-	  if (!fieldContentRegExp.test(name)) {
-	    throw new TypeError('argument name is invalid');
-	  }
-
-	  var value = enc(val);
-
-	  if (value && !fieldContentRegExp.test(value)) {
-	    throw new TypeError('argument val is invalid');
-	  }
-
-	  var pairs = [name + '=' + value];
-
-	  if (null != opt.maxAge) {
-	    var maxAge = opt.maxAge - 0;
-	    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
-	    pairs.push('Max-Age=' + maxAge);
-	  }
-
-	  if (opt.domain) {
-	    if (!fieldContentRegExp.test(opt.domain)) {
-	      throw new TypeError('option domain is invalid');
-	    }
-
-	    pairs.push('Domain=' + opt.domain);
-	  }
-
-	  if (opt.path) {
-	    if (!fieldContentRegExp.test(opt.path)) {
-	      throw new TypeError('option path is invalid');
-	    }
-
-	    pairs.push('Path=' + opt.path);
-	  }
-
-	  if (opt.expires) pairs.push('Expires=' + opt.expires.toUTCString());
-	  if (opt.httpOnly) pairs.push('HttpOnly');
-	  if (opt.secure) pairs.push('Secure');
-
-	  return pairs.join('; ');
-	}
-
-	/**
-	 * Try decoding a string using a decoding function.
-	 *
-	 * @param {string} str
-	 * @param {function} decode
-	 * @private
-	 */
-
-	function tryDecode(str, decode) {
-	  try {
-	    return decode(str);
-	  } catch (e) {
-	    return str;
-	  }
-	}
-
-
-/***/ },
-/* 522 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
 
 	'use strict';
@@ -47317,10 +47164,6 @@
 	var _axios = __webpack_require__(502);
 
 	var _axios2 = _interopRequireDefault(_axios);
-
-	var _reactCookie = __webpack_require__(520);
-
-	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
 	var _Button = __webpack_require__(499);
 
@@ -47367,14 +47210,12 @@
 	      var _axios$post,
 	          _this2 = this;
 
-	      var url = this.props.userType === 'client' ? '/login-patient' : 'login-clinician';
+	      var url = this.props.userType === 'client' ? '/login-patient' : '/login-clinician';
 	      var client_id = this.props.userType === 'client' ? 'patient_id' : 'clinician_id';
 	      _axios2.default.post(url, (_axios$post = {}, _defineProperty(_axios$post, client_id, this.state[client_id]), _defineProperty(_axios$post, 'password_hash', this.state.password_hash), _axios$post)).then(function (response) {
-	        console.log(response.data);
 	        if (response.data === 'incorrect password') {
 	          _this2.setState({ incorrectPassword: true });
 	        } else {
-	          _reactCookie2.default.save(client_id, _this2.state[client_id], { path: '/' });
 	          _reactRouter.browserHistory.push(_this2.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard');
 	        }
 	      }).catch(function (response) {
@@ -47412,7 +47253,7 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 9 },
-	            _react2.default.createElement('input', { className: 'signup-input', type: 'text', name: id,
+	            _react2.default.createElement('input', { className: 'signup-input', type: 'text', placeholder: 'required', name: id,
 	              onChange: function onChange(e) {
 	                return _this3.handleChange(id, e.target.value);
 	              },
@@ -47435,7 +47276,7 @@
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
 	            { sm: 9 },
-	            _react2.default.createElement('input', { type: 'password', className: 'signup-input', name: 'password_hash', onChange: function onChange(e) {
+	            _react2.default.createElement('input', { type: 'password', className: 'signup-input', placeholder: 'required', name: 'password_hash', onChange: function onChange(e) {
 	                return _this3.handleChange('password_hash', e.target.value);
 	              }, required: true })
 	          )
@@ -47445,7 +47286,7 @@
 	          { style: styles.rows },
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { sm: 9 },
+	            { smOffset: 2, sm: 9 },
 	            this.state.incorrectPassword ? _react2.default.createElement(
 	              'p',
 	              null,
@@ -47494,7 +47335,7 @@
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "loginPanel.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
-/* 523 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -47523,7 +47364,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(520);
+	var _reactCookie = __webpack_require__(522);
 
 	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
@@ -47536,6 +47377,10 @@
 	var _index3 = __webpack_require__(527);
 
 	var _index4 = _interopRequireDefault(_index3);
+
+	var _index5 = __webpack_require__(529);
+
+	var _index6 = _interopRequireDefault(_index5);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47701,9 +47546,12 @@
 	                _react2.default.createElement(
 	                  'h4',
 	                  null,
-	                  ' Logged in as ',
-	                  this.state.clinician_id,
-	                  ' '
+	                  ' Logged in as: ',
+	                  _react2.default.createElement(
+	                    'strong',
+	                    null,
+	                    'Clinician'
+	                  )
 	                )
 	              ),
 	              _react2.default.createElement(
@@ -47711,15 +47559,6 @@
 	                null,
 	                _react2.default.createElement(_Button2.default, { buttonName: 'Log Out', handleClick: this.onLogout })
 	              )
-	            )
-	          ),
-	          _react2.default.createElement(
-	            _reactBootstrap.Col,
-	            { xs: 1 },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'clinician-dashboard-logo' },
-	              _react2.default.createElement('img', { className: 'logo', src: '/img/logo.png' })
 	            )
 	          )
 	        ),
@@ -47732,10 +47571,15 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'client-list-container' },
-	              _react2.default.createElement(_index2.default, _extends({}, this.props, { filter: this.state.filter, clients: this.state.clients }))
+	              _react2.default.createElement(_index2.default, _extends({}, this.props, {
+	                getClients: this.getClients.bind(this),
+	                filter: this.state.filter,
+	                clients: this.state.clients
+	              }))
 	            )
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_index6.default, null)
 	      );
 	    }
 	  }]);
@@ -47752,6 +47596,267 @@
 	};
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 522 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var cookie = __webpack_require__(523);
+
+	var _rawCookie = {};
+	var _res = undefined;
+
+	function load(name, doNotParse) {
+	  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
+	  var cookieVal = cookies && cookies[name];
+
+	  if (!doNotParse) {
+	    try {
+	      cookieVal = JSON.parse(cookieVal);
+	    } catch(e) {
+	      // Not serialized object
+	    }
+	  }
+
+	  return cookieVal;
+	}
+
+	function save(name, val, opt) {
+	  _rawCookie[name] = val;
+
+	  // allow you to work with cookies as objects.
+	  if (typeof val === 'object') {
+	    _rawCookie[name] = JSON.stringify(val);
+	  }
+
+	  // Cookies only work in the browser
+	  if (typeof document !== 'undefined') {
+	    document.cookie = cookie.serialize(name, _rawCookie[name], opt);
+	  }
+
+	  if (_res && _res.cookie) {
+	    _res.cookie(name, val, opt);
+	  }
+	}
+
+	function remove(name, opt) {
+	  delete _rawCookie[name];
+
+	  if (typeof opt === 'undefined') {
+	    opt = {};
+	  } else if (typeof opt === 'string') {
+	    // Will be deprecated in future versions
+	    opt = { path: opt };
+	  }
+
+	  if (typeof document !== 'undefined') {
+	    opt.expires = new Date(1970, 1, 1, 0, 0, 1);
+	    document.cookie = cookie.serialize(name, '', opt);
+	  }
+
+	  if (_res && _res.clearCookie) {
+	    _res.clearCookie(name, opt);
+	  }
+	}
+
+	function setRawCookie(rawCookie) {
+	  if (rawCookie) {
+	    _rawCookie = cookie.parse(rawCookie);
+	  } else {
+	    _rawCookie = {};
+	  }
+	}
+
+	function plugToRequest(req, res) {
+	  if (req.cookie) {
+	    _rawCookie = req.cookie;
+	  } else if (req.cookies) {
+	    _rawCookie = req.cookies;
+	  } else if (req.headers && req.headers.cookie) {
+	    setRawCookie(req.headers.cookie);
+	  } else {
+	    _rawCookie = {};
+	  }
+
+	  _res = res;
+	}
+
+	var reactCookie = {
+	  load: load,
+	  save: save,
+	  remove: remove,
+	  setRawCookie: setRawCookie,
+	  plugToRequest: plugToRequest
+	};
+
+	if (typeof window !== 'undefined') {
+	  window['reactCookie'] = reactCookie;
+	}
+
+	module.exports = reactCookie;
+
+
+/***/ },
+/* 523 */
+/***/ function(module, exports) {
+
+	/*!
+	 * cookie
+	 * Copyright(c) 2012-2014 Roman Shtylman
+	 * Copyright(c) 2015 Douglas Christopher Wilson
+	 * MIT Licensed
+	 */
+
+	/**
+	 * Module exports.
+	 * @public
+	 */
+
+	exports.parse = parse;
+	exports.serialize = serialize;
+
+	/**
+	 * Module variables.
+	 * @private
+	 */
+
+	var decode = decodeURIComponent;
+	var encode = encodeURIComponent;
+
+	/**
+	 * RegExp to match field-content in RFC 7230 sec 3.2
+	 *
+	 * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
+	 * field-vchar   = VCHAR / obs-text
+	 * obs-text      = %x80-FF
+	 */
+
+	var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
+
+	/**
+	 * Parse a cookie header.
+	 *
+	 * Parse the given cookie header string into an object
+	 * The object has the various cookies as keys(names) => values
+	 *
+	 * @param {string} str
+	 * @param {object} [options]
+	 * @return {object}
+	 * @public
+	 */
+
+	function parse(str, options) {
+	  if (typeof str !== 'string') {
+	    throw new TypeError('argument str must be a string');
+	  }
+
+	  var obj = {}
+	  var opt = options || {};
+	  var pairs = str.split(/; */);
+	  var dec = opt.decode || decode;
+
+	  pairs.forEach(function(pair) {
+	    var eq_idx = pair.indexOf('=')
+
+	    // skip things that don't look like key=value
+	    if (eq_idx < 0) {
+	      return;
+	    }
+
+	    var key = pair.substr(0, eq_idx).trim()
+	    var val = pair.substr(++eq_idx, pair.length).trim();
+
+	    // quoted values
+	    if ('"' == val[0]) {
+	      val = val.slice(1, -1);
+	    }
+
+	    // only assign once
+	    if (undefined == obj[key]) {
+	      obj[key] = tryDecode(val, dec);
+	    }
+	  });
+
+	  return obj;
+	}
+
+	/**
+	 * Serialize data into a cookie header.
+	 *
+	 * Serialize the a name value pair into a cookie string suitable for
+	 * http headers. An optional options object specified cookie parameters.
+	 *
+	 * serialize('foo', 'bar', { httpOnly: true })
+	 *   => "foo=bar; httpOnly"
+	 *
+	 * @param {string} name
+	 * @param {string} val
+	 * @param {object} [options]
+	 * @return {string}
+	 * @public
+	 */
+
+	function serialize(name, val, options) {
+	  var opt = options || {};
+	  var enc = opt.encode || encode;
+
+	  if (!fieldContentRegExp.test(name)) {
+	    throw new TypeError('argument name is invalid');
+	  }
+
+	  var value = enc(val);
+
+	  if (value && !fieldContentRegExp.test(value)) {
+	    throw new TypeError('argument val is invalid');
+	  }
+
+	  var pairs = [name + '=' + value];
+
+	  if (null != opt.maxAge) {
+	    var maxAge = opt.maxAge - 0;
+	    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
+	    pairs.push('Max-Age=' + maxAge);
+	  }
+
+	  if (opt.domain) {
+	    if (!fieldContentRegExp.test(opt.domain)) {
+	      throw new TypeError('option domain is invalid');
+	    }
+
+	    pairs.push('Domain=' + opt.domain);
+	  }
+
+	  if (opt.path) {
+	    if (!fieldContentRegExp.test(opt.path)) {
+	      throw new TypeError('option path is invalid');
+	    }
+
+	    pairs.push('Path=' + opt.path);
+	  }
+
+	  if (opt.expires) pairs.push('Expires=' + opt.expires.toUTCString());
+	  if (opt.httpOnly) pairs.push('HttpOnly');
+	  if (opt.secure) pairs.push('Secure');
+
+	  return pairs.join('; ');
+	}
+
+	/**
+	 * Try decoding a string using a decoding function.
+	 *
+	 * @param {string} str
+	 * @param {function} decode
+	 * @private
+	 */
+
+	function tryDecode(str, decode) {
+	  try {
+	    return decode(str);
+	  } catch (e) {
+	    return str;
+	  }
+	}
+
 
 /***/ },
 /* 524 */
@@ -47844,11 +47949,7 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    _react2.default.createElement(
-	                      'strong',
-	                      null,
-	                      'Patient ID:'
-	                    )
+	                    'Patient ID:'
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -47857,7 +47958,11 @@
 	                  _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    patientID
+	                    _react2.default.createElement(
+	                      'strong',
+	                      null,
+	                      patientID
+	                    )
 	                  )
 	                ),
 	                _react2.default.createElement(
@@ -47871,7 +47976,10 @@
 	                )
 	              )
 	            },
-	            _react2.default.createElement(_index2.default, { letters: _this2.props.clients[patientID] })
+	            _react2.default.createElement(_index2.default, {
+	              getClients: _this2.props.getClients,
+	              letters: _this2.props.clients[patientID]
+	            })
 	          );
 	        })
 	      );
@@ -47952,6 +48060,8 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var letters = this.sortLetters(this.props.letters);
 	      return _react2.default.createElement(
 	        _reactBootstrap.Table,
@@ -47998,7 +48108,8 @@
 	              topic: letter.topic,
 	              recipient: letter.recipient,
 	              status: letter.status,
-	              date_created: letter.date_created
+	              date_created: letter.date_created,
+	              getClients: _this2.props.getClients
 	            });
 	          }) : ''
 	        )
@@ -48013,7 +48124,8 @@
 
 
 	LetterTable.propTypes = {
-	  letters: _react2.default.PropTypes.array
+	  letters: _react2.default.PropTypes.array,
+	  getClients: _react2.default.PropTypes.func
 	};
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
@@ -48064,6 +48176,7 @@
 	    _this.changeStatus = _this.changeStatus.bind(_this);
 	    _this.formatDate = _this.formatDate.bind(_this);
 	    _this.postData = _this.postData.bind(_this);
+	    _this.deleteLetter = _this.deleteLetter.bind(_this);
 	    return _this;
 	  }
 
@@ -48081,6 +48194,7 @@
 	        buttonStatus: buttonStatus
 	      });
 	      this.postData(buttonStatus, date_created);
+	      this.props.getClients();
 	    }
 	  }, {
 	    key: 'postData',
@@ -48092,6 +48206,19 @@
 	        console.log(response);
 	      }).catch(function (response) {
 	        console.log(response);
+	      });
+	    }
+	  }, {
+	    key: 'deleteLetter',
+	    value: function deleteLetter(dateCreated) {
+	      var _this2 = this;
+
+	      _axios2.default.post('/remove-letter', {
+	        date_created: dateCreated
+	      }).then(function (response) {
+	        _this2.props.getClients();
+	      }).catch(function (response) {
+	        console.log('NOT DONE', response);
 	      });
 	    }
 	  }, {
@@ -48120,11 +48247,7 @@
 	        _react2.default.createElement(
 	          'td',
 	          null,
-	          _react2.default.createElement(
-	            _reactBootstrap.Button,
-	            { bsStyle: 'link' },
-	            this.props.topic
-	          )
+	          this.props.topic
 	        ),
 	        _react2.default.createElement(
 	          'td',
@@ -48181,6 +48304,15 @@
 	          'td',
 	          null,
 	          this.formatDate(this.props.date_created)
+	        ),
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            _reactBootstrap.Button,
+	            { bsSize: 'small', className: 'delete-letter-btn', onClick: this.deleteLetter.bind(this, this.props.date_created) },
+	            'X'
+	          )
 	        )
 	      );
 	    }
@@ -48190,6 +48322,16 @@
 	}(_react2.default.Component);
 
 	exports.default = TableRow;
+
+
+	TableRow.propTypes = {
+	  status: _react2.default.PropTypes.string,
+	  getClients: _react2.default.PropTypes.func,
+	  index: _react2.default.PropTypes.number,
+	  topic: _react2.default.PropTypes.string,
+	  recipient: _react2.default.PropTypes.string,
+	  date_created: _react2.default.PropTypes.string
+	};
 
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "tr.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
@@ -48219,7 +48361,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(520);
+	var _reactCookie = __webpack_require__(522);
 
 	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
@@ -48521,7 +48663,77 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(530);
+	var _reactBootstrap = __webpack_require__(231);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LargeLogo = function (_React$Component) {
+	  _inherits(LargeLogo, _React$Component);
+
+	  function LargeLogo() {
+	    _classCallCheck(this, LargeLogo);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LargeLogo).apply(this, arguments));
+	  }
+
+	  _createClass(LargeLogo, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        _reactBootstrap.Row,
+	        null,
+	        _react2.default.createElement(
+	          _reactBootstrap.Col,
+	          {
+	            xs: 10,
+	            md: 4,
+	            lg: 2,
+	            xsOffset: 1,
+	            mdOffset: 4,
+	            lgOffset: 5
+	          },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'footer-logo' },
+	            _react2.default.createElement('img', { src: '/img/logo.png', className: 'logo' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LargeLogo;
+	}(_react2.default.Component);
+
+	exports.default = LargeLogo;
+
+	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
+
+/***/ },
+/* 530 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(531);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -48531,7 +48743,7 @@
 
 	var _axios2 = _interopRequireDefault(_axios);
 
-	var _reactCookie = __webpack_require__(520);
+	var _reactCookie = __webpack_require__(522);
 
 	var _reactCookie2 = _interopRequireDefault(_reactCookie);
 
@@ -48540,6 +48752,10 @@
 	var _Button = __webpack_require__(499);
 
 	var _Button2 = _interopRequireDefault(_Button);
+
+	var _index3 = __webpack_require__(529);
+
+	var _index4 = _interopRequireDefault(_index3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48581,15 +48797,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.getLetters();
-	      // axios.get('/get-patient-letters', {
-	      //   patient_id: this.state.patient_id
-	      // })
-	      // .then(response => {
-	      //   this.setState({ letters: response.data })
-	      // })
-	      // .catch(response => {
-	      //   console.log(response)
-	      // })
 	    }
 	  }, {
 	    key: 'onLogout',
@@ -48633,18 +48840,36 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactBootstrap.Row,
-	          null,
-	          _react2.default.createElement(_Button2.default, { buttonName: 'Log Out', handleClick: this.onLogout })
+	          { className: 'logout' },
+	          _react2.default.createElement(
+	            _reactBootstrap.Col,
+	            { xs: 2, xsOffset: 8 },
+	            _react2.default.createElement(
+	              'h4',
+	              null,
+	              'Logged in as: ',
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Client'
+	              )
+	            ),
+	            _react2.default.createElement(_Button2.default, { buttonName: 'Log Out', handleClick: this.onLogout })
+	          )
 	        ),
 	        _react2.default.createElement(
 	          _reactBootstrap.Row,
 	          null,
 	          _react2.default.createElement(
 	            _reactBootstrap.Col,
-	            { xs: 10, xsOffset: 1 },
-	            _react2.default.createElement(_index2.default, { sentLetters: this.filterSentLetters('Sent'), activeLetters: this.filterActiveLetters() })
+	            { xs: 8, xsOffset: 2 },
+	            _react2.default.createElement(_index2.default, {
+	              sentLetters: this.filterSentLetters(),
+	              activeLetters: this.filterActiveLetters()
+	            })
 	          )
-	        )
+	        ),
+	        _react2.default.createElement(_index4.default, null)
 	      );
 	    }
 	  }]);
@@ -48662,7 +48887,7 @@
 	/* REACT HOT LOADER */ }).call(this); } finally { if (false) { (function () { var foundReactClasses = module.hot.data && module.hot.data.foundReactClasses || false; if (module.exports && module.makeHot) { var makeExportsHot = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/makeExportsHot.js"); if (makeExportsHot(module, require("react"))) { foundReactClasses = true; } var shouldAcceptModule = true && foundReactClasses; if (shouldAcceptModule) { module.hot.accept(function (err) { if (err) { console.error("Cannot not apply hot update to " + "index.js" + ": " + err.message); } }); } } module.hot.dispose(function (data) { data.makeHot = module.makeHot; data.foundReactClasses = foundReactClasses; }); })(); } }
 
 /***/ },
-/* 530 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* REACT HOT LOADER */ if (false) { (function () { var ReactHotAPI = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-api/modules/index.js"), RootInstanceProvider = require("/home/katbow/projects/prototypes/SharePlan/node_modules/react-hot-loader/RootInstanceProvider.js"), ReactMount = require("react/lib/ReactMount"), React = require("react"); module.makeHot = module.hot.data ? module.hot.data.makeHot : ReactHotAPI(function () { return RootInstanceProvider.getRootInstances(ReactMount); }, React); })(); } try { (function () {
@@ -48698,6 +48923,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ClientLetterTable).call(this));
 
 	    _this.colorText = _this.colorText.bind(_this);
+	    _this.colorBox = _this.colorBox.bind(_this);
 	    return _this;
 	  }
 
@@ -48707,148 +48933,180 @@
 	      return displayStatus === letterStatus ? 'active-state' : '';
 	    }
 	  }, {
+	    key: 'colorBox',
+	    value: function colorBox(letterStatus, displayStatus) {
+	      return displayStatus === letterStatus ? 'active-box status' : 'status';
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
-	        this.props.activeLetters ? _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { responsive: true },
+	        { className: 'client-letter-table' },
+	        this.props.activeLetters.length > 0 ? _react2.default.createElement(
+	          'div',
+	          null,
 	          _react2.default.createElement(
-	            'thead',
+	            'h2',
 	            null,
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Topic'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Recipients'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Status'
-	              )
-	            )
+	            'Pending Letters'
 	          ),
 	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            this.props.activeLetters.map(function (letter, i) {
-	              return _react2.default.createElement(
-	                'tr',
-	                { key: i },
+	            'div',
+	            { className: 'client-table' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Table,
+	              { responsive: true, className: 'client-heading' },
+	              _react2.default.createElement(
+	                'thead',
+	                null,
 	                _react2.default.createElement(
-	                  'td',
+	                  'tr',
 	                  null,
 	                  _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { bsStyle: 'link' },
-	                    letter.topic
-	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'td',
-	                  null,
-	                  letter.recipient
-	                ),
-	                _react2.default.createElement(
-	                  'td',
-	                  null,
-	                  _react2.default.createElement(
-	                    _reactBootstrap.Row,
+	                    'th',
 	                    null,
+	                    'Topic'
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Recipients'
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Status'
+	                  )
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'tbody',
+	                null,
+	                this.props.activeLetters.map(function (letter, i) {
+	                  return _react2.default.createElement(
+	                    'tr',
+	                    { key: i },
 	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { className: 'arrow-status', xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        { className: _this2.colorText(letter.status, 'On the list') },
-	                        'On the list'
-	                      )
+	                      'td',
+	                      null,
+	                      letter.topic
 	                    ),
 	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { className: 'arrow-status', xs: 2 },
-	                      _react2.default.createElement(
-	                        'p',
-	                        { className: _this2.colorText(letter.status, 'In progress') },
-	                        'In progress'
-	                      )
+	                      'td',
+	                      null,
+	                      letter.recipient
 	                    ),
 	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 1 },
-	                      _react2.default.createElement(_reactBootstrap.Glyphicon, { className: 'arrow-right', glyph: 'chevron-right' })
-	                    ),
-	                    _react2.default.createElement(
-	                      _reactBootstrap.Col,
-	                      { xs: 3 },
+	                      'td',
+	                      null,
 	                      _react2.default.createElement(
-	                        'p',
-	                        { className: _this2.colorText(letter.status, 'Sent') },
-	                        'Sent'
+	                        _reactBootstrap.Row,
+	                        null,
+	                        _react2.default.createElement(
+	                          _reactBootstrap.Col,
+	                          { className: _this2.colorBox(letter.status, 'On the list'), xs: 2 },
+	                          _react2.default.createElement(
+	                            'p',
+	                            { className: _this2.colorText(letter.status, 'On the list') },
+	                            'On the list'
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          _reactBootstrap.Col,
+	                          { xs: 1 },
+	                          _react2.default.createElement(_reactBootstrap.Glyphicon, { className: 'arrow-right', glyph: 'chevron-right' })
+	                        ),
+	                        _react2.default.createElement(
+	                          _reactBootstrap.Col,
+	                          { className: _this2.colorBox(letter.status, 'In progress'), xs: 2 },
+	                          _react2.default.createElement(
+	                            'p',
+	                            { className: _this2.colorText(letter.status, 'In progress') },
+	                            'In progress'
+	                          )
+	                        ),
+	                        _react2.default.createElement(
+	                          _reactBootstrap.Col,
+	                          { xs: 1 },
+	                          _react2.default.createElement(_reactBootstrap.Glyphicon, { className: 'arrow-right', glyph: 'chevron-right' })
+	                        ),
+	                        _react2.default.createElement(
+	                          _reactBootstrap.Col,
+	                          { className: _this2.colorBox(letter.status, 'Sent'), xs: 3 },
+	                          _react2.default.createElement(
+	                            'p',
+	                            { className: _this2.colorText(letter.status, 'Sent') },
+	                            'Sent'
+	                          )
+	                        )
 	                      )
 	                    )
-	                  )
-	                )
-	              );
-	            })
-	          )
-	        ) : '',
-	        this.props.sentLetters ? _react2.default.createElement(
-	          _reactBootstrap.Table,
-	          { responsive: true },
-	          _react2.default.createElement(
-	            'thead',
-	            null,
-	            _react2.default.createElement(
-	              'tr',
-	              null,
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Topic'
-	              ),
-	              _react2.default.createElement(
-	                'th',
-	                null,
-	                'Recipients'
+	                  );
+	                })
 	              )
 	            )
+	          )
+	        ) : '',
+	        this.props.sentLetters.length !== 0 ? _react2.default.createElement(
+	          'div',
+	          { className: 'sent-letters' },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Sent Letters'
 	          ),
 	          _react2.default.createElement(
-	            'tbody',
-	            null,
-	            this.props.sentLetters.map(function (letter, i) {
-	              return _react2.default.createElement(
-	                'tr',
-	                { key: i },
+	            'div',
+	            { className: 'client-table' },
+	            _react2.default.createElement(
+	              _reactBootstrap.Table,
+	              { responsive: true, className: 'client-heading' },
+	              _react2.default.createElement(
+	                'thead',
+	                null,
 	                _react2.default.createElement(
-	                  'td',
+	                  'tr',
 	                  null,
 	                  _react2.default.createElement(
-	                    _reactBootstrap.Button,
-	                    { bsStyle: 'link' },
-	                    letter.topic
+	                    'th',
+	                    null,
+	                    'Topic'
+	                  ),
+	                  _react2.default.createElement(
+	                    'th',
+	                    null,
+	                    'Recipients'
 	                  )
-	                ),
-	                _react2.default.createElement(
-	                  'td',
-	                  null,
-	                  letter.recipient
 	                )
-	              );
-	            })
+	              ),
+	              _react2.default.createElement(
+	                'tbody',
+	                null,
+	                this.props.sentLetters.map(function (letter, i) {
+	                  return _react2.default.createElement(
+	                    'tr',
+	                    { key: i },
+	                    _react2.default.createElement(
+	                      'td',
+	                      null,
+	                      _react2.default.createElement(
+	                        _reactBootstrap.Button,
+	                        { bsStyle: 'link' },
+	                        letter.topic
+	                      )
+	                    ),
+	                    _react2.default.createElement(
+	                      'td',
+	                      null,
+	                      letter.recipient
+	                    )
+	                  );
+	                })
+	              )
+	            )
 	          )
 	        ) : ''
 	      );
