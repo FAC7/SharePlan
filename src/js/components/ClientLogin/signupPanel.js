@@ -87,7 +87,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>First Name</label>
           </Col>
           <Col sm={8}>
-            <input name='first_name' className='signup-input' type='text' onChange={(e) => {
+            <input name='first_name' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('first_name', e.target.value)
             }}
             required />
@@ -103,7 +103,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Last Name</label>
           </Col>
           <Col sm={8}>
-            <input name='last_name' className='signup-input' type='text' onChange={(e) => {
+            <input name='last_name' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('last_name', e.target.value)
             }}
             required/>
@@ -119,7 +119,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>{userType} ID</label>
           </Col>
           <Col sm={8}>
-            <input name={client_id} className='signup-input' type='text' onChange={(e) => {
+            <input name={client_id} className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange(client_id, e.target.value)
             }}
             required/>
@@ -136,7 +136,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Email</label>
           </Col>
           <Col sm={8}>
-            <input name='email' className='signup-input' type='text' onChange={(e) => {
+            <input name='email' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('email', e.target.value)
             }}
             required/>
@@ -154,7 +154,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Mobile Number</label>
           </Col>
           <Col sm={8}>
-            <input name='mobile_number' className='signup-input' type='text' onChange={(e) => {
+            <input name='mobile_number' className='signup-input' type='text' placeholder='required' onChange={(e) => {
               return this.handleChange('mobile_number', e.target.value)
             }}
             required/>
@@ -171,7 +171,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Password</label>
           </Col>
           <Col sm={8}>
-            <input name='password_hash' type='password' className='signup-input' onChange={(e) => {
+            <input name='password_hash' type='password' className='signup-input' placeholder='Minimum 8 characters' onChange={(e) => {
               return this.handleChange('password_hash', e.target.value)
             }}
             required/>
@@ -179,7 +179,7 @@ export default class SignupPanel extends Component {
         </Row>
         <Row style={styles.rows}>
           <Col smOffset={4} sm={8}>
-            {this.state.invalid_password ? <p>Invalid Password</p> : ''}
+            {this.state.invalid_password ? <p>Password too short</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -187,7 +187,7 @@ export default class SignupPanel extends Component {
             <label className='signup-form-label'>Confirm Password</label>
           </Col>
           <Col sm={8}>
-            <input name='password_confirm' type='password' className='signup-input' required/>
+            <input name='password_confirm' type='password' className='signup-input' placeholder='required' required/>
           </Col>
         </Row>
         <Row style={styles.rows}>
