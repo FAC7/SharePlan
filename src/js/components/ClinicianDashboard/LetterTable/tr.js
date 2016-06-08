@@ -10,12 +10,15 @@ export default class TableRow extends React.Component {
     this.changeStatus = this.changeStatus.bind(this)
     this.formatDate = this.formatDate.bind(this)
     this.postData = this.postData.bind(this)
+    this.deleteLetter = this.deleteLetter.bind(this)
   }
+
   componentWillMount () {
     this.setState({
       buttonStatus: this.props.status
     })
   }
+
   changeStatus (buttonStatus, date_created) {
     this.setState({
       buttonStatus: buttonStatus
@@ -23,6 +26,7 @@ export default class TableRow extends React.Component {
     this.postData(buttonStatus, date_created)
     this.props.getClients()
   }
+
   postData (letterStatus, date_created) {
     axios.post('/change-letter-status', {
       newStatus: letterStatus,
@@ -35,6 +39,19 @@ export default class TableRow extends React.Component {
       console.log(response)
     })
   }
+
+  deleteLetter (dateCreated) {
+    axios.post('/remove-letter', {
+      date_created: dateCreated
+    })
+    .then((response) => {
+      this.props.getClients()
+    })
+    .catch((response) => {
+      console.log('NOT DONE', response)
+    })
+  }
+
   formatDate (createdDate) {
     const d = new Date(+createdDate)
     let day = d.getDate()
@@ -45,6 +62,7 @@ export default class TableRow extends React.Component {
     const prettyDate = day + '/' + month + '/' + year
     return prettyDate
   }
+
   render () {
     const letterColor = {
       'On the list': 0,
@@ -91,7 +109,19 @@ export default class TableRow extends React.Component {
             </MenuItem>
           </DropdownButton></td>
         <td>{this.formatDate(this.props.date_created)}</td>
+        <td>
+          <Button bsSize='small' className='delete-letter-btn' onClick={this.deleteLetter.bind(this, this.props.date_created)}>X</Button>
+        </td>
       </tr>
     )
   }
+}
+
+TableRow.propTypes = {
+  status: React.PropTypes.string,
+  getClients: React.PropTypes.func,
+  index: React.PropTypes.number,
+  topic: React.PropTypes.string,
+  recipient: React.PropTypes.string,
+  date_created: React.PropTypes.string
 }

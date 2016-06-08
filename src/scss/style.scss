@@ -190,12 +190,15 @@ button {
 .progress-bar-styling {
 	background-color: white;
 }
+
 .progress-bar-warning {
-	    background-image: linear-gradient(to bottom, #74d679 0, #37ba3e 100%);
+	background-image: linear-gradient(to bottom, #74d679 0, #37ba3e 100%);
 }
+
 .progress {
 	margin-bottom: 0;
 }
+
 .btn-info {
 	// background-image: linear-gradient(to bottom, #74d679 0, #37ba3e 100%);
 	background-image: none;
@@ -206,11 +209,11 @@ button {
 	text-shadow: none;
 	padding: 0.5em;
 }
+
 .btn-info:focus, .btn-info:hover {
 	background: $bright-green;
 }
-.open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover {
-}
+
 .search-bar {
 	padding-top: 0.5em;
 }
@@ -225,7 +228,13 @@ button {
 	height: 100%;
 	width: auto;
 	padding-left: 0.5em;
+}
 
+.btn-default:focus, .btn-default:hover, .btn-default {
+	background-color: $bright-green;
+	background-image: none;
+	border-color: $bright-green;
+	color: white;
 }
 
 // Login-modals
