@@ -28,15 +28,17 @@ const signUpPatient = (client, done, data, reply) => {
         client.query('INSERT INTO patients VALUES ($1, $2, $3, $4, $5, $6)',
         [ data.patient_id, data.first_name, data.last_name, data.email, data.mobile_number, hash ], (err) => {
           if (err) {
-            return console.error('error running query', err)
+            console.error('error running query', err)
+            reply('user already exists')
+          } else {
+            const token = jwt.sign({ patientID: data.patient_id }, process.env.JWT_SECRET)
+            reply().state('patient_id', token, {
+              ttl: 24 * 60 * 60 * 1000,
+              isSecure: false,
+              path: '/'
+            })
+            done()
           }
-          const token = jwt.sign({ patientID: data.patient_id }, process.env.JWT_SECRET)
-          reply().state('patient_id', token, {
-            ttl: 24 * 60 * 60 * 1000,
-            isSecure: false,
-            path: '/'
-          })
-          done()
         })
       } else if (err.details[0].path === 'username') {
         reply('invalid username')
@@ -56,7 +58,7 @@ const checkPatientLogin = (client, done, data, reply) => {
   client.query('SELECT password_hash FROM patients WHERE patient_id = $1',
     [ data.patient_id ], (err, result) => {
       if (err) {
-        return console.error('error running query', err)
+        console.error('error running query', err)
       }
       const hash = result.rows[0] ? result.rows[0].password_hash : ''
 
