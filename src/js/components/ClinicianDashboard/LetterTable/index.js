@@ -54,5 +54,6 @@ export default class LetterTable extends React.Component {
 }
 
 LetterTable.propTypes = {
-  letters: React.PropTypes.array
+  letters: React.PropTypes.array,
+  getClients: React.PropTypes.func
 }

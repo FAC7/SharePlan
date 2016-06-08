@@ -34,9 +34,9 @@ const changeLetterStatus = (client, done, date_created, newStatus) => {
   done()
 }
 
-const removeLetter = (client, done, letter_id) => {
-  client.query('DELETE FROM letters WHERE id = $1',
-    [ letter_id ])
+const removeLetter = (client, done, date_created) => {
+  client.query('DELETE FROM letters WHERE date_created = $1',
+    [ date_created ])
   done()
 }
 
