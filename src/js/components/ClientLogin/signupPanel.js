@@ -23,7 +23,9 @@ export default class SignupPanel extends Component {
       mobile_number: '',
       password_hash: '',
       invalid_username: false,
-      invalid_password: false
+      invalid_password: false,
+      missing_field: false,
+      invalid_email: false
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -41,12 +43,21 @@ export default class SignupPanel extends Component {
       password_hash: this.state.password_hash
     })
     .then((response) => {
-      if (response.data === 'invalid username') {
-        this.setState({ invalid_username: true })
-      } else if (response.data === 'invalid password') {
-        this.setState({ invalid_password: true })
-      } else {
-        browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
+      switch (response.data) {
+        case 'invalid username':
+          this.setState({ invalid_username: true })
+          break
+        case 'invalid password':
+          this.setState({ invalid_password: true })
+          break
+        case 'missing required field':
+          this.setState({ missing_field: true })
+          break
+        case 'invalid email':
+          this.setState({ invalid_email: true })
+          break
+        default:
+          browserHistory.push(this.props.userType === 'client' ? '/client-dashboard' : 'clinician-dashboard')
       }
     })
     .catch((response) => {
@@ -83,6 +94,11 @@ export default class SignupPanel extends Component {
           </Col>
         </Row>
         <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
           <Col sm={4}>
             <label className='signup-form-label'>Last Name</label>
           </Col>
@@ -91,6 +107,11 @@ export default class SignupPanel extends Component {
               return this.handleChange('last_name', e.target.value)
             }}
             required/>
+          </Col>
+        </Row>
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
           </Col>
         </Row>
         <Row style={styles.rows}>
@@ -122,6 +143,11 @@ export default class SignupPanel extends Component {
           </Col>
         </Row> : ''
         }
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.invalid_email ? <p>Invalid Email</p> : ''}
+          </Col>
+        </Row>
         { this.props.userType === 'client'
         ? <Row style={styles.rows}>
           <Col sm={4}>
@@ -135,6 +161,11 @@ export default class SignupPanel extends Component {
           </Col>
         </Row> : ''
         }
+        <Row style={styles.rows}>
+          <Col smOffset={4} sm={8}>
+            {this.state.missing_field ? <p>This field is required</p> : ''}
+          </Col>
+        </Row>
         <Row style={styles.rows}>
           <Col sm={4}>
             <label className='signup-form-label'>Password</label>

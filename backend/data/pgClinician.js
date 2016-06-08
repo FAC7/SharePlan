@@ -5,11 +5,18 @@ require('env2')('config.env')
 
 const signUpClinician = (client, done, data, reply) => {
   const schema = Joi.object().keys({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
     username: Joi.string().alphanum().min(5).max(30).required(),
     password: Joi.string().min(8).required()
   })
 
-  Joi.validate({ username: data.clinician_id, password: data.password_hash },
+  Joi.validate({
+    username: data.clinician_id,
+    password: data.password_hash,
+    firstName: data.first_name,
+    lastName: data.last_name
+  },
     schema, (err, value) => {
       if (!err) {
         const salt = bcrypt.genSaltSync(10)
@@ -31,6 +38,9 @@ const signUpClinician = (client, done, data, reply) => {
         reply('invalid username')
       } else if (err.details[0].path === 'password') {
         reply('invalid password')
+      } else if (err.details[0].path === 'firstName' ||
+                  err.details[0].path === 'lastName') {
+        reply('missing required field')
       }
     })
 }
