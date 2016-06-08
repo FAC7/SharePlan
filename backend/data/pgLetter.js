@@ -1,4 +1,7 @@
+const jwt = require('jsonwebtoken')
+
 const addNewLetter = (client, done, data, reply) => {
+  const decoded = jwt.verify(data.clinician_id, process.env.JWT_SECRET)
   client.query('INSERT INTO letters VALUES ($1, $2, $3, $4, $5, $6);',
     [
       data.topic,
@@ -9,13 +12,13 @@ const addNewLetter = (client, done, data, reply) => {
       data.date_created
     ])
   client.query('SELECT patient_id FROM clinicians_patients WHERE clinician_id = $1',
-    [ data.clinician_id ], (err, result) => {
+    [ decoded.clinicianID ], (err, result) => {
       console.log(result)
       if (err) {
         console.error(err)
       }
       if (result.rows.filter(row => row.patient_id === data.patient_id).length === 0) {
-        client.query('INSERT INTO clinicians_patients VALUES ($1, $2)', [ data.clinician_id, data.patient_id ], (error) => {
+        client.query('INSERT INTO clinicians_patients VALUES ($1, $2)', [ decoded.clinicianID, data.patient_id ], (error) => {
           if (error) console.error(error)
         })
         reply('success - patient inserted into clinicians_patients')

@@ -1,22 +1,47 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const Joi = require('joi')
 require('env2')('config.env')
 
 const signUpClinician = (client, done, data, reply) => {
-  const salt = bcrypt.genSaltSync(10)
-  const hash = bcrypt.hashSync(data.password_hash, salt)
-  client.query('INSERT INTO clinicians VALUES ($1, $2)',
-    [ data.clinician_id, hash ], (err, result) => {
-      if (err) {
-        return console.error('error running query', err)
+  const schema = Joi.object().keys({
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    username: Joi.string().alphanum().min(5).max(30).required(),
+    password: Joi.string().min(8).required()
+  })
+
+  Joi.validate({
+    username: data.clinician_id,
+    password: data.password_hash,
+    firstName: data.first_name,
+    lastName: data.last_name
+  },
+    schema, (err, value) => {
+      if (!err) {
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(data.password_hash, salt)
+        client.query('INSERT INTO clinicians VALUES ($1, $2)',
+        [ data.clinician_id, hash ], (err, result) => {
+          if (err) {
+            return console.error('error running query', err)
+          }
+          const token = jwt.sign({ clinicianID: data.clinician_id }, process.env.JWT_SECRET)
+          reply().state('clinician_id', token, {
+            ttl: 24 * 60 * 60 * 1000,
+            isSecure: false,
+            path: '/'
+          })
+          done()
+        })
+      } else if (err.details[0].path === 'username') {
+        reply('invalid username')
+      } else if (err.details[0].path === 'password') {
+        reply('invalid password')
+      } else if (err.details[0].path === 'firstName' ||
+                  err.details[0].path === 'lastName') {
+        reply('missing required field')
       }
-      const token = jwt.sign({ clinicianID: data.clinician_id }, process.env.JWT_SECRET)
-      reply().state('clinician_id', token, {
-        ttl: 24 * 60 * 60 * 1000,
-        isSecure: false,
-        path: '/'
-      })
-      done()
     })
 }
 
