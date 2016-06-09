@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, thead, th, td, tr, tbody, Button, Glyphicon, Row, Col } from 'react-bootstrap'
+import { Table, thead, th, td, tr, tbody, Glyphicon, Row, Col } from 'react-bootstrap'
 
 export default class ClientLetterTable extends React.Component {
   constructor () {
@@ -102,9 +102,7 @@ export default class ClientLetterTable extends React.Component {
                   return (
                     <tr key={i}>
                       <td>
-                        <Button bsStyle='link'>
                          {letter.topic}
-                        </Button>
                       </td>
                       <td>
                         {letter.recipient}
