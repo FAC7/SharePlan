@@ -49092,11 +49092,7 @@
 	                    _react2.default.createElement(
 	                      'td',
 	                      null,
-	                      _react2.default.createElement(
-	                        _reactBootstrap.Button,
-	                        { bsStyle: 'link' },
-	                        letter.topic
-	                      )
+	                      letter.topic
 	                    ),
 	                    _react2.default.createElement(
 	                      'td',
